@@ -1,0 +1,135 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>PncModManager</AssemblyName>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <NuGetAudit>false</NuGetAudit>
+    <ManagedDir>$(GameDir)Post Nut Calamity_Data\Managed\</ManagedDir>
+    <BepInExDir>$(GameDir)BepInEx\core\</BepInExDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ControlsPage.cs" />
+    <Compile Include="CursorRestorePolicy.cs" />
+    <Compile Include="DashboardTheme.cs" />
+    <Compile Include="GameplayUpdateNotice.cs" />
+    <Compile Include="MainMenuUpdateNotice.cs" />
+    <Compile Include="ManagerNavigation.cs" />
+    <Compile Include="MenuNoticeLayout.cs" />
+    <Compile Include="ModalInputGuard.cs" />
+    <Compile Include="ModulePresentation.cs" />
+    <Compile Include="NativeFontCache.cs" />
+    <Compile Include="NativeFontRebuilder.cs" />
+    <Compile Include="NativePortraits.cs" />
+    <Compile Include="NativeTypeface.cs" />
+    <Compile Include="NotesHistoryService.cs" />
+    <Compile Include="OverlayInputPolicy.cs" />
+    <Compile Include="ParchmentArt.cs" />
+    <Compile Include="PatchNotesWindow.cs" />
+    <Compile Include="Plugin.cs" />
+    <Compile Include="ReleaseHistory.cs" />
+    <Compile Include="UpdateBorderLayout.cs" />
+    <Compile Include="UpdateBuild.cs" />
+    <Compile Include="UpdateChime.cs" />
+    <Compile Include="UpdateNoticeState.cs" />
+    <Compile Include="UpdatePolicy.cs" />
+    <Compile Include="UpdatesPage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(BepInExDir)$(BepInExDir)0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="BepInEx.Core">
+      <HintPath>$(BepInExDir)$(BepInExDir)BepInEx.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="BepInEx.Unity.Mono">
+      <HintPath>$(BepInExDir)$(BepInExDir)BepInEx.Unity.Mono.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SemanticVersioning">
+      <HintPath>$(BepInExDir)$(BepInExDir)SemanticVersioning.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ManagedDir)$(ManagedDir)Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(ManagedDir)$(ManagedDir)Unity.TextMeshPro.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>$(ManagedDir)$(ManagedDir)Unity.InputSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.AnimationModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.UIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="PncControls">
+      <HintPath>$(GameDir)BepInEx\plugins\PncControls.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.AudioModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <EmbeddedResource Include="art/PNC_ModManager_Background.png">
+      <LogicalName>PncUI.PNC_ModManager_Background.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="art/PNC_PatchNotes_Scroll.png">
+      <LogicalName>PncUI.PNC_PatchNotes_Scroll.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="art/PNC_UpdateArrow_Available.png">
+      <LogicalName>PncUI.PNC_UpdateArrow_Available.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="art/PNC_UpdateArrow_Current.png">
+      <LogicalName>PncUI.PNC_UpdateArrow_Current.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="art/PNC_Updater_Notification.png">
+      <LogicalName>PncUI.PNC_Updater_Notification.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NativePortraits.xml">
+      <LogicalName>PncUI.NativePortraits.xml</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

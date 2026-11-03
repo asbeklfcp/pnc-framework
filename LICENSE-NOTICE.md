@@ -1,0 +1,1 @@
+See CREDITS.md for contributor attribution and licensing scope. No blanket relicensing of inherited community work is asserted. The release owner confirmed permission to redistribute the included materials. External game/dependency licences are separate.

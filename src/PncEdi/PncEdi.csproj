@@ -1,0 +1,274 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>PncEdi</AssemblyName>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <NuGetAudit>false</NuGetAudit>
+    <ManagedDir>$(GameDir)Post Nut Calamity_Data\Managed\</ManagedDir>
+    <BepInExDir>$(GameDir)BepInEx\core\</BepInExDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AiStateGuard.cs" />
+    <Compile Include="AmbientProximity.cs" />
+    <Compile Include="AmbientReleaseGaze.cs" />
+    <Compile Include="AssemblyAccess.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="AttackCadenceFloor.cs" />
+    <Compile Include="BaphometAttackTrace.cs" />
+    <Compile Include="BaphometAttackTraceHooks.cs" />
+    <Compile Include="BaphometGargoyleMarker.cs" />
+    <Compile Include="BaphometGargoyleSpawn.cs" />
+    <Compile Include="BaphometGrabBrightener.cs" />
+    <Compile Include="BaphometGrabDriver.cs" />
+    <Compile Include="BaphometGrabOverlay.cs" />
+    <Compile Include="BaphometGrabUiBridge.cs" />
+    <Compile Include="BaphometSpriteSaturate.cs" />
+    <Compile Include="BaphometStatueVisual.cs" />
+    <Compile Include="BlindedBeastWeakSpawn.cs" />
+    <Compile Include="BossSpawnPlacement.cs" />
+    <Compile Include="BossTestTools.cs" />
+    <Compile Include="CameraSwapHooks.cs" />
+    <Compile Include="CaptureAudioPause.cs" />
+    <Compile Include="CaptureBossHud.cs" />
+    <Compile Include="CaptureFootstepHooks.cs" />
+    <Compile Include="CapturePlaybackLease.cs" />
+    <Compile Include="CaptureRewardLedger.cs" />
+    <Compile Include="CaptureSessionMedia.cs" />
+    <Compile Include="CaptureStateLibrary.cs" />
+    <Compile Include="CaptureTeleportLease.cs" />
+    <Compile Include="ChaserBossHelper.cs" />
+    <Compile Include="ChaserCaptureDiagnostics.cs" />
+    <Compile Include="ChaserCaptureTeleportGuard.cs" />
+    <Compile Include="ChaserDamageHooks.cs" />
+    <Compile Include="ChaserFodderMarker.cs" />
+    <Compile Include="ChaserFodderSpawn.cs" />
+    <Compile Include="ChaserHealthBarUi.cs" />
+    <Compile Include="ChaserHitLayerLease.cs" />
+    <Compile Include="ChaserHitProxy.cs" />
+    <Compile Include="ChaserStomp.cs" />
+    <Compile Include="ChaserSweeperHooks.cs" />
+    <Compile Include="ClassHeatMultipliers.cs" />
+    <Compile Include="ClassSelectionHooks.cs" />
+    <Compile Include="CombatPolicy.cs" />
+    <Compile Include="CombatRuntime.cs" />
+    <Compile Include="ConfigMap.cs" />
+    <Compile Include="CreatorVisualHost.cs" />
+    <Compile Include="CreatorVisualPolicy.cs" />
+    <Compile Include="CumDamageGate.cs" />
+    <Compile Include="CustomEnemyBridge.cs" />
+    <Compile Include="DeathHooks.cs" />
+    <Compile Include="DebugEnemySpawn.cs" />
+    <Compile Include="DioramaGalleryMap.cs" />
+    <Compile Include="DioramaUnlockTriggers.cs" />
+    <Compile Include="DragonGrabGameOverGuard.cs" />
+    <Compile Include="DragonGrabHooks.cs" />
+    <Compile Include="EnemyAiAudit.cs" />
+    <Compile Include="EnemyAiTypes.cs" />
+    <Compile Include="EnemyCombatTuning.cs" />
+    <Compile Include="EnemyGameplayAudioPause.cs" />
+    <Compile Include="EnemyGrabGate.cs" />
+    <Compile Include="EnemyIdentityTuning.cs" />
+    <Compile Include="EnemyIdleLoopPauseGuard.cs" />
+    <Compile Include="EnemyInactiveAutofix.cs" />
+    <Compile Include="EnemyKeepAliveHelper.cs" />
+    <Compile Include="EnemyReactivationAttackHooks.cs" />
+    <Compile Include="EnemyReactivationHelper.cs" />
+    <Compile Include="EnemyReactivationOnAttackHitHook.cs" />
+    <Compile Include="EnemyReactivationOnAttackStartHook.cs" />
+    <Compile Include="EnemyReactivationOnDamageHook.cs" />
+    <Compile Include="EnemyReactivationPerformAttackHook.cs" />
+    <Compile Include="EnemyReactivationPerformSpecialAttackHook.cs" />
+    <Compile Include="EnemySpawnShuffle.cs" />
+    <Compile Include="FrameworkCompatibility.cs" />
+    <Compile Include="FreeCam.cs" />
+    <Compile Include="FreeCamHooks.cs" />
+    <Compile Include="FreecamBindings.cs" />
+    <Compile Include="GalleryAliases.cs" />
+    <Compile Include="GalleryHooks.cs" />
+    <Compile Include="GalleryRegistry.cs" />
+    <Compile Include="GalleryTable.cs" />
+    <Compile Include="GalleryUnlockHooks.cs" />
+    <Compile Include="GameplayHooks.cs" />
+    <Compile Include="GameplayProfileRules.cs" />
+    <Compile Include="GameplayProfiles.cs" />
+    <Compile Include="GodModeHealthPolicy.cs" />
+    <Compile Include="GooperTuning.cs" />
+    <Compile Include="GrabEndHelper.cs" />
+    <Compile Include="GrabEndHooks.cs" />
+    <Compile Include="GrabEnemyProtection.cs" />
+    <Compile Include="GrabHooks.cs" />
+    <Compile Include="GrabRecoveryDeadline.cs" />
+    <Compile Include="GrabScreenAudioFill.cs" />
+    <Compile Include="GrabScreenHeatParam.cs" />
+    <Compile Include="GrabStruggleHooks.cs" />
+    <Compile Include="GrabSurvivalHooks.cs" />
+    <Compile Include="GrabViewHelper.cs" />
+    <Compile Include="GrappleDeathSequence.cs" />
+    <Compile Include="GrappleEnemies.cs" />
+    <Compile Include="GrappleHooks.cs" />
+    <Compile Include="GrappleReinforcement.cs" />
+    <Compile Include="GravyGrabDriver.cs" />
+    <Compile Include="GravyIdleVisualBridge.cs" />
+    <Compile Include="GravySerpentMarker.cs" />
+    <Compile Include="GravySerpentSpawn.cs" />
+    <Compile Include="GravyVisual.cs" />
+    <Compile Include="HeatLockSystem.cs" />
+    <Compile Include="HeatPotionLocks.cs" />
+    <Compile Include="Hotkeys.cs" />
+    <Compile Include="IdentityPolicy.cs" />
+    <Compile Include="ImpGrappleGate.cs" />
+    <Compile Include="InteractDiag.cs" />
+    <Compile Include="KillHeatCool.cs" />
+    <Compile Include="MimicGrabGate.cs" />
+    <Compile Include="ModManagerBridge.cs" />
+    <Compile Include="NameRemap.cs" />
+    <Compile Include="NativeFormPresentation.cs" />
+    <Compile Include="NearbyEnemyHider.cs" />
+    <Compile Include="NunGrabTuning.cs" />
+    <Compile Include="OptionalMembers.cs" />
+    <Compile Include="OverkeksChaserBossHelper.cs" />
+    <Compile Include="OverkeksConfig.cs" />
+    <Compile Include="OverkeksEnemyCombatTuning.cs" />
+    <Compile Include="OverkeksEnemyRuntime.cs" />
+    <Compile Include="OverkeksEnemySpawnShuffle.cs" />
+    <Compile Include="OverkeksFeatureRuntime.cs" />
+    <Compile Include="OverkeksGrabRecovery.cs" />
+    <Compile Include="OverkeksHeatSceneGate.cs" />
+    <Compile Include="OverkeksMode.cs" />
+    <Compile Include="OverkeksNunGrabTuning.cs" />
+    <Compile Include="OverkeksPopulation.cs" />
+    <Compile Include="OverkeksProfileHooks.cs" />
+    <Compile Include="OwnedBossHudCleanup.cs" />
+    <Compile Include="PathfindingSpamFix.cs" />
+    <Compile Include="PauseHooks.cs" />
+    <Compile Include="PeekGalleryMap.cs" />
+    <Compile Include="PitfallRecoveryHooks.cs" />
+    <Compile Include="Plugin.cs" />
+    <Compile Include="PluginConfig.cs" />
+    <Compile Include="PluginPatches.cs" />
+    <Compile Include="PotionAutoUse.cs" />
+    <Compile Include="ProfileDiagnostics.cs" />
+    <Compile Include="ProjectileRetreatFallback.cs" />
+    <Compile Include="ReskinAudioLease.cs" />
+    <Compile Include="ReskinBaseStrip.cs" />
+    <Compile Include="ReskinPresentation.cs" />
+    <Compile Include="ResourcePolicy.cs" />
+    <Compile Include="SafeInput.cs" />
+    <Compile Include="SceneEscapeGate.cs" />
+    <Compile Include="ScreenDiag.cs" />
+    <Compile Include="SerpentHypnosis.cs" />
+    <Compile Include="ShotTraceRegistry.cs" />
+    <Compile Include="SpawnHeatPotionDrop.cs" />
+    <Compile Include="SpawnWalkability.cs" />
+    <Compile Include="TraceWindow.cs" />
+    <Compile Include="VanillaGrabHiding.cs" />
+    <Compile Include="WeaponHeatCostGate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(BepInExDir)$(BepInExDir)0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="BepInEx.Core">
+      <HintPath>$(BepInExDir)$(BepInExDir)BepInEx.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="BepInEx.Unity.Mono">
+      <HintPath>$(BepInExDir)$(BepInExDir)BepInEx.Unity.Mono.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(ManagedDir)$(ManagedDir)Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ManagedDir)$(ManagedDir)Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.AnimationModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.AudioModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.VideoModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.ParticleSystemModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.AIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="AstarPathfindingProject">
+      <HintPath>$(ManagedDir)$(ManagedDir)AstarPathfindingProject.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Drawing">
+      <HintPath>$(ManagedDir)$(ManagedDir)Drawing.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="PackageTools">
+      <HintPath>$(ManagedDir)$(ManagedDir)PackageTools.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.UIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="PncControls">
+      <HintPath>$(GameDir)BepInEx\plugins\PncControls.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

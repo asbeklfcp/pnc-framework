@@ -1,0 +1,456 @@
+namespace PncEdi;
+
+// The authoritative animator-state -> gallery mapping.
+//
+// This used to live as the *default value* of the GalleryAliases config setting, which was a
+// trap: BepInEx writes a default only when the key is absent, so every shipped config froze
+// whatever the table looked like on the day it was first written. The distributed config sat
+// four versions behind the code for months, keyed on pre-normalisation slugs the builder no
+// longer produces, and roughly 90% of gameplay silently ran on a substring-guessing fallback
+// instead (see code/NAMING-AUDIT.md).
+//
+// Ownership is now inverted. The table below ships in the DLL and updates with it. The config
+// setting is an *override* list, empty by default, applied on top - so a user tweak survives an
+// update and an update reaches the user.
+//
+// Verify coverage after editing:  dotnet run --project code/slugharness -- <path to cfg>
+internal static class GalleryTable
+{
+	internal const string Shared = @"
+		imp_1=imp_1
+		imp_2=imp_2
+		imp_3=imp_3
+		imp_grab=imp_grab_loop
+		imp_loop=imp_grab_loop
+		imp_cum=imp_grab_cum
+		imp_imp_grab=imp_grab_loop
+		imp_imp_grab_loop=imp_grab_loop
+		imp_imp_grab_cum=imp_grab_cum
+		impimp_grab=imp_grab_loop
+		impimp_grab_loop=imp_grab_loop
+		impimp_grab_cum=imp_grab_cum
+		imp_grab_start=imp_grab_loop
+		imp_grab_loop=imp_grab_loop
+		imp_grab_cum=imp_grab_cum
+		nun_ghoulgrab=Nun_Grab
+		nun_ghoulgrabstart=Nun_Grab
+		nun_ghoulgrabcontinue=Nun_Grab
+		nun_ghoulgrabscreen=Nun_Grab
+		nun_grab=Nun_Grab
+		nun_alt_grab=Nun_Grab
+		nun_ghoulgrabcum=Nun_Cum
+		nun_cum=Nun_Cum
+		nun_alt_cum=Nun_Cum
+		nun_ghoulgrabcumcontinue=Nun_Grab
+		nun_grabcumcontinue=Nun_Grab
+		nun_alt_ghoulgrabstart=Nun_Grab
+		nun_alt_ghoulgrabcum=Nun_Cum
+		nun_alt_ghoulgrabcumcontinue=Nun_Grab
+		mimic_mimicgrabinit=Mimic_Start
+		mimic_grab=Mimic_Start
+		mimic_mimicgrabloop=Mimic_Loop
+		mimic_loop=Mimic_Loop
+		mimic_mimiccum=Mimic_Cum
+		mimic_cum=Mimic_Cum
+		mimic_mimic_cum=Mimic_Cum
+		mimic_mimic_grabbed_start=Mimic_Start
+		mimic_mimic_grabbed_loop=Mimic_Loop
+		mimic_grabbed_start=Mimic_Start
+		mimic_grabbed_loop=Mimic_Loop
+		gallery_mimic_grabbed_start=Mimic_Start
+		gallery_mimic_grabbed_loop=Mimic_Loop
+		gallery_weaponmimic_grabbed_start=Mimic_Start
+		gallery_weaponmimic_grabbed_loop=Mimic_Loop
+		weaponsmimicgrabinit=Mimic_Start
+		weaponsmimicgrabloop=Mimic_Loop
+		gooper_goopergrabscreen=Gooper_Start
+		gooper_grab=Gooper_Start
+		gooper_grabscreen=Gooper_Start
+		gooper_grab_alt1=Gooper_Start
+		gooper_grabscreen_alt1=Gooper_Start
+		gooper_cum=Gooper_Cum
+		gooper_grabscreen_cum=Gooper_Cum
+		gooper_goopergrabscreencum=Gooper_Cum
+		gooper_goopergrabscreenalt=Gooper_Start
+		gooper_goopergrabscreencumalt=Gooper_Cum
+		gooper_goopergrabscreenp=Gooper_Start
+		gargoyle_gargoylegrabscreen=Gargoyle_Grabbed
+		gargoyle_grab=Gargoyle_Grabbed
+		gargoyle_grabscreen=Gargoyle_Grabbed
+		gargoyle_grab_alt1=Gargoyle_Grabbed
+		gargoyle_grabscreen_alt1=Gargoyle_Grabbed
+		gargoyle_cum=Gargoyle_Cum
+		gargoyle_grabscreen_cum=Gargoyle_Cum
+		gargoyle_grabscreenalt=Gargoyle_Grabbed
+		gargoyle_gargoylegrabscreenalt=Gargoyle_Grabbed
+		gargoyle_gargoylecum=Gargoyle_Cum
+		gargoyle_gargoylecumalt=Gargoyle_Cum
+		gargoyle_gargoylecumscreen=Gargoyle_Cum
+		gargoyle_gargoylecumscreenalt=Gargoyle_Cum
+		dragon_cum=Dragon_Cum
+		dragon_dragonfacesit=Dragon_Grabbed
+		gargoyle_grabbed=Gargoyle_Grabbed
+		gooper_start=Gooper_Start
+		wendigo_start=Wendigo_Start
+		wendigo_continued=Wendigo_Continued
+		mimic_start=Mimic_Start
+		zombie_start=Zombie_Loop
+		zombie_start_alt1=Zombie_Loop
+		dragon_dragonsexsceneintro=Dragon_Cum
+		dragon_dragonsexscene=Dragon_Cum
+		dragon_grab=Dragon_Grabbed
+		dragon_facesit=Dragon_Grabbed
+		dragon_sexscene=Dragon_Cum
+		dragon_sexsceneintro=Dragon_Cum
+		dragon_sex=Dragon_Cum
+		dragon_dragongrab=Dragon_Grabbed
+		wendigo_kiss=Wendigo_Start
+		wendigo_sexsceneintro=Wendigo_Continued
+		wendigo_sexscene=Wendigo_Continued
+		wendigo_sexintro=Wendigo_Continued
+		wendigo_sex=Wendigo_Continued
+		wendigo_grab=Wendigo_Start
+		wendigo_wendigograb=Wendigo_Start
+		wendigo_wendigokiss=Wendigo_Start
+		wendigo_wendigosexsceneintro=Wendigo_Continued
+		wendigo_wendigosexscene=Wendigo_Continued
+		wendigo_wendigosex=Wendigo_Continued
+		wendigo_wendigosexintro=Wendigo_Continued
+		baphomet_baphomet_grabbed_bj_start=Baphomet_Start
+		baphomet_baphomet_grabbed_bj_loop=Baphomet_Loop
+		baphomet_baphomet_grabbed_bj_cum=Baphomet_Cum
+		baphomet_baphomet_grabbed_riding_start=Baphomet_Start2
+		baphomet_baphomet_grabbed_riding_loop=Baphomet_Loop2
+		baphomet_baphomet_grabbed_riding_cum=Baphomet_Cum2
+		gravy_gravy_grabbed_start=Gravy_Start
+		gravy_gravy_grabbed_loop=Gravy_Loop
+		gravy_gravy_grabbed_cum=Gravy_Cum
+		gravy_gravy_grabbed_start2=Gravy_Start2
+		gravy_gravy_grabbed_loop2=Gravy_Loop2
+		gravy_gravy_grabbed_cum2=Gravy_Cum2
+		gravy_gravy_grabbed_end2=Gravy_End2
+		minotaur_gravy_grabbed_start=Gravy_Start
+		minotaur_gravy_grabbed_loop=Gravy_Loop
+		minotaur_gravy_grabbed_cum=Gravy_Cum
+		minotaur_gravy_grabbed_start2=Gravy_Start2
+		minotaur_gravy_grabbed_loop2=Gravy_Loop2
+		minotaur_gravy_grabbed_cum2=Gravy_Cum2
+		minotaur_gravy_grabbed_end2=Gravy_End2
+		minotaur_minotaur_grabbed_start=Gravy_Start
+		minotaur_minotaur_grabbed_loop=Gravy_Loop
+		minotaur_minotaur_grabbed_cum=Gravy_Cum
+		minotaur_minotaur_grabbed_start2=Gravy_Start2
+		minotaur_minotaur_grabbed_loop2=Gravy_Loop2
+		minotaur_minotaur_grabbed_cum2=Gravy_Cum2
+		minotaur_minotaur_grabbed_end2=Gravy_End2
+		minothaur_bj_start=Gravy_Start
+		minothaur_bj_loop=Gravy_Loop
+		minothaur_bj_cum=Gravy_Cum
+		minothaur_riding_start=Gravy_Start2
+		minothaur_riding_loop=Gravy_Loop2
+		minothaur_riding_cum=Gravy_Cum2
+		minothaur_end=Gravy_End2
+		minothaur_end2=Gravy_End2
+		4minothaur_bj_start=Gravy_Start
+		4minothaur_bj_loop=Gravy_Loop
+		4minothaur_bj_cum=Gravy_Cum
+		4minothaur_riding_start=Gravy_Start2
+		4minothaur_riding_loop=Gravy_Loop2
+		4minothaur_riding_cum=Gravy_Cum2
+		4minothaur_end=Gravy_End2
+		4minothaur_end2=Gravy_End2
+		4minotaur_bj_start=Gravy_Start
+		4minotaur_bj_loop=Gravy_Loop
+		4minotaur_bj_cum=Gravy_Cum
+		4minotaur_riding_start=Gravy_Start2
+		4minotaur_riding_loop=Gravy_Loop2
+		4minotaur_riding_cum=Gravy_Cum2
+		minotaur_bj_start=Gravy_Start
+		minotaur_bj_loop=Gravy_Loop
+		minotaur_bj_cum=Gravy_Cum
+		minotaur_riding_start=Gravy_Start2
+		minotaur_riding_loop=Gravy_Loop2
+		minotaur_riding_cum=Gravy_Cum2
+		gravy_bj_start=Gravy_Start
+		gravy_bj_loop=Gravy_Loop
+		gravy_bj_cum=Gravy_Cum
+		gravy_riding_start=Gravy_Start2
+		gravy_riding_loop=Gravy_Loop2
+		gravy_riding_cum=Gravy_Cum2
+		gravy_end=Gravy_End2
+		gravy_end2=Gravy_End2
+		gravy_minotaur_ride_fadein=Gravy_Start2
+		gravy_minotaurride_intro=-
+		gravy_minotaurrideloop=Gravy_Loop2
+		gravy_minotaurridecum=Gravy_Cum2
+		gravy_minotaurrideend=Gravy_End2
+		4_minotaur_ride_fadein=Gravy_Start2
+		4_minotaurride_intro=-
+		4_minotaurrideloop=Gravy_Loop2
+		4_minotaurridecum=Gravy_Cum2
+		4_minotaurrideend=Gravy_End2
+		gravy_minotaur_fadein=-
+		gravy_minotaur_intro=-
+		gravy_minotaur_bjstart=-
+		gravy_minotaurbjloop=Gravy_Loop?seek=320
+		gravy_minotaurcum=Gravy_Cum
+		gravy_minotaur_fadeout=filler
+		4_minotaur_fadein=Gravy_Start?seek=30
+		4_minotaur_intro=-
+		4_minotaur_bjstart=-
+		4_minotaurbjloop=Gravy_Loop?seek=320
+		4_minotaurcum=Gravy_Cum
+		4_minotaur_fadeout=filler
+		Nun_GrabAlt=Nun_Grab
+		Nun_CumAlt=Nun_Cum
+		Nun_CumContinue=Nun_Grab
+		Nun_CumContinueAlt=Nun_Grab
+		Gargoyle_GrabAlt=Gargoyle_Grabbed
+		Gargoyle_GrabbedAlt=Gargoyle_Grabbed
+		Gargoyle_CumAlt=Gargoyle_Cum
+		Gargoyle_CumContinue=Gargoyle_Grabbed
+		Gargoyle_CumContinueAlt=Gargoyle_Grabbed
+		Gooper_StartAlt=Gooper_Start
+		Gooper_CumAlt=Gooper_Cum
+		Imp_Imp1=imp_1
+		Imp_Imp2=imp_2
+		Imp_Imp3=imp_3
+		impthreeway_impthreewaygallery=peek_imp_three_way
+		impthreeway_impthreewaygallery_loop=peek_imp_three_way
+		nun_mimic_mimic&nungallery=peek_nun_mimic
+		nun_mimic_mimic&nungallery_loop=peek_nun_mimic
+		nun&mimic_mimic&nungallery=peek_nun_mimic
+		nun&mimic_mimic&nungallery_loop=peek_nun_mimic
+		plantbj_plantbjgallery=peek_plant_bj
+		plantbj_plantbjgallery_loop=peek_plant_bj
+		wendigoride_wendigoridinggallery=peek_wendigo_ride
+		wendigoride_wendigoridinggalleryloop=peek_wendigo_ride
+		nunsthreewaay_nunsduogallery=peek_nuns_threeway
+		nunsthreewaay_nunsduogallery_loop=peek_nuns_threeway
+		nunsthreeway_nunsduogallery=peek_nuns_threeway
+		nunsthreeway_nunsduogallery_loop=peek_nuns_threeway
+		gooperpillory_peephole_gooperbj_loop=peek_gooper_pillory
+		gooperpillory_peephole_gooperbj_start=peek_gooper_pillory
+		gooperpillory_peephole_gooperbj_end=peek_gooper_pillory
+		zombiebjpeepscene_zombiebjgallery=peek_zombie_bj
+		zombiebjpeepscene_zombiebjpeepscene=peek_zombie_bj
+		zombiebjpeepscene_zombiebjpeekscene=peek_zombie_bj
+		plantasha_plantasha_grabscreen=Plantasha_Start
+		plantasha_plantashaalt_grabscreen=Plantasha_Start
+		plantasha_plantashagrab=Plantasha_Start
+		plantasha_plantashaaltgrab=Plantasha_Start
+		plantasha_planticagrab=Plantasha_Start
+		plantasha_planticacum=Plantasha_Cum
+		plantasha_plantashacum=Plantasha_Cum
+		plantasha_plantashaaltcum=Plantasha_Cum
+		Plantasha_Grab=Plantasha_Start
+		plantasha_grab_alt=Plantasha_Start
+		plantasha_loop=Plantasha_Start
+		plantasha_loop_alt=Plantasha_Start
+		plantasha_start=Plantasha_Start
+		plantasha_cum=Plantasha_Cum
+		plantasha_cum_alt=Plantasha_Cum
+		plantasha_plantasha_grab=Plantasha_Start
+		plantasha_plantasha_grab_alt=Plantasha_Start
+		plantasha_plantasha_grab_loop=Plantasha_Start
+		plantasha_plantasha_grab_loop_alt=Plantasha_Start
+		plantasha_plantasha_grab_cum=Plantasha_Cum
+		plantasha_plantasha_grab_cum_alt=Plantasha_Cum
+		plantasha_plantasha_loop=Plantasha_Start
+		zombie_zombiegrabscreen=Zombie_Loop
+		zombie_zombiegrabscreenalt=Zombie_Loop
+		zombie_zombiegrabscreen_loop=Zombie_Loop
+		zombie_grabscreen=Zombie_Loop
+		zombie_grabscreen_loop=Zombie_Loop
+		zombie_grabscreen_cum=Zombie_Cum
+		zombie_grabscreenalt=Zombie_Loop
+		zombie_grabscreen_loopalt=Zombie_Loop
+		zombie_grabscreen_cumalt=Zombie_Cum
+		zombie_zombiegrabscreen_loopalt=Zombie_Loop
+		zombie_zombiegrabscreen_cum=Zombie_Cum
+		zombie_zombiegrabscreen_cumalt=Zombie_Cum
+		zombie_zombie_grab=Zombie_Loop
+		zombie_zombie_grabalt=Zombie_Loop
+		zombie_zombie_grab_loop=Zombie_Loop
+		zombie_zombie_grab_loopalt=Zombie_Loop
+		zombie_zombie_grab_cum=Zombie_Cum
+		zombie_zombie_grab_cumalt=Zombie_Cum
+		Zombie_Grab=Zombie_Loop
+		zombie_grab_alt1=Zombie_Loop
+		zombie_loop=Zombie_Loop
+		zombie_loop_alt1=Zombie_Loop
+		zombie_cum=Zombie_Cum
+		zombie_cum_alt1=Zombie_Cum
+		Zombie_GrabAlt1=Zombie_Loop
+		萁县攀洀椀挀漀氀漀渀ⴀ猀攀瀀愀爀愀琀攀搀 㰀渀愀琀甀爀愀氀开最愀氀氀攀爀礀㸀㴀㰀愀氀椀愀猀㸀 攀渀琀爀椀攀猀⸀ 吀栀攀 瀀氀甀最椀渀 氀漀漀欀猀 甀瀀 攀瘀攀爀礀 最愀氀氀攀爀礀 渀愀洀攀 椀琀✀猀 愀戀漀甀琀 琀漀 猀攀渀搀 愀渀搀 爀攀瀀氀愀挀攀猀 椀琀 眀椀琀栀 琀栀攀 愀氀椀愀猀 椀昀 氀椀猀琀攀搀⸀ 唀猀攀 琀栀椀猀 琀漀 最椀瘀攀 猀挀攀渀攀猀 昀爀椀攀渀搀氀礀 䔀䐀䤀 渀愀洀攀猀 愀渀搀 瀀漀椀渀琀 愀氀琀⼀搀甀瀀氀椀挀愀琀攀 愀渀椀洀愀琀漀爀 猀琀愀琀攀猀 愀琀 琀栀攀 猀愀洀攀 昀甀渀猀挀爀椀瀀琀⸀ 䄀渀礀 渀愀琀甀爀愀氀 渀愀洀攀 渀漀琀 氀椀猀琀攀搀 栀攀爀攀 瀀愀猀猀攀猀 琀栀爀漀甀最栀 甀渀挀栀愀渀最攀搀⸀ 匀瀀攀挀椀愀氀 琀愀爀最攀琀 ✀ⴀ✀ ⠀愀 猀椀渀最氀攀 搀愀猀栀⤀ 洀攀愀渀猀 匀䬀䤀倀 가ᴠ†搀漀渀✀琀 昀椀爀攀 䔀䐀䤀 昀漀爀 琀栀愀琀 猀琀愀琀攀 愀琀 愀氀氀㬀 甀猀攀昀甀氀 昀漀爀 昀愀搀攀ⴀ椀渀⼀琀爀愀渀猀椀琀椀漀渀 愀渀椀洀愀琀漀爀 猀琀愀琀攀猀 琀栀愀琀 猀栀漀甀氀搀渀✀琀 椀渀琀攀爀爀甀瀀琀 琀栀攀 爀甀渀渀椀渀最 昀甀渀猀挀爀椀瀀琀⸀ 䄀渀 愀氀椀愀猀 琀愀爀最攀琀 洀愀礀 攀渀搀 眀椀琀栀 ✀㼀猀攀攀欀㴀㰀洀猀㸀✀ 琀漀 猀攀攀欀 椀渀琀漀 琀栀攀 昀甀渀猀挀爀椀瀀琀 漀渀 瀀氀愀礀Ⰰ 攀⸀最⸀ ✀䜀爀愀瘀礀开䰀漀漀瀀㼀猀攀攀欀㴀㌀　　✀⸀Āඋgravy_minotaur_fadein=Gravy_Start?seek=30
+		gloryholecamera_start=Baphomet_Start
+		gloryholecamera_middle=Baphomet_Loop
+		gloryholecamera_cum=Baphomet_Cum
+		gloryholecamera_fade=filler
+		gloryholecamera_fadeout=filler
+		gloryholecamera_startsex=Baphomet_Start2
+		gloryholecamera_sexmiddle=Baphomet_Loop2
+		gloryholecamera_sexcum=Baphomet_Cum2
+		nun_altghoulgrabstart=Nun_Grab
+		nun_altghoulgrabcum=Nun_Cum
+		gargoyle_gargoylegrabalt=Gargoyle_Grabbed
+		nun_ghoulidle=-
+		nun_ghoulwalk=-
+		nun_ghoul_attack=-
+		zombie_idle=-
+		zombie_walk=-
+		zombie_attack=-
+		gooper_idle=-
+		gooper_walk=-
+		gooper_attack=-
+		gooper_gooperspitgrabattack=-
+		gargoyle_idle=-
+		gargoyle_walk=-
+		gargoyle_attack=-
+		gargoyle_gargoylegrabprojectileanim=-
+		plantasha_idle=-
+		plantasha_shooting=-
+		plantasha_spin=-
+		plantasha_spinstart=-
+		plantasha_spinend=-
+		dragon_dragonidle=-
+		dragon_dragonwalk=-
+		wendigo_wendigoidle=-
+		wendigo_wendigowalk=-
+		imp_idle=-
+		imp_walk=-
+		imp_attack=-
+		baphomet_idle=-
+		baphomet_laugh=-
+		baphomet_fade=-
+		baphomet_start=Baphomet_Start
+		baphomet_middle=Baphomet_Loop
+		baphomet_cum=Baphomet_Cum
+		baphomet_startsex=Baphomet_Start2
+		baphomet_sexmiddle=Baphomet_Loop2
+		baphomet_sexcum=Baphomet_Cum2
+		baphomet_loop=Baphomet_Loop
+		baphomet_start2=Baphomet_Start2
+		baphomet_loop2=Baphomet_Loop2
+		baphomet_cum2=Baphomet_Cum2
+		gravy_start=Gravy_Start
+		gravy_loop=Gravy_Loop
+		gravy_cum=Gravy_Cum
+		gravy_start2=Gravy_Start2
+		gravy_loop2=Gravy_Loop2
+		gravy_cum2=Gravy_Cum2
+		dragon_grabbed=Dragon_Grabbed
+		zombie_alt1loop=Zombie_Loop
+		zombie_alt1cum=Zombie_Cum
+		mimic_weaponsmimiccum=Mimic_Cum
+		// --- game 0.3.1's three new enemies (CHANGELOG 71) ---------------------------------
+		//
+		// Both Blinded Beast stages declare states called exactly Loop and Cum, so the state
+		// name alone cannot say which is which; GrabVariantSuffixes appends _t off the live
+		// controller name before the lookup gets here (CHANGELOG 66). The gallery viewer calls
+		// the same two states Start and Start_T, hence four keys per stage rather than two.
+		//
+		// The serpent's Hypnosis states stay skipped *here*, and the reason has changed. The
+		// original one - three clips on the enemy's own controller beside Idle and Walk, no grab
+		// screen, no cum clip, so a sexual script over a combat mechanic would be a gap that is
+		// neither inert nor visible - held for a dispatch keyed on an animator state, because
+		// the state says hypnotising and nothing about how close the thing is: the same script
+		// would have played at 8 m and at 2 m.
+		//
+		// What the mechanic actually is, in the game's own tooltip, is that it drags the
+		// player's camera onto itself while it's on-screen and advances until it lands a grab -
+		// an approach, whose one variable is distance. `SerpentHypnosis` scripts that variable
+		// as a tier ladder and dispatches it as a filler override, never through this table. So
+		// these entries are still right: there is no per-state script, and the states must not
+		// interrupt one.
+		blinded_beast_loop=BlindedBeast_Start
+		blinded_beast_start=BlindedBeast_Start
+		blinded_beast_cum=BlindedBeast_Cum
+		blinded_beast_loop_t=BlindedBeast_Start_T
+		blinded_beast_start_t=BlindedBeast_Start_T
+		blinded_beast_cum_t=BlindedBeast_Cum_T
+		blinded_beast_blindedbeast_idle=-
+		blinded_beast_blindedbeast_walk=-
+		blinded_beast_blindedbeast_attack=-
+		blinded_beast_blindedbeast_idle_transformed=-
+		blinded_beast_blindedbeast_attack_transformed=-
+		blinded_beast_blindedbeast_rangedattack_transformed=-
+		blinded_beast_blindedbeast_transforming_transformed=-
+		serpent_loop=Serpent_Loop
+		serpent_cum=Serpent_Cum
+		serpent_attack=-
+		serpent_shoot=-
+		serpent_black_serpent_idle=-
+		serpent_black_serpent_walk=-
+		serpent_hypnosis_start=-
+		serpent_hypnosis_loop=-
+		serpent_hypnosis_end=-
+		goonshroom_start=GoonShroom_Start
+		goonshroom_loop=GoonShroom_Start
+		goonshroom_cum=GoonShroom_Cum
+		goonshroom_1=goonshroom_1
+		goonshroom_2=goonshroom_2
+		goonshroom_3=goonshroom_3
+		goonshroom_one=goonshroom_1
+		goonshroom_two=goonshroom_2
+		goonshroom_three=goonshroom_3
+		goonshroom_idle=-
+		goonshroom_walk=-
+		goonshroom_charging=-
+		goonshroom_explode=-
+";
+
+	internal const string InGame = @"
+		gravy_minotaur_fadein=Gravy_Start?seek=30
+		gravy_minotaur_intro=-
+		gravy_minotaurbjloop=Gravy_Loop?seek=320
+		gravy_minotaur_fadeout=filler
+		gravy_minotaur_ride_fadein=Gravy_Start2
+		gravy_minotaurride_intro=-
+		4_minotaur_fadein=Gravy_Start?seek=30
+		4_minotaur_intro=-
+		4_minotaurbjloop=Gravy_Loop?seek=320
+		4_minotaur_fadeout=filler
+		4_minotaur_ride_fadein=Gravy_Start2
+		4_minotaurride_intro=-
+		gloryholecamera_start=Baphomet_Start
+		gloryholecamera_middle=Baphomet_Loop
+		gloryholecamera_cum=Baphomet_Cum
+		gloryholecamera_fade=filler
+		gloryholecamera_fadeout=filler
+		gloryholecamera_startsex=Baphomet_Start2
+		gloryholecamera_sexmiddle=Baphomet_Loop2
+		gloryholecamera_sexcum=Baphomet_Cum2
+		nun_ghoulgrabstart=Nun_Grab
+		nun_altghoulgrabstart=Nun_Grab
+		nun_ghoulgrabcum=Nun_Cum
+		nun_altghoulgrabcum=Nun_Cum
+		gargoyle_gargoylegrabalt=Gargoyle_Grabbed
+		gargoyle_gargoylegrabscreenalt=Gargoyle_Grabbed
+		gargoyle_gargoylecumalt=Gargoyle_Cum
+		gooper_goopergrabscreenalt=Gooper_Start
+		gooper_goopergrabscreencumalt=Gooper_Cum
+		plantasha_plantashaaltgrab=Plantasha_Start
+		plantasha_plantashaaltcum=Plantasha_Cum
+		zombie_zombiegrabscreen_loopalt=Zombie_Loop
+		zombie_zombiegrabscreen_cumalt=Zombie_Cum
+		dragon_dragonsexsceneintro=Dragon_Cum
+		dragon_dragonsexscene=Dragon_Cum
+		wendigo_wendigosexsceneintro=Wendigo_Continued
+		wendigo_wendigosexscene=Wendigo_Continued
+		imp_imp_grab=imp_grab_loop
+		imp_imp_grab_loop=imp_grab_loop
+		imp_imp_grab_cum=imp_grab_cum
+		// Live gameplay plays the in-game clips; the config's GalleryAliases sends the same slugs
+		// at the _Gallery twins for the viewer, and these send them back. Only the rows whose two
+		// clips differ in length are listed - Serpent_Cum and BlindedBeast_Start are the same
+		// sprites at the same rate in both (CHANGELOG 71).
+		serpent_loop=Serpent_Loop
+		blinded_beast_cum=BlindedBeast_Cum
+		blinded_beast_cum_t=BlindedBeast_Cum_T
+		goonshroom_cum=GoonShroom_Cum
+		goonshroom_1=goonshroom_1
+		goonshroom_2=goonshroom_2
+		goonshroom_3=goonshroom_3
+";
+}

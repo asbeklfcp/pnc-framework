@@ -1,0 +1,1042 @@
+[
+  {
+    "module": "PncEdi",
+    "file": "AssemblyAccess.cs",
+    "sha256": "4263266275c5ade5755f4a82637af7ce9b35cac66ff52e4c41345d965971331c"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CameraSwapHooks.cs",
+    "sha256": "f4eefeb625f53608f8e4aadcc68b4604ece51407e0c257d7b148dc140621e04d"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ChaserBossHelper.cs",
+    "sha256": "4801a49ddedfe30769816dc3b730c1a1803be20b11bfa5d8241d9e2026cb24d8"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ChaserStomp.cs",
+    "sha256": "51a44fa0339d8765469f86e86153afe19855855b2def220fe9d8b2a86b1a8da0"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ClassSelectionHooks.cs",
+    "sha256": "d143c4e3815306a67289861fe1afbaec2e6fb5c49cbe2b19e3401ce11e5b691b"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ConfigMap.cs",
+    "sha256": "3fa117c9d6a96049dfa3f4254fa216f3881591aeb251ee36a7d51368f8c36088"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CustomEnemyBridge.cs",
+    "sha256": "7a48887ff40279ec4f6516a9119fbb2c18aeb6aaff488ca14f897220352cdce6"
+  },
+  {
+    "module": "PncEdi",
+    "file": "DebugEnemySpawn.cs",
+    "sha256": "8e96abfa5659eedbbb0ffbcc599c02cc44e3ea32d66be10735b72f5be381829a"
+  },
+  {
+    "module": "PncEdi",
+    "file": "DioramaGalleryMap.cs",
+    "sha256": "c2c9efae9abf94004699d2dac641230cd219b6a858ff65c69978a9d78d1b4d3d"
+  },
+  {
+    "module": "PncEdi",
+    "file": "DragonGrabGameOverGuard.cs",
+    "sha256": "63b9da2d11c7b98865d409bee197b92c4947420e231af6064c121c23688864a7"
+  },
+  {
+    "module": "PncEdi",
+    "file": "DragonGrabHooks.cs",
+    "sha256": "4d444b82199e258ac8292b5275212a6cf993b5131227738ed1778d1abaac5010"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyAiAudit.cs",
+    "sha256": "7c377c0c68a151c505eda15ab1e1ce513fe34c7be453394179d694a0e7a96b6f"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyAiTypes.cs",
+    "sha256": "95171c9547da9f07d6b9dedf4c29cd9805f543ec29cc403fc85f29b898816ba6"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyReactivationAttackHooks.cs",
+    "sha256": "f7342f165190f552da334dd71d46084a52b5cafa2a89232b52ed689a27ecf0ac"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyReactivationOnAttackHitHook.cs",
+    "sha256": "807aacff68bc83b0597cbfed42c8ed11bf5189cf89efe6992cc4938355a5a820"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyReactivationOnAttackStartHook.cs",
+    "sha256": "0d214f25007a88bb91c53ceb60d375445caa987e7b29c8a3e1eec67e5cd11920"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyReactivationPerformAttackHook.cs",
+    "sha256": "16f485d4c3c3cecc42a7b32d04d68b4c2080e0f4f87d7f7d6d11b88034c98723"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyReactivationPerformSpecialAttackHook.cs",
+    "sha256": "ef4544aae5ea2369c22c38e0beca40c9f1fc0e120fddd0b6b55f6e5d02d85d87"
+  },
+  {
+    "module": "PncEdi",
+    "file": "FrameworkCompatibility.cs",
+    "sha256": "14d1517f72b04fec02d200929e89f3966d9ff0d22301f4c18e0abd08a1134318"
+  },
+  {
+    "module": "PncEdi",
+    "file": "FreeCam.cs",
+    "sha256": "72fab0d9e6885761659691e4c758fff030e797c71e21420ed711e165cf57d69a"
+  },
+  {
+    "module": "PncEdi",
+    "file": "FreecamBindings.cs",
+    "sha256": "883621cf7c5624acdf86e0c81f7b50d2fb807192a78a6997d8f437309d89698d"
+  },
+  {
+    "module": "PncEdi",
+    "file": "FreeCamHooks.cs",
+    "sha256": "cea89dc9705d282a373f7f8b606ea86cddaa56e87ecf550f475816bf01f37bb3"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GalleryAliases.cs",
+    "sha256": "60c4467aa7777a443a956fa4303d96b9afeb7d7aab5a3b4be2075ed258a7dc4d"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GalleryHooks.cs",
+    "sha256": "41f97edbb02f6c84a89efbe9367b7f64396b38af9769b97fb5a6b106f08a1d26"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GalleryRegistry.cs",
+    "sha256": "6cea2e8d73e95c44beef19cb556fb956821b2ffc3b42aab2a6ceb7bd354afc8e"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GalleryTable.cs",
+    "sha256": "535ed599809da928fa68b4b1f072c7f38f0d8334ac7226867a01a085dc3ddda1"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GalleryUnlockHooks.cs",
+    "sha256": "d9ed8d40cf5a0144111d2b2dc086f280ca4e5ea1271094760c3c549b35393abd"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrabEndHooks.cs",
+    "sha256": "d24ba55225b07649d4c24922c7f5b7d4cb47587fe9ede92fffe0133f711bd042"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrabScreenHeatParam.cs",
+    "sha256": "7df25b7ca7d5572d55ab42076e86c77dd548fc68a9b501cd6935911869ff9679"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrabSurvivalHooks.cs",
+    "sha256": "a075b3b6b790c368d6bf2460b09ea2ab1756ee7bdaa7489fffcbcdeea4cda373"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrappleEnemies.cs",
+    "sha256": "38c0cc79a1eac7917ce8a80b925df5b3f149df4ad7b330b73b5e10aafae0c842"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrappleHooks.cs",
+    "sha256": "df5e32f92e82754f9869f1ea7dbd48327990c187b457cf4828f7a887a3629869"
+  },
+  {
+    "module": "PncEdi",
+    "file": "Hotkeys.cs",
+    "sha256": "656f0901724f77cc7f8f4282ad7b6a122ef050179500f20f5ccf5059fffc26a7"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ImpGrappleGate.cs",
+    "sha256": "8d9ab193b8c320a73334a181b448bd46f55f24702394cbb87a8f0c923637b6bf"
+  },
+  {
+    "module": "PncEdi",
+    "file": "InteractDiag.cs",
+    "sha256": "2732a86b3d2bc343c9c7d1a4ae3adab2751583ab7c5b74ec761c7943cad05dd8"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ModManagerBridge.cs",
+    "sha256": "24a7352646012c6885c21aa872bc548e82df5a6aad299ea59ef5b296ed77994a"
+  },
+  {
+    "module": "PncEdi",
+    "file": "NameRemap.cs",
+    "sha256": "9e20a5080368a2154992ff1b89e59c4ab2785af6842ffdc1d76e6ccd00cde7a3"
+  },
+  {
+    "module": "PncEdi",
+    "file": "PathfindingSpamFix.cs",
+    "sha256": "05529649362672814c834bede4bbb61cd510861aaa8b4ab603af25dae965a443"
+  },
+  {
+    "module": "PncEdi",
+    "file": "PauseHooks.cs",
+    "sha256": "fdb7d8a19213319cd92903f83d0231f0b6839d6e5b8bd7b3f843b95c2bfb82e7"
+  },
+  {
+    "module": "PncEdi",
+    "file": "PeekGalleryMap.cs",
+    "sha256": "ea46d90da1cf22176294854d6fe178c5298b7a73c6e754f465063c26b96db216"
+  },
+  {
+    "module": "PncEdi",
+    "file": "PluginConfig.cs",
+    "sha256": "9e540c74cbecd5ada3574cd3b12801e11814465e66d209915bb95c54052cc863"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ProfileDiagnostics.cs",
+    "sha256": "11a808e87c6371cd9acf9ed836961bd66572b814cd550fc3bac2571cd4141deb"
+  },
+  {
+    "module": "PncEdi",
+    "file": "SafeInput.cs",
+    "sha256": "35dc594e38aa092fdce04a4b8a9ba2147f749676d19b93f8b98ed5e25a30ac35"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ScreenDiag.cs",
+    "sha256": "1efbf7679ca52e7e567167c3ef9060542523d54822e032fc75f4b2a3e80af4e0"
+  },
+  {
+    "module": "PncEdi",
+    "file": "SerpentHypnosis.cs",
+    "sha256": "8a55150fca0c9452bd785f3522da17ac2bf3bb6ebe946e1d6df69ea8eb1f9391"
+  },
+  {
+    "module": "PncEdi",
+    "file": "VanillaGrabHiding.cs",
+    "sha256": "49a14dc9aa7d11fe1b856c10cc22f31b662d4d1bb1137f04e01661eeeeb720d7"
+  },
+  {
+    "module": "PncEdi",
+    "file": "PluginPatches.cs",
+    "sha256": "8a93af9f5b0193ef7c15baaf39e3c728f09349b5656f55faf359a027cf27f68e"
+  },
+  {
+    "module": "PncEdi",
+    "file": "Plugin.cs",
+    "sha256": "4c256e79105462e43c33272be13d7ca94bc13ef97aeaa2f56df46fe190d28230"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GameplayHooks.cs",
+    "sha256": "d9d0e638e23a3aaea4491324559970533af07173cc41fd99c9b9279a823cdf6a"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GameplayProfiles.cs",
+    "sha256": "dd95412253d5331c5fd74774172321630b802c1d85194e2cb24ec464cafd6c16"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CombatRuntime.cs",
+    "sha256": "6320de4fa6b399f9fa4a38984ae45602b6c62cabe5e78e1df8c3112d345b75c2"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CombatPolicy.cs",
+    "sha256": "6f09f51101b155e7bc282c73df3d6ec70617f061b7602d9dcf9acb2c3ffce503"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GodModeHealthPolicy.cs",
+    "sha256": "171572858957da0265b864b2f7a88f75508da7883435fcdc4000818437ff7269"
+  },
+  {
+    "module": "PncEdi",
+    "file": "AssemblyInfo.cs",
+    "sha256": "cfa9564dd214d9ef600a879c2f05d3612d6231371ceb675dfb15c03071ee101d"
+  },
+  {
+    "module": "PncEdi",
+    "file": "WeaponHeatCostGate.cs",
+    "sha256": "14a558f2ab9aed69e614f4bdaad60a4712a6e9147de59f2d5d486c7e4bb517e5"
+  },
+  {
+    "module": "PncEdi",
+    "file": "PotionAutoUse.cs",
+    "sha256": "c32b1889462f65118410df5555b77b6ac1a7af370eceb6e62752663c20b36faf"
+  },
+  {
+    "module": "PncEdi",
+    "file": "SpawnHeatPotionDrop.cs",
+    "sha256": "1ca8b7973653ee2d35d7d6511fe9d5d4d49dfc55d8254d5d3b6ea5b8eb426f66"
+  },
+  {
+    "module": "PncEdi",
+    "file": "KillHeatCool.cs",
+    "sha256": "aa93ef2a8e8256c0b1fe2baa69fccda3fb963920ad122070c36f361edc74193e"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksFeatureRuntime.cs",
+    "sha256": "2313bcaa948e7b399f6387cdd71b6b68c494f830e3f498bb30376e4914e82c39"
+  },
+  {
+    "module": "PncEdi",
+    "file": "SpawnWalkability.cs",
+    "sha256": "d18d232b6d0f01582712343a25db7656546e83bd5acea4e60bd30b91d28e502e"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ResourcePolicy.cs",
+    "sha256": "00c822cf8ed78449f8529888d6b82fc6845acec7c6e0f5d714a389a25d43e3db"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyIdentityTuning.cs",
+    "sha256": "5de9ae498b5d5546414f11dd93274d727421af9082f679a0da2d8b1843f9aa39"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksEnemyRuntime.cs",
+    "sha256": "c3f3b690616c0dea7ab9a21c0a13a86a2d10cde34d55a205d28769c5df517d34"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksHeatSceneGate.cs",
+    "sha256": "e3ecb8474c2bbebf0867840b5ed79f1daa2e2ec6c747b9628767f54d074ec2ce"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ChaserDamageHooks.cs",
+    "sha256": "a6bff6f5396e5d6cfe5e669cb096d68ca5120c2e6d21c11bd55d612d2c8c38f7"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ChaserSweeperHooks.cs",
+    "sha256": "0f14204e33f31a38fef6ef6532ecfbbb57d45256fe6e0c68126b1c07f2d92115"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ChaserFodderSpawn.cs",
+    "sha256": "9c5d0a6d140ef9440b905b7a73d9e02c4d21235a4ba219f5b7c9ce3103cb3870"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BlindedBeastWeakSpawn.cs",
+    "sha256": "3c7ccabb7e1c444262d000077ea6294ab8cbceacfc42115425c356988d34660f"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BaphometGargoyleSpawn.cs",
+    "sha256": "675e5df0adbc32f367f574d537f0df1e71f72e559232f88e7a77530606669e2a"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GravySerpentSpawn.cs",
+    "sha256": "43da2b0ab8cf0ff868abe80b4f6979797c039d6618ba58edca610727fae97aaf"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksEnemySpawnShuffle.cs",
+    "sha256": "cabb795bf1d4b05799edc600d338ea6e7639986368f4556334bfe242c7d8ab7e"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ChaserHealthBarUi.cs",
+    "sha256": "f2d582ea02c3aa0684a901c626ed70a3d956293a8f783723c717204ec93da0c8"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ChaserHitProxy.cs",
+    "sha256": "0c56a11979eaed60f6694de2b717ba79fb7b9db47c6f161cdca87abdcd693a74"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ChaserFodderMarker.cs",
+    "sha256": "b74c793175ecc734f7b3669b9253ebd731da1604f7b22133f0e76d0429cf94a1"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksChaserBossHelper.cs",
+    "sha256": "16eaf2293c89d1530f105e4d397272e6855b2f6c7f6d73ac1f9324991b854494"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksEnemyCombatTuning.cs",
+    "sha256": "88be7a9032e5648e4787628cedc69126940d8ef96d659c06a634aec2e04d7683"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksNunGrabTuning.cs",
+    "sha256": "42af7ff447bf1060776ad8f2a97266fb4498f80e4f27d7cd908fd2b22b929ca2"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksConfig.cs",
+    "sha256": "a5451b4269043da33c25fabc6d53a2192461172ec448dcd66b9502a3dfe65d66"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksMode.cs",
+    "sha256": "f11c94a94067a5e059d7f2b17f1418ae9cfeb3c6cd0863b74aa6831d8e1b8e8a"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksProfileHooks.cs",
+    "sha256": "a8ed9ca8b2279a12285310da7e855f88f6d6a2505877651651c77290ebea81a0"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GameplayProfileRules.cs",
+    "sha256": "a7501e181fbc0eeb2dae05a4edd4fcbe980a2cfc70d06224b19ec7b2bad26eae"
+  },
+  {
+    "module": "PncEdi",
+    "file": "AiStateGuard.cs",
+    "sha256": "33100e68efbbe211cdac358399adcfb5e2cc47ffb54b37cdf7027cea1ed6e060"
+  },
+  {
+    "module": "PncEdi",
+    "file": "AmbientProximity.cs",
+    "sha256": "84c9baab31c6aeffda6603ca0f6d434c51c5c355aa42859ca57142e77ec662f8"
+  },
+  {
+    "module": "PncEdi",
+    "file": "AmbientReleaseGaze.cs",
+    "sha256": "091b2b18f57be684601712dd7b39524855d6fef4179f7f85e206f50bc9fa2fde"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ClassHeatMultipliers.cs",
+    "sha256": "d87de38e6b80f471f1cd1a5d3c2e24eadbf60e761f2fabf3d22e60cb23e88dff"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CumDamageGate.cs",
+    "sha256": "20b2e0d4e38035ae8494266143af8c119e453f9ed79015c7c38d2f7a4c66d717"
+  },
+  {
+    "module": "PncEdi",
+    "file": "DeathHooks.cs",
+    "sha256": "4aff6ad887b62e2afcb4fdf138f065299cf14c242dbb4e5bb2d736ba1709afae"
+  },
+  {
+    "module": "PncEdi",
+    "file": "DioramaUnlockTriggers.cs",
+    "sha256": "fbc9fe7b4244a3f9f3030029efec1163c7fe3ed3d9a3a93d0fc03fb36b693255"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyCombatTuning.cs",
+    "sha256": "661103a1b45f6b3ae7a81717aac09b5ff57fcbda0ee783014494ce782c0796ef"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyGrabGate.cs",
+    "sha256": "16a54397ba11f52eb98545f33c1fea2f95bbe500420d376d901ed2ad93dbf2fc"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyInactiveAutofix.cs",
+    "sha256": "8251d2ebd6a2a944ead24c4269d0ceb79b4fd728fc9c3fc9da0238ceebe72ad4"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyKeepAliveHelper.cs",
+    "sha256": "cb7e1c90b74a67fdefb100eb6a2d68fb457ce089ccc356f603d4944cd1ccdc98"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyReactivationHelper.cs",
+    "sha256": "d7acec0c390593dad351df58b11b25294c2d4859d37996800f8e07264d5abed4"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemySpawnShuffle.cs",
+    "sha256": "f51f5a34581cab8d542d03b669f3c349c309b320a600fb19600b8eadf13450ef"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrabEndHelper.cs",
+    "sha256": "a7b406aa97550c7df752e9c92e8df845c2a6b7f810953e651495e26b7996b6ba"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrabEnemyProtection.cs",
+    "sha256": "89c70d094f3ed38f8a65219e0da2b03be125929571dd598636d44dab61f36f48"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrabHooks.cs",
+    "sha256": "5a3498cb2a4804a1f310711a3a07223b378c6b342a42327d92c880054212c577"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrabScreenAudioFill.cs",
+    "sha256": "767b596e9aac7147ab0db2f79e82f385bdb9696b437ceeea0e48e9173c57b613"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrabStruggleHooks.cs",
+    "sha256": "ab4a32669652a8a8b1244f28029a44b9dc6c05b29305bb582a83f5fa35c69524"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrappleDeathSequence.cs",
+    "sha256": "648531aec985c33e49d3ec44c15dba81b0be0ced604ce47f7b8e78aabc4d7736"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrappleReinforcement.cs",
+    "sha256": "27564dfaa0358d01ffbe7d48cab0b014c6dc585ceafc802b73479e780528dcb1"
+  },
+  {
+    "module": "PncEdi",
+    "file": "HeatLockSystem.cs",
+    "sha256": "4c583fa9bb35ee692ae417e786a11fa94bcb089d4ac80998056657475b528e9a"
+  },
+  {
+    "module": "PncEdi",
+    "file": "HeatPotionLocks.cs",
+    "sha256": "694d2727b55a0922fea9438e8c42343eb003914e8400008b9f9b39d2081013a9"
+  },
+  {
+    "module": "PncEdi",
+    "file": "MimicGrabGate.cs",
+    "sha256": "10cf2d9dbc7bd1045f6cbf3d2d91b31ebdd90c452fef8b8b472b40d6d4211d7b"
+  },
+  {
+    "module": "PncEdi",
+    "file": "NearbyEnemyHider.cs",
+    "sha256": "deb656bbebebb65bca921cd77dad011a3485e8f1c23bf236f7b3c65d8d4831ab"
+  },
+  {
+    "module": "PncEdi",
+    "file": "NunGrabTuning.cs",
+    "sha256": "c4e62f0f367baed5bda2cd48a4429a9cc1556e400afa9f78a8c01475f6159c7b"
+  },
+  {
+    "module": "PncEdi",
+    "file": "SceneEscapeGate.cs",
+    "sha256": "9811619131ce54f6f7847a4da2a08ad68689ed713363b0704af2e1bdf7ada0eb"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksPopulation.cs",
+    "sha256": "68650cd1a8b991ba811f6b2029711753939215c5d955e89a7fa198c199e28056"
+  },
+  {
+    "module": "PncEdi",
+    "file": "IdentityPolicy.cs",
+    "sha256": "b60f003679286cea5b0bb701d733222b33eb32d0dc940996e8cced62b38c5c8a"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BaphometGargoyleMarker.cs",
+    "sha256": "c7d2a5babe432c7b46a8ed8a4fba3da36770234df38d7d4fb4815014847d9658"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BaphometGrabBrightener.cs",
+    "sha256": "4ab6ce2f526252364dc3264fd6f6959af14b4016b7817dd31ba17af3ec5fbc63"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BaphometGrabDriver.cs",
+    "sha256": "bf2ddc96d4663389c29b698a00f58c5af56a2f4330d10f0dba6dd89c38bf473e"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BaphometGrabOverlay.cs",
+    "sha256": "d1d6887dcd644133b3493f3a4b7ada49c6bd02ca2188fb782b0e4c35e393faf2"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BaphometGrabUiBridge.cs",
+    "sha256": "d49cb2d068e61c5a67526a8a748cc8898d02adcc6ab395184ac0255b4b56f42d"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BaphometSpriteSaturate.cs",
+    "sha256": "84dbf4625e51191b4207cca1833d6806efac54ffcd45c4ac43f79e522f95cc0e"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BaphometStatueVisual.cs",
+    "sha256": "34896025f7b8c4e76556c66893cf85660ac689940ec92a39d7f4abc11e0ae5c4"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GravyGrabDriver.cs",
+    "sha256": "aa995f836668b7fc58295baec5635200d50d3678602400878e8689ed2064c0fe"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GravyIdleVisualBridge.cs",
+    "sha256": "1cfce54007bf5da9f1b858b07dea0e724383df995df7be8dc5b34d0f0ae5bca3"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GravySerpentMarker.cs",
+    "sha256": "cee03a821996412f36510b6f5f7f64842d9b9d3bccf44c13450a42bd19d7ea2e"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GravyVisual.cs",
+    "sha256": "43a7d090b016a42f1e399b2b5c128a4b19355d8dc8b973ea0abfa6bf3c1e1517"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GooperTuning.cs",
+    "sha256": "6f4d875f667ec10da2511e7c80539bb3812f569885fccc0ead8d048a02fa9c8f"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ReskinBaseStrip.cs",
+    "sha256": "60cb05cd38589a82dfdecd2fe31964b359406cf5efeb8504b4d6c8f5ef5e5bb2"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrabViewHelper.cs",
+    "sha256": "3c7e91969d5495f255123549e6e1cff65767946b211bb36f4e141daa3dfd8501"
+  },
+  {
+    "module": "PncEdi",
+    "file": "PitfallRecoveryHooks.cs",
+    "sha256": "8330a5746d707dfb5268670c0e171a17858720cc5a527fc11c8b2413c788c520"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyReactivationOnDamageHook.cs",
+    "sha256": "8bf10a717400521a81ab98503f2bd81f0c111642269d9615c6305cdd601b2e12"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OptionalMembers.cs",
+    "sha256": "a91d3d8691834121951273f6eb7cbf30bf16857817ec6357fafdfd99b91f3003"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CreatorVisualHost.cs",
+    "sha256": "5e2a587a20be25c1a40cab48c6d65c85949c64aa79d65c09251495d49730650c"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BossTestTools.cs",
+    "sha256": "1dfbbaa917aa3813fb3b723def31203f51a84b184d69dc490d387612f47f6dfb"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BossSpawnPlacement.cs",
+    "sha256": "bbe064af808b75b102c99f611f49ef65c926dee7b9b8e785a6000380918c582b"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CaptureFootstepHooks.cs",
+    "sha256": "d65b9fcfdaba8b417a1351690186ba0d4146566e98df3293eaf45057d35dc0ec"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CaptureStateLibrary.cs",
+    "sha256": "a65d511d83523f2e11928b471bb7664f1fda37783434ba8135e79aeaba6db749"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CaptureSessionMedia.cs",
+    "sha256": "617697ebc0b1fdafb4f92f45fb39f2db840a6a8abd00ecc0945e2c404fa6a8dd"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CapturePlaybackLease.cs",
+    "sha256": "78ac22b49bfdf142d232b5de89138dc7146f5841146bf77a0f31cf3cb103df37"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CaptureAudioPause.cs",
+    "sha256": "433518db43e4702d5ac7be647d400d537e6866d240807f33416a3c468333c5e9"
+  },
+  {
+    "module": "PncEdi",
+    "file": "TraceWindow.cs",
+    "sha256": "c956c1363ae30439700661b4bec41687c1ee42109d2ab0acaf4e0d27cd6c6f12"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ShotTraceRegistry.cs",
+    "sha256": "0d0a024d09bf78b86dfb0e0ef60f33469d67f8942046d550ba1223e619545c03"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BaphometAttackTrace.cs",
+    "sha256": "479d235eed89e5382a685d9ec71d37814fa8a6c83e870be31462436592a5bdd5"
+  },
+  {
+    "module": "PncEdi",
+    "file": "BaphometAttackTraceHooks.cs",
+    "sha256": "4811b612153e252ae086a7be92dbedb7ecae1cc919c72646128f18e3645c68b1"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ProjectileRetreatFallback.cs",
+    "sha256": "f88650727866058c100ccea5c25843d0200a5891f06082874776e4e4fe701407"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CaptureRewardLedger.cs",
+    "sha256": "265f0e6c04c0c8ee46dbab0d89d70eb94eab29b483b31bda47e94844912c740e"
+  },
+  {
+    "module": "PncEdi",
+    "file": "NativeFormPresentation.cs",
+    "sha256": "6cae8e37e01f3afaeacc7918abe2cc3a0aed61e6df78c7afd8b7252d9afff450"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ReskinPresentation.cs",
+    "sha256": "e6e3cd8449141a09e4f5d2aa499ddb3ccaed3aa72c10fddbe73fdff0692c1d7e"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ReskinAudioLease.cs",
+    "sha256": "64597f5f7317f8156346a84ca6cb20ccadd5b5d94154558e46be723e62cebf63"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CreatorVisualPolicy.cs",
+    "sha256": "f92d352924620148a0252584fbfd248ca4020a68685f9f22bf99d2f921779b0b"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyGameplayAudioPause.cs",
+    "sha256": "6a9bdb20c46e7349654ee910cedf555a1807bcb4f0da30958a1569c34535f22c"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CaptureBossHud.cs",
+    "sha256": "93f2eeb6ec063d1d4da5824afb784b9aaa283ed7c7f4df977794151ebefee088"
+  },
+  {
+    "module": "PncEdi",
+    "file": "AttackCadenceFloor.cs",
+    "sha256": "86733366d5d8f771fd535cb12e438f2ce0d2b238d9f4524f61c740af10e0b150"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ChaserHitLayerLease.cs",
+    "sha256": "333d448cc1c12b045eda7292f0f32d38b0265e2c64aba35dcf7713eb346480a6"
+  },
+  {
+    "module": "PncEdi",
+    "file": "EnemyIdleLoopPauseGuard.cs",
+    "sha256": "b058905aac75c6439a9a47627af3db180506a68c6b42ee1ea27a2378d8be1852"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ChaserCaptureDiagnostics.cs",
+    "sha256": "84d3ea4ab1a70bd1f8d0c62e310dd8f15122888400ee0ad710b997279ff289d5"
+  },
+  {
+    "module": "PncEdi",
+    "file": "CaptureTeleportLease.cs",
+    "sha256": "92f23128065a6bb83fe53beb27a38d0f6d784ebc262cb1c4bce4124d9d475cbc"
+  },
+  {
+    "module": "PncEdi",
+    "file": "ChaserCaptureTeleportGuard.cs",
+    "sha256": "eafe1564f3e24f828a90bd82dd1fd7257d539a63932632fd7988d5fe51ffc69f"
+  },
+  {
+    "module": "PncEdi",
+    "file": "GrabRecoveryDeadline.cs",
+    "sha256": "f1be02ea82bf8fd88e735b1829c88f655d176ef12be98d1da9f7244d189005cb"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OverkeksGrabRecovery.cs",
+    "sha256": "e9b5f0384d8751ca040835cc6fe2150c1556bce11c3ab40ec5e8c06967296762"
+  },
+  {
+    "module": "PncEdi",
+    "file": "OwnedBossHudCleanup.cs",
+    "sha256": "f002351ffe1ffbf5273bb35f73b0aa775ac828335024af92db68655b184ece56"
+  },
+  {
+    "module": "PncControls",
+    "file": "BindingSpec.cs",
+    "sha256": "7f298b0836c4b8a68e6c6aa02e2df82890d4bfbb9f148cd121ed22bb07f05abb"
+  },
+  {
+    "module": "PncControls",
+    "file": "ControlService.cs",
+    "sha256": "08c0ea6065b435fde8cbaf762e8aa36cc877909c332e24da2898612df247b8d7"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "BaseEnemyStripper.cs",
+    "sha256": "8c886853ceaeffc1cc2fc2011be5f067655f0ed7359c858f65cfa57c5cd73eba"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "CleanupScope.cs",
+    "sha256": "f349a07197d15b52f33bb0714f92ed5cbc8a9e9498a5528121069d4ffb8b6a96"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "CleanupVerificationPolicy.cs",
+    "sha256": "806528e5d7215f31d79ad66c7c772c94863d7042881085d4da848a226e00bf69"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "CustomEnemies.cs",
+    "sha256": "779eb0affc51a52a087462ca8a725e9d7c3cda0c343509724ac007ac87eee46d"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "CustomEnemyPlugin.cs",
+    "sha256": "b244bec146bcafab9c54c02d3055b9afd1735cc7aa4a9d096bc319a346afb08f"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "CustomEnemyRuntimeData.cs",
+    "sha256": "04e97d181b946559116c177bdfdd453464a1ce17b95e69a4bb27cc5ea5b0da8e"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "CustomGallerySection.cs",
+    "sha256": "d99741fb2cf95d0164d7cba7f7073f964b96e6f5053ffe13416fcf3f2fcb47b8"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "FrameTimingDiagnostics.cs",
+    "sha256": "518e64a04badf1b9bef1d36b341b3f4415928af280817243491239b07997c42c"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "GalleryPlaybackAdmission.cs",
+    "sha256": "f870ec31efb32f6f84c9598a9c26ded15b049d1f30766862d767e64ba4e40aad"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "ManifestJson.cs",
+    "sha256": "c7c5dab570c2cdd718285c38af3e00b427492ba225fe4e46e8717447aa710af8"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageApi.cs",
+    "sha256": "314e29cfb28dfd93182e94dd8830f565c26f3a4f6ff6f2ec452aa8eac7426c1d"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageAssemblies.cs",
+    "sha256": "6a95f8d94c21476338025027de039da8cc2d453df2832d93fa382d15047d562b"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageBehaviours.cs",
+    "sha256": "e0fd827e6faa57a5a0a56b4979b595536cdce54c3c586afbffd29bac9218d2df"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageDebugSpawn.cs",
+    "sha256": "dedace517d6f25d606bf52f6bf5da5a9a31c3417025e02ea845767ac5661965e"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageGallery.cs",
+    "sha256": "b56b0f9aabe0189a1a4c1b76c5a1d358644a1bd475406bb845cecfa5c03aad78"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageGalleryEntries.cs",
+    "sha256": "880fd5c24bc870aa75440383c4c052a4e256eaacb0b2c176970d92c4ec420111"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageGalleryImport.cs",
+    "sha256": "c4791dd5af5902fff693c297eb29e7281b64f79c8e14328971fb0fa6d0b44ed0"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageGrabArt.cs",
+    "sha256": "bae81ab2f3eace110c80fef82755a2d1fc3315ff77c0eb5c2e7a1667e2fd2258"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageLifecycle.cs",
+    "sha256": "df1b8a5940bea0057e44c50d21d2b13a31b06166eef69a0611fa6265691dfca4"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageMedia.cs",
+    "sha256": "3212d2a848340711760110d811b7a64d65af24e0a25279937df792da9aa5cd64"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageSceneOwners.cs",
+    "sha256": "68cc65d225da8f48205f8652e843eb669b49f5bbd585417b6325a55d833d3fc5"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageServices.cs",
+    "sha256": "51b4c55031d1d4588a39c40f015497985d4e6d2406db33cb2237ff754481a3f3"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "PackageVideo.cs",
+    "sha256": "1dfb811ba2df857fca5487d9de004e721102d93b0f8558e29cbe79946d313cff"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "RuntimeSpriteVisual.cs",
+    "sha256": "55aefaca57c4489862d95753bc4151a0ad2b31e1a7e643b047bd34f2cff73ea9"
+  },
+  {
+    "module": "PncCustomEnemies",
+    "file": "RuntimeWav.cs",
+    "sha256": "5b630f6aa49cdfcad06795dbeff1f5cd8c86402c08eb3b7dee485fc896a8ba70"
+  },
+  {
+    "module": "PncModManager",
+    "file": "Plugin.cs",
+    "sha256": "09f68497842f274ed18132cc1f1b817e8248801fd9139ae3d0ed0510dd099732"
+  },
+  {
+    "module": "PncModManager",
+    "file": "UpdatesPage.cs",
+    "sha256": "4b5d869c4f30a7e9072aa4c48fc4d3b8cccc64b7ea42e0075f2c0bb805ee9643"
+  },
+  {
+    "module": "PncModManager",
+    "file": "UpdatePolicy.cs",
+    "sha256": "f956375a7da5402315c89d3dcaafbca452cfab6b0fcb25a8481cdad4ef873d71"
+  },
+  {
+    "module": "PncModManager",
+    "file": "UpdateBuild.cs",
+    "sha256": "c0429f0cd1f017e11797b8071509ba0003a6bf8cd40a92789077a903eece041a"
+  },
+  {
+    "module": "PncModManager",
+    "file": "AssemblyInfo.cs",
+    "sha256": "5c21a33ca0c3038064bf386dc553ad5b87f8ecb534f0852207d8bbb425e222cb"
+  },
+  {
+    "module": "PncModManager",
+    "file": "ControlsPage.cs",
+    "sha256": "b79575a68d18c9c4895573acc87b856a4e1ecb5fe24cb365c7ff3f17d7ff6c09"
+  },
+  {
+    "module": "PncModManager",
+    "file": "CursorRestorePolicy.cs",
+    "sha256": "f3b056b917f0d6cdf3aa2fc4fc08d9390051550cccf3b6f6d40b2b48d9e53b25"
+  },
+  {
+    "module": "PncModManager",
+    "file": "DashboardTheme.cs",
+    "sha256": "5b2cc84582e6709208f46131d2c67268022ca27b0da91f1bdcb74311e2b133f9"
+  },
+  {
+    "module": "PncModManager",
+    "file": "MainMenuUpdateNotice.cs",
+    "sha256": "0f23e131153a7387771100140cf3bcc36ed0c8c2a0e29e61d62716d037112536"
+  },
+  {
+    "module": "PncModManager",
+    "file": "MenuNoticeLayout.cs",
+    "sha256": "c1aad109564627f1c53aa5cb0d44bc79f6ddc525a36d88c5af67fc331a7fba6e"
+  },
+  {
+    "module": "PncModManager",
+    "file": "NativeTypeface.cs",
+    "sha256": "3fdd109834efc779d32a449cf936c5062723ec4186ce0e6a07d782ede15e1e12"
+  },
+  {
+    "module": "PncModManager",
+    "file": "NativeFontCache.cs",
+    "sha256": "8b8fe0eae565d51d375cbd36d83f0ca810b41e3e8df1d7200558263a6536866f"
+  },
+  {
+    "module": "PncModManager",
+    "file": "NativeFontRebuilder.cs",
+    "sha256": "19295d374919faf67e646b6d25792387fa3fc2d59e31ae2766cfed7ce6a92d2a"
+  },
+  {
+    "module": "PncModManager",
+    "file": "ParchmentArt.cs",
+    "sha256": "476a3baa3c6931de164d12b7a011ecba06808687eacd3a5e2c6f3d106dd66957"
+  },
+  {
+    "module": "PncModManager",
+    "file": "ReleaseHistory.cs",
+    "sha256": "487567169d713f30c1eba59aaf374149103726ee58054280ec3b70f93643ec56"
+  },
+  {
+    "module": "PncModManager",
+    "file": "NotesHistoryService.cs",
+    "sha256": "64170c07b57ab7ee85042972b0b4b06c1f51b7cf5bd1458c0005ce92e7a1694f"
+  },
+  {
+    "module": "PncModManager",
+    "file": "NativePortraits.cs",
+    "sha256": "9db3398ad907cd53eb08eab0fb6d3623c80417d6ea5d61a60f8573fedac3b504"
+  },
+  {
+    "module": "PncModManager",
+    "file": "PatchNotesWindow.cs",
+    "sha256": "9772e8c61c93f935cfe221e1622c703634373b6a558db1c41f7274237c140db8"
+  },
+  {
+    "module": "PncModManager",
+    "file": "ManagerNavigation.cs",
+    "sha256": "8baeb0fa14ce98c890fdf4233783a209ab719400cb04bc49a515d6f10b52905d"
+  },
+  {
+    "module": "PncModManager",
+    "file": "ModulePresentation.cs",
+    "sha256": "95aa84537cc50c8508a6947920f8432ad55dd00d92a352a31745279c28c78bd8"
+  },
+  {
+    "module": "PncModManager",
+    "file": "OverlayInputPolicy.cs",
+    "sha256": "ab68f2f2294e83761c8d4855126f3b8601d2b6168cfa5aa4f78fc757297d69d9"
+  },
+  {
+    "module": "PncModManager",
+    "file": "ModalInputGuard.cs",
+    "sha256": "f0bdff8c958d78b1ea32d4ea73755ad055801b5226006aebf39dcca99b086f91"
+  },
+  {
+    "module": "PncModManager",
+    "file": "GameplayUpdateNotice.cs",
+    "sha256": "519c1e99159e674b5c803ffd40320a629ebdb4d95276176759669a4d4182d78e"
+  },
+  {
+    "module": "PncModManager",
+    "file": "UpdateNoticeState.cs",
+    "sha256": "f35cc4955194e6aca9f5102ecd0d4316a22124c76d85ff91de9288fd61f3994e"
+  },
+  {
+    "module": "PncModManager",
+    "file": "UpdateChime.cs",
+    "sha256": "8f46d2a68a84a5064be8d8fb00c6835dc684a508139a83aea86318dfeb16be70"
+  },
+  {
+    "module": "PncModManager",
+    "file": "UpdateBorderLayout.cs",
+    "sha256": "4a06dcede272c54a4c75f060978bcc25812295e684eb634f73239a03a8f6e724"
+  }
+]
