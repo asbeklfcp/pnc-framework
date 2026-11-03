@@ -912,7 +912,7 @@
   {
     "module": "PncModManager",
     "file": "Plugin.cs",
-    "sha256": "09f68497842f274ed18132cc1f1b817e8248801fd9139ae3d0ed0510dd099732"
+    "sha256": "ae99a5f8477c89d1228c73a4c7278c79636f13981392977b9d5260a13445283e"
   },
   {
     "module": "PncModManager",
@@ -927,12 +927,12 @@
   {
     "module": "PncModManager",
     "file": "UpdateBuild.cs",
-    "sha256": "c0429f0cd1f017e11797b8071509ba0003a6bf8cd40a92789077a903eece041a"
+    "sha256": "2a923c0bc878f1005247f73c92de019bfe26034948be514453908a513e15c6c4"
   },
   {
     "module": "PncModManager",
     "file": "AssemblyInfo.cs",
-    "sha256": "5c21a33ca0c3038064bf386dc553ad5b87f8ecb534f0852207d8bbb425e222cb"
+    "sha256": "cf0c582614b774992ac95ae6000b331e35f47a92a066fcc95ce03d5ee2f0cd24"
   },
   {
     "module": "PncModManager",

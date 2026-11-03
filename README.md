@@ -1,3 +1,5 @@
+> **Controlled updater-delivery validation branch.** This is not a stable announcement. The normal public feed remains inactive until the second-PC live test passes. See SECOND-PC-TEST.md.
+
 # PNC Framework v0.1
 
 **For Post Nut Calamity 0.4.2 — Windows x64, Unity Mono**

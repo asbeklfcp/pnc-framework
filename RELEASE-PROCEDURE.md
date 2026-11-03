@@ -1,0 +1,13 @@
+# Approved stable publication procedure
+
+Current v0.1.0 clients already pin the official stable URL/key and enforce GitHub release/CDN rules. No client replacement is needed to publish valid metadata. Feed content is not automatically generated from ordinary commits.
+
+1. Approve a genuine new version and finalized changed DLLs. Keep the gameplay core unchanged for delivery-only releases. Give the manager that release ID so restart does not repeatedly offer itself.
+2. Prepare a complete four-DLL target inventory and categorized unsigned release history. Retain supported prior public history. Never include private acceptance notes or secrets.
+3. Run tools/New-StableRelease.ps1 from Windows PowerShell with Version, PreviousVersion, PayloadDirectory, ChangedFiles, NotesFile, HistoryXml, OutputDirectory and a private KeyPath OUTSIDE the repository. Pass Approved only after release approval. It produces a root-DLL .update.zip plus signed latest.xml/history.xml. Private keys are neither committed nor uploaded.
+4. Run tools/Validate-StableRelease.ps1 against local artifacts. Use the actual shipped helper in an isolated filesystem fixture for install/receipt/rollback/preservation tests. Complete the applicable live acceptance; for this first delivery use the second-PC validation route.
+5. Upload the immutable versioned package/checksums to a GitHub draft or clearly labelled pre-release. Use exact numeric tag and package filename required by the shipped client. Run Validate-StableRelease.ps1 -Download against the final anonymous URL. Do not replace assets with different bytes afterward.
+6. After live acceptance and owner approval, promote the release to stable and commit ONLY the approved signed latest.xml/history.xml to main/updates/stable (alongside corresponding source/docs as reviewed). Verify anonymously, using the shipped policy. This commit activates notifications for older installed release IDs. Ordinary commits and internal builds must never publish these files.
+7. Keep the signing key backed up privately. Existing v0.1.0 cannot replace its trusted helper/key via DLL-only updates: future helper or key rotation requires a separately designed migration, not silently weakening verification. Refresh the signed 90-day expiry deliberately for the same approved release if needed; same version does not repeat new-update notifications.
+
+Do not activate main/stable for the controlled validation test. The temporary routing add-on changes only the two metadata request URLs on the second PC, with original TLS/pinned signatures and authentic GitHub package/helper processing intact. Remove it after acceptance. A pre-release tag is not, by itself, a stable offer: only the explicitly approved main/stable manifest activates offers.
