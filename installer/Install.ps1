@@ -22,7 +22,56 @@ function EnsureClosed {
 }
 EnsureClosed
 if((Hash (Join-Path $GameRoot 'Post Nut Calamity_Data/Managed/Assembly-CSharp.dll')) -ne $manifest.gameHash){throw 'This package requires the verified PNC 0.4.2 Windows Mono build'}
-foreach($required in @('BepInEx/core/BepInEx.Unity.Mono.dll','winhttp.dll','doorstop_config.ini')){if(-not(Test-Path -LiteralPath (Join-Path $GameRoot $required))){throw 'Install the documented BepInEx 6 Unity Mono prerequisite first'}}
+function EnsureLoader {
+ $required=@('BepInEx/core/BepInEx.Unity.Mono.dll','winhttp.dll','doorstop_config.ini')
+ $present=@($required|Where-Object {Test-Path -LiteralPath (Join-Path $GameRoot $_)})
+ if($present.Count -eq $required.Count){
+  $identity=[Reflection.AssemblyName]::GetAssemblyName((Join-Path $GameRoot $required[0]))
+  if($identity.Name -ne 'BepInEx.Unity.Mono' -or $identity.Version.Major -ne 6){throw 'Existing BepInEx is incompatible; no loader files were changed'}
+  $stream=[IO.File]::OpenRead((Join-Path $GameRoot 'winhttp.dll'))
+  try{$reader=[IO.BinaryReader]::new($stream);$stream.Position=0x3c;$offset=$reader.ReadInt32();$stream.Position=$offset;if($reader.ReadUInt32() -ne 0x4550 -or $reader.ReadUInt16() -ne 0x8664){throw 'Existing loader is not Windows x64'}}finally{$stream.Dispose()}
+  Write-Output 'Existing BepInEx 6 Unity Mono x64 retained.'
+  return
+ }
+ if($present.Count -gt 0 -or (Test-Path -LiteralPath (Join-Path $GameRoot 'BepInEx/core')) -or (Test-Path -LiteralPath (Join-Path $GameRoot '.doorstop_version'))){throw 'Partial or incompatible loader found; no loader files were changed'}
+ $scratch=Join-Path ([IO.Path]::GetTempPath()) ('pnc-loader-'+[Guid]::NewGuid().ToString('N'))
+ $created=@()
+ try{
+  New-Item -ItemType Directory -Path $scratch|Out-Null
+  $archive=Join-Path $scratch 'loader.zip'
+  Write-Output 'Downloading tested BepInEx 6.0.0-be.785 Unity Mono x64...'
+  [Net.ServicePointManager]::SecurityProtocol=[Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+  Invoke-WebRequest -UseBasicParsing -Uri 'https://builds.bepinex.dev/projects/bepinex_be/785/BepInEx-Unity.Mono-win-x64-6.0.0-be.785%2B6abdba4.zip' -OutFile $archive
+  if((Hash $archive) -ne 'db430f14d6661eb38ba96fcc13c07a163e87e553710821d87e5129f915a1b26b'){throw 'BepInEx download checksum mismatch; nothing extracted'}
+  Add-Type -AssemblyName System.IO.Compression.FileSystem
+  $zip=[IO.Compression.ZipFile]::OpenRead($archive)
+  try{
+   $plan=@();$seen=@{}
+   foreach($entry in $zip.Entries){
+    if($entry.FullName.EndsWith('/')){continue}
+    $relative=$entry.FullName
+    if($relative -notmatch '^(BepInEx/(core|patchers|plugins)/[A-Za-z0-9_.+/-]+|changelog\.txt|doorstop_config\.ini|winhttp\.dll|\.doorstop_version)$' -or $relative.Contains('..')){throw 'Unsafe loader archive path'}
+    $dest=[IO.Path]::GetFullPath((Join-Path $GameRoot $relative))
+    if(-not $dest.StartsWith($GameRoot.TrimEnd('\')+'\',[StringComparison]::OrdinalIgnoreCase) -or $seen.ContainsKey($dest)){throw 'Unsafe or duplicate loader path'}
+    $seen[$dest]=$true
+    $dir=[IO.DirectoryInfo]::new((Split-Path $dest))
+    while($dir){if($dir.Exists -and ($dir.Attributes -band [IO.FileAttributes]::ReparsePoint)){throw 'Linked loader path refused'};$dir=$dir.Parent}
+    if(Test-Path -LiteralPath $dest){throw ('Existing file would be overwritten: '+$relative)}
+    $plan+=@{entry=$entry;destination=$dest}
+   }
+   foreach($requiredFile in $required){if(-not $seen.ContainsKey([IO.Path]::GetFullPath((Join-Path $GameRoot $requiredFile)))){throw 'Incomplete loader archive'}}
+   EnsureClosed
+   foreach($file in $plan){EnsureClosed;New-Item -ItemType Directory -Path (Split-Path $file.destination) -Force|Out-Null;$created+=$file.destination;[IO.Compression.ZipFileExtensions]::ExtractToFile($file.entry,$file.destination,$false)}
+  }finally{$zip.Dispose()}
+  Write-Output 'Verified BepInEx 6.0.0-be.785 installed.'
+ }catch{
+  foreach($file in $created){if(Test-Path -LiteralPath $file){Remove-Item -LiteralPath $file}}
+  throw
+ }finally{
+  # This unique temporary directory is owned by this invocation only.
+  if(Test-Path -LiteralPath $scratch){Remove-Item -LiteralPath $scratch -Recurse -Force}
+ }
+}
 if(Test-Path -LiteralPath (Join-Path $GameRoot 'BepInEx/framework-updates/pending')){throw 'Finish or cancel the pending in-game update first'}
 $record=Join-Path $GameRoot 'BepInEx/framework-install.json'
 $prior=$null;if(Test-Path -LiteralPath $record){$prior=Get-Content -LiteralPath $record -Raw|ConvertFrom-Json}
@@ -48,6 +97,7 @@ foreach($f in $manifest.files){
  $changes+=@{path=$f.path;old=$old;new=$f.sha256}
 }
 # All ownership and payload checks finish before any target file is changed.
+EnsureLoader
 $backup=Join-Path $GameRoot ('BepInEx/framework-install-backups/'+[DateTime]::UtcNow.ToString('yyyyMMdd-HHmmss')+'-'+[Guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $backup -Force|Out-Null
 if(Test-Path -LiteralPath $record){Copy-Item -LiteralPath $record -Destination (Join-Path $backup 'previous-install.json')}

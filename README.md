@@ -10,7 +10,7 @@ A community mod framework bringing historical PNC gameplay modifications togethe
 
 Download **PNC-Framework-v0.1.0-PNC0.4.2-win64.zip** from [GitHub Releases](https://github.com/asbeklfcp/pnc-framework/releases/tag/v0.1.0). Extract the complete ZIP to a separate folder. See [Installation](INSTALLATION.md).
 
-Requires your own supported PNC 0.4.2 game and the compatible BepInEx 6 Unity Mono x64 prerequisite. The game, loader runtime, Edi and funscripts are not included. No development tools are required to install.
+Requires your own supported PNC 0.4.2 game. Run Install.cmd and enter your game folder: if BepInEx is missing, the installer downloads the exact tested BepInEx 6 Unity Mono x64 build (6.0.0-be.785) from the official source and verifies its SHA-256. Compatible existing loaders are retained. Internet access is needed for the loader download. The game, Edi and funscripts are not included; no development tools are required.
 
 ## Included
 

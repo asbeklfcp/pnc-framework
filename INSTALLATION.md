@@ -1,7 +1,7 @@
 # Installation — PNC Framework v0.1
 
 1. Use a separate playable copy of **PNC 0.4.2, Windows x64 Unity Mono**. Keep a clean backup.
-2. Install the compatible BepInEx 6 Unity Mono x64 loader in that copy. This release uses **6.0.0-be.785** (tested). Obtain it from the [official BepInEx build page](https://builds.bepinex.dev/projects/bepinex_be/785). Extract the Unity.Mono win-x64 distribution beside Post Nut Calamity.exe. Do not use BepInEx 5 or an IL2CPP package.
+2. If BepInEx is missing, Install.cmd automatically downloads the tested BepInEx 6 Unity Mono x64 build **6.0.0-be.785** from the official source and verifies its pinned SHA-256 before extracting it. Internet access is required for that download. Compatible existing loaders are left untouched; partial or incompatible installations stop safely.
 3. Close that game. Extract the entire framework ZIP into a separate folder.
 4. Run **Install.cmd**. At the prompt, paste your own game directory containing **Post Nut Calamity.exe**. Do not paste the executable filename.
 5. Launch the game from that directory. Use **F11** or the Mod Manager button.
@@ -17,3 +17,4 @@ If installation refuses a changed or duplicate framework DLL, investigate before
 Logs: BepInEx/LogOutput.log inside your game directory. Optional Edi-not-running messages indicate that the external Edi service is absent. No Edi engine, scripts or device setup is included.
 
 Updates: use manual versioned ZIP downloads from GitHub Releases for now. The bundled updater points only to the official HTTPS repository; public automatic delivery has not been verified or activated for this first release. No local/private feed is required for startup.
+
