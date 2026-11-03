@@ -7,6 +7,7 @@ if($ChangedFiles.Count -lt 1 -or @($ChangedFiles|Select-Object -Unique).Count -n
 foreach($name in $ChangedFiles){if($allowed -notcontains $name){throw 'Unapproved update file'}}
 $repo=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 if([IO.Path]::GetFullPath($KeyPath).StartsWith($repo.TrimEnd('\')+'\',[StringComparison]::OrdinalIgnoreCase)){throw 'Keep the private key outside the repository'}
+Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [IO.Directory]::CreateDirectory($OutputDirectory)|Out-Null
 $archive=Join-Path $OutputDirectory ('PNC-Framework-v'+$Version+'-PNC0.4.2-win64.update.zip')
