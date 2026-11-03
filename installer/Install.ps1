@@ -1,6 +1,13 @@
 param([string]$GameRoot)
 $ErrorActionPreference='Stop'
-if(-not $GameRoot){$GameRoot=Read-Host 'Folder containing Post Nut Calamity.exe'}
+if(-not $GameRoot){
+ Add-Type -AssemblyName System.Windows.Forms
+ $picker=New-Object System.Windows.Forms.OpenFileDialog
+ try{$picker.Title='Select Post Nut Calamity.exe';$picker.Filter='Post Nut Calamity.exe|Post Nut Calamity.exe';$picker.CheckFileExists=$true
+ if($picker.ShowDialog() -ne [Windows.Forms.DialogResult]::OK){Write-Output 'Installation cancelled.';return}
+ $GameRoot=Split-Path -Parent $picker.FileName
+ }finally{$picker.Dispose()}
+}
 $GameRoot=[IO.Path]::GetFullPath($GameRoot.Trim('"'))
 $package=$PSScriptRoot
 $manifest=Get-Content -LiteralPath (Join-Path $package 'package-manifest.json') -Raw|ConvertFrom-Json
@@ -82,19 +89,43 @@ foreach($dll in Get-ChildItem -LiteralPath (Join-Path $GameRoot 'BepInEx/plugins
 }
 . (Join-Path $PSScriptRoot 'PackageSupport.ps1')
 $authenticated=Get-PncInstalledPluginHashes -GameRoot $GameRoot -PackageManifest $manifest -PriorManifest $prior
+# Configuration-only migration: never touch Unity saves, registry or discoveries.
+$configPath=Target 'BepInEx/config/com.edi.pnc.cfg'
+$configOverride=$null
+if(Test-Path -LiteralPath $configPath){
+ $configText=[IO.File]::ReadAllText($configPath)
+ $galleryPattern='(?ims)(^\[Gallery\][^\r\n]*\r?\n)(.*?)(?=^\[|\z)'
+ $gallery=[regex]::Match($configText,$galleryPattern)
+ $unlock=if($gallery.Success){[regex]::Match($gallery.Groups[2].Value,'(?im)^\s*UnlockAll\s*=\s*(true|false)\s*$')}else{$null}
+ if(-not $unlock -or -not $unlock.Success -or $unlock.Groups[1].Value -ieq 'true'){
+  Write-Output 'An older install may have enabled Gallery Unlock All by default. Saved discoveries will not be changed.'
+  $choice=Read-Host 'Use normal gallery progression (N), or KEEP your existing unlock preference (K)? Enter N or K'
+  while($choice -notmatch '^(N|K)$'){$choice=Read-Host 'Enter N for normal progression or K to keep Unlock All'}
+  if($choice -ieq 'N'){
+   if($gallery.Success){
+    $body=$gallery.Groups[2].Value
+    if($unlock.Success){$body=[regex]::Replace($body,'(?im)^(\s*UnlockAll\s*=\s*)true\s*$','${1}false')}else{$body="UnlockAll = false`r`n"+$body}
+    $configOverride=$configText.Substring(0,$gallery.Index)+$gallery.Groups[1].Value+$body+$configText.Substring($gallery.Index+$gallery.Length)
+   }else{$configOverride=$configText+"`r`n[Gallery]`r`nUnlockAll = false`r`n"}
+  }
+ }
+}
 $changes=@()
 foreach($f in $manifest.files){
  $source=Join-Path $package ('payload/'+$f.path);$destination=Target $f.path
  if((Hash $source) -ne $f.sha256){throw 'Package checksum mismatch'}
- if($f.mode -eq 'seed' -and (Test-Path -LiteralPath $destination)){continue}
+ $correctConfig=$f.path -eq 'BepInEx/config/com.edi.pnc.cfg' -and $null -ne $configOverride
+ if($f.mode -eq 'seed' -and (Test-Path -LiteralPath $destination) -and -not $correctConfig){continue}
  $old=$null
  if(Test-Path -LiteralPath $destination){
   $old=Hash $destination;$allowed=@($f.sha256)+@($f.allowedExisting)
   if($f.path -like 'BepInEx/plugins/*' -and $authenticated.ContainsKey([IO.Path]::GetFileName($destination))){$allowed+=@($authenticated[[IO.Path]::GetFileName($destination)])}
   if($prior){$allowed+=@($prior.files|Where-Object path -EQ $f.path|ForEach-Object sha256)}
-  if($allowed -notcontains $old){throw ('Existing framework file differs from supported versions: '+$f.path)}
+  if(-not $correctConfig -and $allowed -notcontains $old){throw ('Existing framework file differs from supported versions: '+$f.path)}
  }
- $changes+=@{path=$f.path;old=$old;new=$f.sha256}
+ $newHash=$f.sha256
+ if($correctConfig){$sha=[Security.Cryptography.SHA256]::Create();try{$newHash=([BitConverter]::ToString($sha.ComputeHash([Text.UTF8Encoding]::new($false).GetBytes($configOverride)))).Replace('-','').ToLowerInvariant()}finally{$sha.Dispose()}}
+ $changes+=@{path=$f.path;old=$old;new=$newHash;correctConfig=$correctConfig}
 }
 # All ownership and payload checks finish before any target file is changed.
 EnsureLoader
@@ -104,7 +135,7 @@ if(Test-Path -LiteralPath $record){Copy-Item -LiteralPath $record -Destination (
 foreach($f in $changes){if($f.old){$dest=Join-Path $backup $f.path;New-Item -ItemType Directory -Path (Split-Path $dest) -Force|Out-Null;Copy-Item -LiteralPath (Target $f.path) -Destination $dest;if((Hash $dest) -ne $f.old){throw 'Backup verification failed'}}}
 @{state='prepared';files=$changes} | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $backup 'journal.json')
 try{
- foreach($f in $changes){EnsureClosed;$dest=Target $f.path;New-Item -ItemType Directory -Path (Split-Path $dest) -Force|Out-Null;$temp=$dest+'.pnc-stage';Copy-Item -LiteralPath (Join-Path $package ('payload/'+$f.path)) -Destination $temp;if((Hash $temp) -ne $f.new){throw 'Staged copy failed'};if(Test-Path -LiteralPath $dest){[IO.File]::Replace($temp,$dest,$dest+".pnc-replaced");Remove-Item -LiteralPath ($dest+".pnc-replaced")}else{[IO.File]::Move($temp,$dest)}}
+ foreach($f in $changes){EnsureClosed;$dest=Target $f.path;New-Item -ItemType Directory -Path (Split-Path $dest) -Force|Out-Null;$temp=$dest+'.pnc-stage';if($f.correctConfig){[IO.File]::WriteAllText($temp,$configOverride,[Text.UTF8Encoding]::new($false))}else{Copy-Item -LiteralPath (Join-Path $package ('payload/'+$f.path)) -Destination $temp};if((Hash $temp) -ne $f.new){throw 'Staged copy failed'};if(Test-Path -LiteralPath $dest){[IO.File]::Replace($temp,$dest,$dest+".pnc-replaced");Remove-Item -LiteralPath ($dest+".pnc-replaced")}else{[IO.File]::Move($temp,$dest)}}
  @{version=$manifest.version;files=$manifest.files;backup=$backup} | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $record
  @{state='complete';files=$changes} | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $backup 'journal.json')
 }catch{

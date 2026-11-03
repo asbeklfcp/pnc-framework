@@ -10,7 +10,7 @@ A community mod framework bringing historical PNC gameplay modifications togethe
 
 Download **PNC-Framework-v0.1.0-PNC0.4.2-win64.zip** from [GitHub Releases](https://github.com/asbeklfcp/pnc-framework/releases/tag/v0.1.0). Extract the complete ZIP to a separate folder. See [Installation](INSTALLATION.md).
 
-Requires your own supported PNC 0.4.2 game. Run Install.cmd and enter your game folder: if BepInEx is missing, the installer downloads the exact tested BepInEx 6 Unity Mono x64 build (6.0.0-be.785) from the official source and verifies its SHA-256. Compatible existing loaders are retained. Internet access is needed for the loader download. The game, Edi and funscripts are not included; no development tools are required.
+Requires your own supported PNC 0.4.2 game. Run Install.cmd and select Post Nut Calamity.exe: if BepInEx is missing, the installer downloads the exact tested BepInEx 6 Unity Mono x64 build (6.0.0-be.785) from the official source and verifies its SHA-256. Compatible existing loaders are retained. Internet access is needed for the loader download. The game, Edi and funscripts are not included; no development tools are required.
 
 ## Included
 
@@ -24,3 +24,5 @@ Requires your own supported PNC 0.4.2 game. Run Install.cmd and enter your game 
 Optional Joker/Witch packages and experimental Archive Passage are not included. Automatic public update delivery is not yet verified; manual GitHub ZIP downloads remain independent of it.
 
 See [Credits](CREDITS.md), [Known issues](KNOWN-ISSUES.md), [Release notes](RELEASE-NOTES.md) and [Source build notes](BUILDING.md).
+
+New installs use normal gallery progression. Reinstalling an older configuration prompts you to choose normal progression or keep your existing Unlock All preference, without changing saved discoveries.
