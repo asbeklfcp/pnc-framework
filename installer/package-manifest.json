@@ -1,0 +1,143 @@
+{
+  "version": "0.1.0",
+  "target": "PNC0.4.2-win64-Mono",
+  "gameHash": "86b559f74066d0013f32cffd9e38f5a5749c356f5bc29f761c1656ffe39433ce",
+  "files": [
+    {
+      "path": "BepInEx/config/com.edi.pnc.cfg",
+      "sha256": "48d2ae2567f36f08dd04aedc93f76ea445bbeced38bc3c2ea86ac0af9464360c",
+      "bytes": 530,
+      "mode": "seed",
+      "allowedExisting": [
+        "e316046b7809f1c1772f9d24d89f2d89208842fc9e66969ab7287f2668b4b5f6"
+      ]
+    },
+    {
+      "path": "BepInEx/config/com.edi.pnc.customenemies.cfg",
+      "sha256": "79ace4ad131061b2946bb7bf698b01b68b7c1274e60e24209c4bdee12415a0df",
+      "bytes": 103,
+      "mode": "seed",
+      "allowedExisting": [
+        "8cb331f017e31b687f3fb82e9cee2990c79094b29ad668c71feebaea10db0826"
+      ]
+    },
+    {
+      "path": "BepInEx/framework-updater/art/PNC_Updater_Notification.png",
+      "sha256": "553ece7215acf365568d9f84cca2d0aec53bee5ccd076d9dc01c7a256fb18640",
+      "bytes": 799334,
+      "mode": "owned",
+      "allowedExisting": [
+        "553ece7215acf365568d9f84cca2d0aec53bee5ccd076d9dc01c7a256fb18640"
+      ]
+    },
+    {
+      "path": "BepInEx/framework-updater/baseline-inventory.xml",
+      "sha256": "dd90c5fd462773823cc7eabadf93e3bfcb02836e38e0d900d652c8c191bb9b7d",
+      "bytes": 1485,
+      "mode": "owned",
+      "allowedExisting": [
+        "7e21c826e73e218dd21e4fdffb6670ec8e8573efc70bc4f6e3e8462cd9b4674b",
+        "fc7b7b1812db314622cb158818f0300b53c0556b529b94bc420d38fa2af66c79"
+      ]
+    },
+    {
+      "path": "BepInEx/framework-updater/NativeFontCache.cs",
+      "sha256": "8b8fe0eae565d51d375cbd36d83f0ca810b41e3e8df1d7200558263a6536866f",
+      "bytes": 4945,
+      "mode": "owned",
+      "allowedExisting": [
+        "8b8fe0eae565d51d375cbd36d83f0ca810b41e3e8df1d7200558263a6536866f"
+      ]
+    },
+    {
+      "path": "BepInEx/framework-updater/NativeFontRebuilder.cs",
+      "sha256": "19295d374919faf67e646b6d25792387fa3fc2d59e31ae2766cfed7ce6a92d2a",
+      "bytes": 11504,
+      "mode": "owned",
+      "allowedExisting": [
+        "19295d374919faf67e646b6d25792387fa3fc2d59e31ae2766cfed7ce6a92d2a"
+      ]
+    },
+    {
+      "path": "BepInEx/framework-updater/RestartLaunch.ps1",
+      "sha256": "9bf9a7f8fe63e9dfc9b6a5fb7cc17ed30d0b7f4ea569155bd7558b861453c750",
+      "bytes": 829,
+      "mode": "owned",
+      "allowedExisting": [
+        "9bf9a7f8fe63e9dfc9b6a5fb7cc17ed30d0b7f4ea569155bd7558b861453c750"
+      ]
+    },
+    {
+      "path": "BepInEx/framework-updater/Show-ParchmentNotification.ps1",
+      "sha256": "620332c202ea56bb440cbf0076e5d5a783f069b67315cbac707cf32b01114edc",
+      "bytes": 7602,
+      "mode": "owned",
+      "allowedExisting": [
+        "620332c202ea56bb440cbf0076e5d5a783f069b67315cbac707cf32b01114edc"
+      ]
+    },
+    {
+      "path": "BepInEx/framework-updater/Trust.xml",
+      "sha256": "5b4779511e1d1277018b381a28ea5ae2cb023703dba1f78313c7e26b800e239f",
+      "bytes": 755,
+      "mode": "owned",
+      "allowedExisting": [
+        "f4c399845b7669a93313df1d913d8dc82a38ca38ee04a1607b7ac4a132b1e05e"
+      ]
+    },
+    {
+      "path": "BepInEx/framework-updater/UpdateHelper.ps1",
+      "sha256": "667f539784a65c2a5890c11249670857865283e2a93aa3bd83b982c6ca997381",
+      "bytes": 4839,
+      "mode": "owned",
+      "allowedExisting": [
+        "667f539784a65c2a5890c11249670857865283e2a93aa3bd83b982c6ca997381"
+      ]
+    },
+    {
+      "path": "BepInEx/framework-updater/UpdatePolicy.cs",
+      "sha256": "f956375a7da5402315c89d3dcaafbca452cfab6b0fcb25a8481cdad4ef873d71",
+      "bytes": 26947,
+      "mode": "owned",
+      "allowedExisting": [
+        "93c43c1736e763af07e92fe1e45f037f6b5059079582c782125dd612c73b5b54"
+      ]
+    },
+    {
+      "path": "BepInEx/plugins/PncControls.dll",
+      "sha256": "a4611a6f21793c655a63bdd113861e8861443495c5327c68204ceab1aa35c1a8",
+      "bytes": 26624,
+      "mode": "owned",
+      "allowedExisting": [
+        "9ed5010af4df878cbe8b32a3b9d07bf3b72ce607c8c774af1b132eb34e1c314d"
+      ]
+    },
+    {
+      "path": "BepInEx/plugins/PncCustomEnemies.dll",
+      "sha256": "dec71da51cea9bd2834a70ec32c979d084a0386dfe9d282fd95038a69521bbc7",
+      "bytes": 117248,
+      "mode": "owned",
+      "allowedExisting": [
+        "dec71da51cea9bd2834a70ec32c979d084a0386dfe9d282fd95038a69521bbc7"
+      ]
+    },
+    {
+      "path": "BepInEx/plugins/PncEdi.dll",
+      "sha256": "5668b350dbf51173cfc961a91ec024c432758bc2edd4f31cc500b618110bd9f5",
+      "bytes": 761344,
+      "mode": "owned",
+      "allowedExisting": [
+        "46d00e192a208fc6428adbdbf5cf766d17a00ac355bfe4fb226de1853c0881b5"
+      ]
+    },
+    {
+      "path": "BepInEx/plugins/PncModManager.dll",
+      "sha256": "4fef2d4503fbf2e8e7ddca0153e77e26ebba63324645643dc76b8a339cfe4812",
+      "bytes": 10735616,
+      "mode": "owned",
+      "allowedExisting": [
+        "f06e704a85f86c2e466f3a79dd230039a63cc2651f56ab07d0e374d5c3ac61b9"
+      ]
+    }
+  ]
+}
