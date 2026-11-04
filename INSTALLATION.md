@@ -16,7 +16,7 @@ If installation refuses a changed or duplicate framework DLL, investigate before
 
 Logs: BepInEx/LogOutput.log inside your game directory. Optional Edi-not-running messages indicate that the external Edi service is absent. No Edi engine, scripts or device setup is included.
 
-Updates: use manual versioned ZIP downloads from GitHub Releases for now. The bundled updater points only to the official HTTPS repository; public automatic delivery has not been verified or activated for this first release. No local/private feed is required for startup.
+Updates: the bundled updater checks the official signed GitHub stable feed and release history. A same-version release reports that you have the latest approved release. No newer version is offered until explicitly approved; the first newer-version live acceptance is pending. No private feed or extra package is needed.
 
 
 ## Gallery defaults and reinstalling
@@ -24,3 +24,7 @@ Updates: use manual versioned ZIP downloads from GitHub Releases for now. The bu
 New installs explicitly use normal gallery progression (Gallery / UnlockAll = false). If an older configuration has Unlock All enabled or omitted, the installer asks: choose **N** for normal progression or **K** to preserve your existing unlock preference. Only that configuration value changes, with a verified rollback backup; saves and discoveries are untouched. Do not use the manager's **Reset unlocked** button for this correction: that button clears discoveries.
 
 To test first-install defaults without changing saves, use a separate PNC 0.4.2 folder with no framework configuration in BepInEx/config. Existing Windows gallery discoveries remain visible and are not evidence of Unlock All being enabled. Check Gallery / UnlockAll is false in F11 instead.
+
+## Public update delivery status
+
+The signed stable current-version feed and published release history are active on GitHub. v0.1.0 installations can check their current version without reinstalling the updater. No newer version is offered yet. The first newer-version in-game acceptance test is pending on the second PC. Future updates require an explicitly approved, signed manifest and verified versioned update package; ordinary commits and private builds do not trigger notifications. The .update.zip asset is consumed by the game, not a second manual installation download.

@@ -21,8 +21,12 @@ Requires your own supported PNC 0.4.2 game. Run Install.cmd and select Post Nut 
 - Independent parchment patch notes and update interface.
 - Installer, removal utility and framework rollback backups.
 
-Optional Joker/Witch packages and experimental Archive Passage are not included. Automatic public update delivery is not yet verified; manual GitHub ZIP downloads remain independent of it.
+Optional Joker/Witch packages and experimental Archive Passage are not included. Signed current-version checking and release history are active; newer-version in-game acceptance is pending.
 
 See [Credits](CREDITS.md), [Known issues](KNOWN-ISSUES.md), [Release notes](RELEASE-NOTES.md) and [Source build notes](BUILDING.md).
 
 New installs use normal gallery progression. Reinstalling an older configuration prompts you to choose normal progression or keep your existing Unlock All preference, without changing saved discoveries.
+
+## Public update delivery status
+
+The signed stable current-version feed and published release history are active on GitHub. v0.1.0 installations can check their current version without reinstalling the updater. No newer version is offered yet. The first newer-version in-game acceptance test is pending on the second PC. Future updates require an explicitly approved, signed manifest and verified versioned update package; ordinary commits and private builds do not trigger notifications. The .update.zip asset is consumed by the game, not a second manual installation download.
