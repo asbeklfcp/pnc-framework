@@ -17,7 +17,7 @@ The release owner confirmed redistribution permission for the inherited communit
 
 Additional early script authors remain unresolved for some zombie/plant scripts. Jello and Kapnik appear in discussion/planning; do not attribute Platonius's delivery to them.
 
-BepInEx and its dependency authors (HarmonyX, MonoMod, Cecil) retain their own rights. They are prerequisites, not bundled in this candidate. The tested runtime is BepInEx Unity Mono win-x64 6.0.0-be.785. Doorstop 4.5.0 is LGPL-2.1; the inherited CC0 description applies to an older Doorstop generation and must not be reused for this runtime. See the upstream [Doorstop README](https://github.com/NeighTools/UnityDoorstop/blob/master/README.md) and [BepInEx repository](https://github.com/BepInEx/BepInEx).
+BepInEx and its dependency authors (HarmonyX, MonoMod, Cecil) retain their own rights. The runtime is not bundled in the framework ZIP. If missing, Install.cmd downloads the tested runtime from its official source and verifies its pinned SHA-256 automatically; players do not need to install it manually. Compatible existing loaders are retained. The tested runtime is BepInEx Unity Mono win-x64 6.0.0-be.785. Doorstop 4.5.0 is LGPL-2.1; the inherited CC0 description applies to an older Doorstop generation and must not be reused for this runtime. See the upstream [Doorstop README](https://github.com/NeighTools/UnityDoorstop/blob/master/README.md) and [BepInEx repository](https://github.com/BepInEx/BepInEx).
 
 Unity, DunGen, SECTR and A* components are supplied by the game; no game/middleware DLL is bundled. Research tools are not player features.
 
