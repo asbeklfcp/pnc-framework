@@ -19,10 +19,14 @@ This first public release has known bugs. Baphomet may fail to pursue, attack ef
 
 Please report the gameplay profile, enemy, reproduction steps and relevant logs with personal information removed.
 
-Optional Joker/Witch packages and experimental Archive Passage content are **not included**. The signed current-version feed and release history are active. Newer-version live acceptance is pending; no newer version is offered yet.
+Optional Joker/Witch packages and experimental Archive Passage content are **not included**. The signed public updater and release history are active; the separate-PC v0.1.0 → v0.1.1 test passed.
 
-Download **PNC-Framework-v0.1.0-PNC0.4.2-win64.zip**. You need your own game and the documented BepInEx prerequisite. See [Installation](https://github.com/asbeklfcp/pnc-framework/blob/main/INSTALLATION.md), [Known issues](https://github.com/asbeklfcp/pnc-framework/blob/main/KNOWN-ISSUES.md) and [Credits](https://github.com/asbeklfcp/pnc-framework/blob/main/CREDITS.md).
+Download **PNC-Framework-v0.1.0-PNC0.4.2-win64.zip**. You need your own supported game. Extract the complete ZIP, run **Install.cmd**, and select **Post Nut Calamity.exe**. Missing BepInEx is downloaded from its official source and verified automatically; no manual prerequisite download is required. Clean installs start in Vanilla with default controls and normal gallery progression. See [Installation](https://github.com/asbeklfcp/pnc-framework/blob/main/INSTALLATION.md), [Known issues](https://github.com/asbeklfcp/pnc-framework/blob/main/KNOWN-ISSUES.md) and [Credits](https://github.com/asbeklfcp/pnc-framework/blob/main/CREDITS.md).
 
-## Public update delivery status
+## v0.1.1 — GitHub updater delivery
 
-The signed stable current-version feed and published release history are active on GitHub. v0.1.0 installations can check their current version without reinstalling the updater. No newer version is offered yet. The first newer-version in-game acceptance test is pending on the second PC. Future updates require an explicitly approved, signed manifest and verified versioned update package; ordinary commits and private builds do not trigger notifications. The .update.zip asset is consumed by the game, not a second manual installation download.
+The signed public updater is active. A clean GitHub v0.1.0 installation and a genuine signed v0.1.0 → v0.1.1 update passed on a separate PC. The test confirmed the golden arrow, chime and border, published patch notes, download and installation, completion window, Restart Game, successful startup, and “You have the latest approved release.” The same update was not offered again.
+
+v0.1.1 is delivery-only: no gameplay, controls, settings or visual changes. Known gameplay bugs remain. Future offers require an approved signed release and a verified versioned package; ordinary commits and private builds do not trigger notifications. Internet access is required for online checks and downloads. This successful public test does not certify every device, failure or rollback scenario.
+
+Existing users: open the update arrow → **Check again** → read the notes → **Download Update** → wait for **UPDATE READY** → **Exit Game and Install** → completion window → **Restart Game**. The v0.1.1 `.update.zip` is for the in-game updater. First installations still use the complete v0.1.0 installer ZIP.
