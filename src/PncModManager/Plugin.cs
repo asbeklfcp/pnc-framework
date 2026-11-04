@@ -21,7 +21,7 @@ public sealed partial class Plugin : BaseUnityPlugin
 {
 	public const string PluginGuid = "com.pnc.modmanager";
 	public const string PluginName = "PNC Framework Dashboard";
-	public const string PluginVersion = "1.8.11";
+	public const string PluginVersion = "1.8.12";
 	private const string PncEditPluginGuid = "com.edi.pnc";
 
 	/// <summary>
@@ -704,7 +704,7 @@ public sealed partial class Plugin : BaseUnityPlugin
 		GUILayout.BeginHorizontal();
 		GUILayout.Label("Search", GUILayout.Width(55f));
 		_search = GUILayout.TextField(_search ?? string.Empty);
-		if (!string.IsNullOrEmpty(_search) && NavButton("×", GUILayout.Width(28f)))
+		if (!string.IsNullOrEmpty(_search) && NavButton("Ã—", GUILayout.Width(28f)))
 		{
 			_search = string.Empty;
 		}
@@ -852,7 +852,7 @@ public sealed partial class Plugin : BaseUnityPlugin
 	private void DrawCustomEnemiesPanel(PluginView plugin)
 	{
 		// One switch per package, and for a package that ships code that switch is also the consent
-		// (§167). §165's separate `<package> code` bool made two questions out of one, and play
+		// (Â§167). Â§165's separate `<package> code` bool made two questions out of one, and play
 		// found it the hard way: both packages looked enabled and did nothing until the second
 		// switch was found. What is left here is the warning, drawn under a package whose
 		// description says it ships code - this window references neither of the other assemblies,
@@ -899,7 +899,7 @@ public sealed partial class Plugin : BaseUnityPlugin
 
 				if (shipsCode)
 				{
-					// Said before it is turned on, not after: this is the disclosure §164 owes, and
+					// Said before it is turned on, not after: this is the disclosure Â§164 owes, and
 					// a warning a player reads once the code is already running is not one.
 					GUILayout.Label(enabled
 						? "Runs its own code. Disabling requests immediate cleanup."
