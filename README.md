@@ -21,12 +21,16 @@ Requires your own supported PNC 0.4.2 game. Run Install.cmd and select Post Nut 
 - Independent parchment patch notes and update interface.
 - Installer, removal utility and framework rollback backups.
 
-Optional Joker/Witch packages and experimental Archive Passage are not included. Signed current-version checking and release history are active; newer-version in-game acceptance is pending.
+Optional Joker/Witch packages and experimental Archive Passage are not included. Signed public updating and release history are active; the separate-PC v0.1.0 → v0.1.1 acceptance test passed.
 
 See [Credits](CREDITS.md), [Known issues](KNOWN-ISSUES.md), [Release notes](RELEASE-NOTES.md) and [Source build notes](BUILDING.md).
 
-New installs use normal gallery progression. Reinstalling an older configuration prompts you to choose normal progression or keep your existing Unlock All preference, without changing saved discoveries.
+Clean new installs start in Vanilla with default framework controls, diagnostics off and normal gallery progression (Unlock All off). With no previous framework configuration, no gallery-migration question appears. Existing Windows saves and gallery discoveries are retained. Reinstalling an older configuration prompts you to choose normal progression or keep your existing Unlock All preference, without changing saved discoveries.
 
 ## Public update delivery status
 
-The signed stable current-version feed and published release history are active on GitHub. v0.1.0 installations can check their current version without reinstalling the updater. No newer version is offered yet. The first newer-version in-game acceptance test is pending on the second PC. Future updates require an explicitly approved, signed manifest and verified versioned update package; ordinary commits and private builds do not trigger notifications. The .update.zip asset is consumed by the game, not a second manual installation download.
+The signed public updater is active. A clean GitHub v0.1.0 installation and a genuine signed v0.1.0 → v0.1.1 update passed on a separate PC. The test confirmed the golden arrow, chime and border, published patch notes, download and installation, completion window, Restart Game, successful startup, and “You have the latest approved release.” The same update was not offered again.
+
+v0.1.1 is delivery-only: no gameplay, controls, settings or visual changes. Known gameplay bugs remain. Future offers require an approved signed release and a verified versioned package; ordinary commits and private builds do not trigger notifications. Internet access is required for online checks and downloads. This successful public test does not certify every device, failure or rollback scenario.
+
+Use the complete v0.1.0 ZIP for a first installation. The v0.1.1 `.update.zip` is downloaded by the game, not a separate installer. Open the arrow beside the game version → **Check again** → read the notes → **Download Update** → **UPDATE READY** → **Exit Game and Install** → wait for completion → **Restart Game**.
