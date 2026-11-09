@@ -21,7 +21,7 @@ public sealed partial class Plugin : BaseUnityPlugin
 {
 	public const string PluginGuid = "com.pnc.modmanager";
 	public const string PluginName = "PNC Framework Dashboard";
-	public const string PluginVersion = "1.8.12";
+	public const string PluginVersion = "1.8.13";
 	private const string PncEditPluginGuid = "com.edi.pnc";
 
 	/// <summary>
@@ -88,6 +88,7 @@ public sealed partial class Plugin : BaseUnityPlugin
 	private void Awake()
 	{
         InstallModalInputGuard();
+        PncScriptRelease.TryApply(Logger);
 		_toggleShortcut = Config.Bind(
 			"Interface",
 			"ToggleShortcut",

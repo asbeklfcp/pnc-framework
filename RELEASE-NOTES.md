@@ -30,3 +30,9 @@ The signed public updater is active. A clean GitHub v0.1.0 installation and a ge
 v0.1.1 is delivery-only: no gameplay, controls, settings or visual changes. Known gameplay bugs remain. Future offers require an approved signed release and a verified versioned package; ordinary commits and private builds do not trigger notifications. Internet access is required for online checks and downloads. This successful public test does not certify every device, failure or rollback scenario.
 
 Existing users: open the update arrow → **Check again** → read the notes → **Download Update** → wait for **UPDATE READY** → **Exit Game and Install** → completion window → **Restart Game**. The v0.1.1 `.update.zip` is for the in-game updater. First installations still use the complete v0.1.0 installer ZIP.
+
+## v0.1.2 — EDI gallery script update
+
+Complete 666-track library (138 Handy1, 138 Handy2, 195 Handy2 Pro, 195 Detailed); 16 new gallery definitions; 178 configuration mappings. The signed manager update preserves identical existing files and holds customized differences for review with rollback backups.
+
+**UI notice:** Some interface elements may appear unfinished or buggy. We released scripts before completing the V31 visual polish, which is not included in this update. External EDI hardware sync remains unverified.

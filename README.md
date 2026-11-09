@@ -6,6 +6,14 @@ A community mod framework bringing historical PNC gameplay modifications togethe
 
 > **Early release with known gameplay bugs.** Baphomet, Wolf, Dragon, Wendigo and some high-heat capture conditions have reported issues. Read [Known issues](KNOWN-ISSUES.md) before installing.
 
+## Latest public update — v0.1.2: EDI gallery scripts
+
+The signed in-game updater now delivers the complete 666-script EDI gallery library: 138 Handy1, 138 Handy2, 195 Handy2 Pro and 195 Detailed files. It safely adds missing script files, 16 new gallery definitions and 178 mapping aliases without overwriting user-customized differences by default. Restart the game after updating, and restart the optional external EDI app if required.
+
+**Early UI notice:** Some interface elements may look unfinished, inconsistent, or buggy. We shipped the tested scripts first rather than delay them for visual polish. The experimental V31 Living Chronicle UI is not part of this release.
+
+Existing installations can use the golden update arrow beside the game version. New installations should first install the full v0.1.0 package, then update. External EDI-device synchronization varies and has not been exhaustively tested. See the [v0.1.2 release](https://github.com/asbeklfcp/pnc-framework/releases/tag/v0.1.2).
+
 ## Download and install
 
 Download **PNC-Framework-v0.1.0-PNC0.4.2-win64.zip** from [GitHub Releases](https://github.com/asbeklfcp/pnc-framework/releases/tag/v0.1.0). Extract the complete ZIP to a separate folder. See [Installation](INSTALLATION.md).
