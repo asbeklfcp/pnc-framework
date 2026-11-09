@@ -43,7 +43,7 @@
     <Compile Include="UpdatesPage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="resources/PNC-EDI-0.4.2-Gallery-Full-666.zip"><LogicalName>PNC.Public.EDI.Bundle.Zip</LogicalName></EmbeddedResource>
+    <EmbeddedResource Include="resources/PNC-EDI-0.4.2-Gallery-Full-678.zip"><LogicalName>PNC.Public.EDI.Bundle.Zip</LogicalName></EmbeddedResource>
     <EmbeddedResource Include="resources/alias_additions.ini"><LogicalName>PNC.Public.EDI.AliasAdditions.ini</LogicalName></EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

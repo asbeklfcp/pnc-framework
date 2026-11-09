@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -10,7 +10,7 @@ namespace PncModManager
 {
     internal static class PncScriptRelease
     {
-        private const string ReleaseId="0.1.3";
+        private const string ReleaseId="0.1.4";
         private static byte[] ReadResource(string name)
         {
             using(var input=Assembly.GetExecutingAssembly().GetManifestResourceStream(name))
@@ -45,7 +45,7 @@ namespace PncModManager
                 if(File.Exists(receipt))return;
                 if(System.Diagnostics.Process.GetProcessesByName("Edi").Length>0)
                 {
-                    logger.LogWarning("[EDI UPDATE] Close Edi.exe and restart PNC to finish installing the 0.1.2 scripts.");
+                    logger.LogWarning("[EDI UPDATE] Close Edi.exe and restart PNC to finish installing the 0.1.4 scripts.");
                     return;
                 }
                 byte[] zip=ReadResource("PNC.Public.EDI.Bundle.Zip");
@@ -53,7 +53,7 @@ namespace PncModManager
                     throw new InvalidDataException("Signed script resource failed SHA-256 verification");
                 byte[] aliases=ReadResource("PNC.Public.EDI.AliasAdditions.ini");
                 string pkg=Path.Combine(home,"packages",ScriptMergeCore.PackageName);
-                string ini=Path.Combine(home,"packages","alias_additions.ini");
+                string ini=Path.Combine(home,"packages","alias_additions_v014.ini");
                 WriteVerified(pkg,zip);
                 WriteVerified(ini,aliases);
                 var plan=ScriptMergeCore.Analyze(root);

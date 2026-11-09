@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -79,8 +79,8 @@ namespace PncModManager
     {
         // Full EDI gallery payload authenticated by the signed public manager
         // and independently verified by SHA-256 before transactional merge.
-        internal const string PackageName = "PNC-EDI-0.4.2-Gallery-Full-666.zip";
-        internal const string PackageHash = "3b2ea80fa43b648f642922263e2d4cefaf2433ae1f4655bcbd8ebb321ee2d253";
+        internal const string PackageName = "PNC-EDI-0.4.2-Gallery-Full-678.zip";
+        internal const string PackageHash = "65f74b1f6b9796ce0bc6e0ef49a712b1f7371b97602c75b6beeba5616a2ef021";
         internal const string ZipPrefix = "UPDATE_PROPOSED/Edi/Gallery/";
         internal static readonly string[] Variants={"handy1","handy2","handy2pro","detailed"};
         private static readonly StringComparer Ci=StringComparer.OrdinalIgnoreCase;
@@ -165,11 +165,21 @@ namespace PncModManager
         private static Dictionary<string,Dictionary<string,string>> ParseLiveConfig(string s)
         {
             var result=new Dictionary<string,Dictionary<string,string>>(Ci);
-            var keys=new[]{"EnemyRemap","GalleryAliases","PeekClipMap","DioramaAmbientMap"};
+            var keys=new[]{"EnemyRemap","GalleryAliases","PeekClipMap","DioramaAmbientMap","InGameAliases"};
             foreach(var section in keys)
             {
-                var m=Regex.Match(s,@"(?m)^"+Regex.Escape(section)+@"\s*=\s*([^\r\n]*)");
-                if(!m.Success)throw new InvalidDataException("Live config missing "+section);
+                var m=Regex.Match(s,@"(?m)^"+Regex.Escape(section)+@"[ \t]*=[ \t]*([^\r\n]*)");
+                // InGameAliases was introduced after the original public profile.
+                // Older player configs without this optional key still upgrade safely.
+                if(!m.Success)
+                {
+                    if(Ci.Equals(section,"InGameAliases"))
+                    {
+                        result.Add(section,new Dictionary<string,string>(Ci));
+                        continue;
+                    }
+                    throw new InvalidDataException("Live config missing "+section);
+                }
                 var dict=new Dictionary<string,string>(Ci);
                 foreach(var piece in m.Groups[1].Value.Split(';'))
                 {
@@ -183,6 +193,16 @@ namespace PncModManager
                 result.Add(section,dict);
             }
             return result;
+        }
+        // The previous signed EDI release mapped the real Thread Mistress loop
+        // to a one-shot 'start' track. Only this exact previous default may be
+        // migrated automatically; unknown or personalized mappings stay conflicts.
+        private static bool IsKnownPreviousAlias(string section,string key,string oldValue,string newValue)
+        {
+            return Ci.Equals(section,"PeekClipMap")
+                && Ci.Equals(key,"thread mistress grabscreen loop")
+                && Ci.Equals(oldValue,"thread_mistress_start")
+                && Ci.Equals(newValue,"thread_mistress_loop");
         }
         private static Dictionary<string,string> ManagedIndex(string game)
         {
@@ -251,7 +271,7 @@ namespace PncModManager
                     plan.Files.Add(file);
                 }
             }
-            if(incomingCsv==null||plan.Files.Count!=666)
+            if(incomingCsv==null||plan.Files.Count!=678)
                 throw new InvalidDataException("Unexpected EDI script package: "+plan.Files.Count+" scripts");
             string defs=SafePath(game,"Edi/Gallery/Definitions.csv");
             string cfg=SafePath(game,"BepInEx/config/com.edi.pnc.cfg");
@@ -281,7 +301,7 @@ namespace PncModManager
                 }
                 else{plan.Rows.Add(new RowEntry{Name=kv.Key,Line=kv.Value});plan.NewRows++;}
             }
-            string aliases=Path.Combine(home,"packages","alias_additions.ini");
+            string aliases=Path.Combine(home,"packages","alias_additions_v014.ini");
             if(!File.Exists(aliases))throw new InvalidDataException("Missing private alias manifest");
             var requested=ParseIni(File.ReadAllText(aliases,Encoding.UTF8));
             var currentConfig=ParseLiveConfig(plan.ConfigSnapshot);
@@ -293,6 +313,13 @@ namespace PncModManager
                     if(old.TryGetValue(kv.Key,out string value))
                     {
                         if(Ci.Equals(value,kv.Value))plan.ExistingAliases++;
+                        else if(IsKnownPreviousAlias(sec.Key,kv.Key,value,kv.Value))
+                        {
+                            // Exact old public mapping, not a user-customized value.
+                            // Upgrade this one known default without a false conflict.
+                            plan.Aliases.Add(new AliasEntry{Section=sec.Key,Key=kv.Key,Incoming=kv.Value,Original=value});
+                            plan.NewAliases++;
+                        }
                         else
                         {
                             var a=new AliasEntry{Section=sec.Key,Key=kv.Key,Incoming=kv.Value,Original=value};
@@ -308,10 +335,17 @@ namespace PncModManager
         }
         private static string ReplaceConfigValue(string original,string sec,string key,string val)
         {
-            var m=Regex.Match(original,@"(?m)^"+Regex.Escape(sec)+@"\s*=\s*([^\r\n]*)");
-            if(!m.Success)throw new InvalidDataException("Live config missing "+sec);
+            var m=Regex.Match(original,@"(?m)^"+Regex.Escape(sec)+@"[ \t]*=[ \t]*([^\r\n]*)");
+            if(!m.Success)
+            {
+                // Optional section in legacy installs: append it, never rewrite
+                // Profile, Debug or any other private game settings.
+                if(!Ci.Equals(sec,"InGameAliases"))
+                    throw new InvalidDataException("Live config missing "+sec);
+                return original.TrimEnd('\r','\n')+Environment.NewLine+sec+" = "+key+"="+val+Environment.NewLine;
+            }
             string value=m.Groups[1].Value;
-            var pieces=value.Split(';').ToList();
+            var pieces=value.Split(';').Where(x=>!String.IsNullOrWhiteSpace(x)).ToList();
             bool found=false;
             for(int i=0;i<pieces.Count;i++)
             {
@@ -463,7 +497,7 @@ namespace PncModManager
                 string indexPath=SafePath(game,indexRel);
                 WriteActive(game,tx,indexRel,Utf8(index.ToString()),File.Exists(indexPath)?File.ReadAllBytes(indexPath):null,applied);
                 var log=new StringBuilder();
-                log.AppendLine("PNC EDI GALLERY SCRIPT RELEASE 0.1.3 - "+DateTime.UtcNow.ToString("u"));
+                log.AppendLine("PNC EDI GALLERY SCRIPT RELEASE 0.1.4 - "+DateTime.UtcNow.ToString("u"));
                 log.AppendLine("Game: "+game);
                 log.AppendLine(result.Summary());
                 log.AppendLine("Pending alternative scripts: "+pending);

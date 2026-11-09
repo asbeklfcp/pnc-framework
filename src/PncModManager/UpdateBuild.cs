@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 namespace PncModManager { internal static class UpdateBuild {
-internal const string ReleaseId="0.1.3";
+internal const string ReleaseId="0.1.4";
 internal const string Channel="stable";
 internal const string Feed="https://raw.githubusercontent.com/asbeklfcp/pnc-framework/main/updates/stable/latest.xml";
 internal const string Trust=@"<RSAKeyValue><Modulus>0X1WeU7S/lTcsUiYPNeztX4g+PZovbizx6ZVIdRjzY/xqsOtRGn0c5Te/8heME6ioQVoyKlpJKXKCzy58Lk/GYka4BN/MeYzOQWMb2y0ujJkqC1vNsIRmEWO8ADILe05dQPUbK8iTYbF28dFfZLKHoE6OlisXWnznB4IiYKPfUd5LPZU2q1Dx2dw8KPBlS+6OyBUA2gWo2+pwr6LJ0XgMy7KzK3V4RvOgWSqRf2ExaeSh3lC5wN4HOG2x7XUKMMk+0nbNJ1Q4+9trPs3cDyltc4sD9hdKxagACzFSNONF0Mtmqp6L+niPbdZHjeP/2vtgFIBtcGr+gwppamGNM31T8rKQZ7b+Ru0Jsw9kV478d99JZQw9lw7F2crG9IksSOrPLuaJ38jiRoIZ4YFMiO+7fqDNlm0z5Bv26PVBi2b5sTZca0iMRurCh5zZs2+f8OKgxa0L3sbTMHZmlnDaDoXVIwNIJB7Ido5zT6sp2/Dnnz1ocIwNWzheECacgMDg6lqsn/TKLBLui/PJ1/DevnI+BFohr8UYfXopHZdl3yKSGNDV/hGUPh3MdUSMOm+B7lzJxlj3HuhNfQhrTMyMgMpWSbP4vqDPnBkpGUuEQlAKKFPjLjyKe3LuR1SywGWhRauIPXwaLsIDUCbV6HSL5TN9SCF+jN63UKf6DAEGwUXhLk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
