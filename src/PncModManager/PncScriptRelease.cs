@@ -10,7 +10,7 @@ namespace PncModManager
 {
     internal static class PncScriptRelease
     {
-        private const string ReleaseId="0.1.2";
+        private const string ReleaseId="0.1.3";
         private static byte[] ReadResource(string name)
         {
             using(var input=Assembly.GetExecutingAssembly().GetManifestResourceStream(name))

@@ -21,7 +21,7 @@ public sealed partial class Plugin : BaseUnityPlugin
 {
 	public const string PluginGuid = "com.pnc.modmanager";
 	public const string PluginName = "PNC Framework Dashboard";
-	public const string PluginVersion = "1.8.13";
+	public const string PluginVersion = "1.8.14";
 	private const string PncEditPluginGuid = "com.edi.pnc";
 
 	/// <summary>

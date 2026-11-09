@@ -1,3 +1,7 @@
+## v0.1.3 — Clean-install EDI gallery compatibility hotfix
+
+Fixes missing `Edi/Gallery/Definitions.csv` on fresh public installations. The signed update now creates the gallery definition file from the verified script bundle, then installs all 666 scripts and merges 178 aliases safely. Existing customized scripts and definitions remain preserved or held for review. The public signing key and full 666-file content are unchanged. Some UI elements may look unfinished or buggy; further visual polish will follow. The experimental V31 UI is not included.
+
 # PNC Framework v0.1 — Initial Public Release
 
 **For Post Nut Calamity 0.4.2 — Windows x64**

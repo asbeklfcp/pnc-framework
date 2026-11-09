@@ -52,6 +52,8 @@ namespace PncModManager
         internal readonly List<AliasEntry> Aliases=new List<AliasEntry>();
         internal readonly List<Conflict> Conflicts=new List<Conflict>();
         internal string DefinitionsSnapshot;
+        internal string IncomingDefinitionsCsv;
+        internal bool NewDefinitions;
         internal string ConfigSnapshot;
         internal string DefinitionsHash;
         internal string ConfigHash;
@@ -75,8 +77,8 @@ namespace PncModManager
     }
     internal static class ScriptMergeCore
     {
-        // This is intentionally hard-coded to ONE user's disposable D: test copy.
-        // Never ship this plugin or its source hash as the public updater.
+        // Full EDI gallery payload authenticated by the signed public manager
+        // and independently verified by SHA-256 before transactional merge.
         internal const string PackageName = "PNC-EDI-0.4.2-Gallery-Full-666.zip";
         internal const string PackageHash = "3b2ea80fa43b648f642922263e2d4cefaf2433ae1f4655bcbd8ebb321ee2d253";
         internal const string ZipPrefix = "UPDATE_PROPOSED/Edi/Gallery/";
@@ -253,8 +255,13 @@ namespace PncModManager
                 throw new InvalidDataException("Unexpected EDI script package: "+plan.Files.Count+" scripts");
             string defs=SafePath(game,"Edi/Gallery/Definitions.csv");
             string cfg=SafePath(game,"BepInEx/config/com.edi.pnc.cfg");
-            if(!File.Exists(defs)||!File.Exists(cfg))throw new InvalidDataException("Missing live gallery/config");
-            plan.DefinitionsSnapshot=Decode(File.ReadAllBytes(defs));
+            // A new public PNC installation may have the EDI plugin/config but no
+            // external Edi/Gallery directory yet. Seed Definitions.csv from the
+            // signed, checksum-validated 666-script resource on first apply.
+            if(!File.Exists(cfg))throw new InvalidDataException("Missing live EDI config");
+            plan.NewDefinitions=!File.Exists(defs);
+            plan.IncomingDefinitionsCsv=incomingCsv;
+            plan.DefinitionsSnapshot=plan.NewDefinitions?"":Decode(File.ReadAllBytes(defs));
             plan.ConfigSnapshot=Decode(File.ReadAllBytes(cfg));
             plan.DefinitionsHash=DigestFile(defs);
             plan.ConfigHash=DigestFile(cfg);
@@ -412,17 +419,18 @@ namespace PncModManager
                 }
                 var rowEntries=onlySelectedConflicts?plan.Rows.Where(x=>x.Conflict!=null&&x.Conflict.UseIncoming&&!x.Conflict.Resolved).ToList():plan.Rows;
                 var aliasEntries=onlySelectedConflicts?plan.Aliases.Where(x=>x.Conflict!=null&&x.Conflict.UseIncoming&&!x.Conflict.Resolved).ToList():plan.Aliases;
-                if(rowEntries.Count>0)
+                if(rowEntries.Count>0 || (!onlySelectedConflicts && plan.NewDefinitions))
                 {
                     string rel="Edi/Gallery/Definitions.csv";
                     string dest=SafePath(game,rel);
-                    string oldText=Decode(File.ReadAllBytes(dest));
-                    string newText=MergeCsv(oldText,rowEntries);
+                    byte[] oldData=File.Exists(dest)?File.ReadAllBytes(dest):null;
+                    string oldText=oldData==null?"":Decode(oldData);
+                    string newText=oldData==null?plan.IncomingDefinitionsCsv:MergeCsv(oldText,rowEntries);
                     if(oldText!=newText)
                     {
                         if(!onlySelectedConflicts && DigestFile(dest)!=plan.DefinitionsHash)
                             throw new IOException("Definitions changed since scan; retry");
-                        WriteActive(game,tx,rel,Utf8("\uFEFF"+newText),File.ReadAllBytes(dest),applied);
+                        WriteActive(game,tx,rel,Utf8("\uFEFF"+newText),oldData,applied);
                         result.NewRows=onlySelectedConflicts?rowEntries.Count:plan.NewRows;
                     }
                     foreach(var entry in rowEntries.Where(x=>x.Conflict!=null&&x.Conflict.UseIncoming))entry.Conflict.Resolved=true;
@@ -455,7 +463,7 @@ namespace PncModManager
                 string indexPath=SafePath(game,indexRel);
                 WriteActive(game,tx,indexRel,Utf8(index.ToString()),File.Exists(indexPath)?File.ReadAllBytes(indexPath):null,applied);
                 var log=new StringBuilder();
-                log.AppendLine("PNC EDI GALLERY SCRIPT RELEASE 0.1.2 - "+DateTime.UtcNow.ToString("u"));
+                log.AppendLine("PNC EDI GALLERY SCRIPT RELEASE 0.1.3 - "+DateTime.UtcNow.ToString("u"));
                 log.AppendLine("Game: "+game);
                 log.AppendLine(result.Summary());
                 log.AppendLine("Pending alternative scripts: "+pending);
