@@ -6,6 +6,9 @@ A community mod framework bringing historical PNC gameplay modifications togethe
 
 > **Early release with known gameplay bugs.** Baphomet, Wolf, Dragon, Wendigo and some high-heat capture conditions have reported issues. Read [Known issues](KNOWN-ISSUES.md) before installing.
 
+## Latest public update - v0.1.5: Vanilla Brothel EDI compatibility
+
+**v0.1.5 hotfix:** The native Shop/Brothel chooses random scene animations. EDI now follows the scene the game actually selected and plays the corresponding mapped scripts for Blinded Beast, Nun-Imp and Pinky through their Start, Loop and End stages, without affecting the base game random roll, one-use limits, or automatic ending. Vanilla gameplay verified these variants and the Gravy shopkeeper. The previously tested D17 Werewolf Cowgirl (Wolf) scene, D16 Mimic Floor, Thread Mistress, all 678 scripts, and player settings remain unchanged. Physical-device synchronization is not certified.
 ## Latest public update — v0.1.3: EDI gallery scripts (clean-install fix)
 
 **v0.1.3 hotfix:** Fresh public installs without an existing Edi/Gallery/Definitions.csv now get that file safely initialized from the signed script bundle.

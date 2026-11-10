@@ -1,3 +1,6 @@
+## v0.1.5 — Vanilla Brothel EDI compatibility hotfix
+
+Corrects EDI playback in the Shop/Brothel random camera scenes by using the selected live animation instead of controller clip order. Vanilla QA passed for Blinded Beast, Nun-Imp, Pinky and the Gravy shopkeeper. Preserves the original random outcomes, native automatic ending, gameplay limits, the complete v0.1.4 EDI library, and the previously tested D17 Werewolf Cowgirl (Wolf) scene. Physical-device synchronization is not certified.
 ## v0.1.3 — Clean-install EDI gallery compatibility hotfix
 
 Fixes missing `Edi/Gallery/Definitions.csv` on fresh public installations. The signed update now creates the gallery definition file from the verified script bundle, then installs all 666 scripts and merges 178 aliases safely. Existing customized scripts and definitions remain preserved or held for review. The public signing key and full 666-file content are unchanged. Some UI elements may look unfinished or buggy; further visual polish will follow. The experimental V31 UI is not included.

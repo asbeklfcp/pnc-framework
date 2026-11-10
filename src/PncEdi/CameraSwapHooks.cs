@@ -290,6 +290,14 @@ public static class CameraSwapHooks
 
 	private static void DispatchActivateEdi(string galleryId, string rawName, Animator anim)
 	{
+        // The base game chooses a random animation set for this Shop camera.
+        // Controller.animationClips[0] can belong to a DIFFERENT roll. Wait
+        // for the live Animator state, handled by Plugin.Update(), instead.
+        if (IsShopRandomCamera(CurrentTrigger))
+        {
+            Plugin.DBG("SHOP-EDI-SELECTED", "waiting for the actual selected animation");
+            return;
+        }
 		string firstClipName = GetFirstClipName(anim);
 		string peekGallery = PeekGalleryMap.Resolve(galleryId, rawName, firstClipName);
 		if (PeekGalleryMap.IsPeekScript(peekGallery))
@@ -305,11 +313,63 @@ public static class CameraSwapHooks
 		{
 			string interactKey = CurrentKey ?? "interact";
 			string galleryName = GrabHooks.BuildGalleryName(interactKey, firstClipName);
+			galleryName = ResolveShopServiceGallery(CurrentTrigger, firstClipName, galleryName);
 			Plugin.DBG("INTERACT-INIT", interactKey + "/" + firstClipName + " -> " + galleryName);
 			Plugin.SendPlay(galleryName);
 		}
 	}
 
+    // Identify only the native Shop random-selection camera, not other camera
+    // interactions. Does not alter the random roll, one-use limits, or exit.
+    internal static bool IsShopRandomCamera(CameraSwapTrigger trigger)
+    {
+        if (trigger == null || !(trigger is RandomAnimationCameraTrigger))
+            return false;
+        for (Transform p = trigger.transform.parent; p != null; p = p.parent)
+        {
+            if (string.Equals(NameRemap.StripCloneSuffix(p.name), "Shop", StringComparison.OrdinalIgnoreCase))
+                return true;
+        }
+        return false;
+    }
+
+    // Fallback for a Shop animation that has no alias under its camera-object
+    // name. Resolve by the ACTUAL selected clip using the existing gallery
+    // tables; this works for different dice-roll results, not a fixed 2-set
+    // assumption. Unknown clips are left unchanged and never guessed.
+    internal static string ResolveShopServiceGallery(CameraSwapTrigger trigger, string clipName, string generatedGallery)
+    {
+        if (!IsShopRandomCamera(trigger) || string.IsNullOrEmpty(clipName))
+            return generatedGallery;
+
+        string direct = GalleryAliases.Resolve(generatedGallery, inGame: true, quiet: true);
+        if (!string.Equals(direct, generatedGallery, StringComparison.OrdinalIgnoreCase) ||
+            GalleryRegistry.IsKnown(generatedGallery))
+            return generatedGallery;
+
+        string slug = NameRemap.Slug(clipName);
+        if (string.IsNullOrEmpty(slug))
+            return generatedGallery;
+        string[] candidates = {
+            slug, "gloryholecamera_" + slug,
+            "gallery_" + slug,
+            // In some game assets, NunImpGH is labelled Imp_Nun in the gallery.
+            slug.StartsWith("nunimpgh_", StringComparison.Ordinal)
+                ? "imp_nun_" + slug.Substring("nunimpgh_".Length) : slug
+        };
+        foreach (string candidate in candidates)
+        {
+            string alias = GalleryAliases.Resolve(candidate, inGame: true, quiet: true);
+            string row = GalleryRegistry.StripQuery(alias);
+            if (GalleryRegistry.IsKnown(row))
+            {
+                Plugin.DBG("SHOP-EDI-SELECTED", "selected=" + slug + " alias=" + candidate + " -> " + alias);
+                return alias;
+            }
+        }
+        Plugin.DBG("SHOP-EDI-MISS", "no known mapping for selected clip=" + slug + " originally=" + generatedGallery);
+        return generatedGallery;
+    }
 	private static string GetFirstClipName(Animator anim)
 	{
 		if (anim == null || anim.runtimeAnimatorController == null)

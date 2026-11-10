@@ -21,7 +21,7 @@ public partial class Plugin : BaseUnityPlugin
 {
 	public const string PluginGuid = "com.edi.pnc";
 	public const string PluginName = "Post Nut Calamity EDI Integration";
-	public const string PluginVersion = "3.0.25";
+	public const string PluginVersion = "3.0.26";
 	public static bool FrameworkReady { get; private set; }
 	internal static ManualLogSource Log;
 	private static readonly object MissingDefinitionLogLock = new object();
@@ -245,6 +245,7 @@ public partial class Plugin : BaseUnityPlugin
 					{
 						GalleryHooks.InGamePeekScene = false;
 						string galleryName = GrabHooks.BuildGalleryName(interactKey, clipName);
+					galleryName = CameraSwapHooks.ResolveShopServiceGallery(CameraSwapHooks.CurrentTrigger, clipName, galleryName);
 						DBG("INTERACT-STEP", interactKey + "/" + clipName + " -> " + galleryName);
 						SendPlay(galleryName);
 					}

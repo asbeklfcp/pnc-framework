@@ -171,99 +171,99 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>$(BepInExDir)$(BepInExDir)0Harmony.dll</HintPath>
+      <HintPath>$(BepInExDir)0Harmony.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="BepInEx.Core">
-      <HintPath>$(BepInExDir)$(BepInExDir)BepInEx.Core.dll</HintPath>
+      <HintPath>$(BepInExDir)BepInEx.Core.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="BepInEx.Unity.Mono">
-      <HintPath>$(BepInExDir)$(BepInExDir)BepInEx.Unity.Mono.dll</HintPath>
+      <HintPath>$(BepInExDir)BepInEx.Unity.Mono.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>$(ManagedDir)$(ManagedDir)Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>$(ManagedDir)Assembly-CSharp-firstpass.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.IMGUIModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>$(ManagedDir)$(ManagedDir)Assembly-CSharp.dll</HintPath>
+      <HintPath>$(ManagedDir)Assembly-CSharp.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.CoreModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.AnimationModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.PhysicsModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.AudioModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.InputLegacyModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.UI.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.UI.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.AssetBundleModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.VideoModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.VideoModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.VideoModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.ImageConversionModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.ParticleSystemModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.AIModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.AIModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="AstarPathfindingProject">
-      <HintPath>$(ManagedDir)$(ManagedDir)AstarPathfindingProject.dll</HintPath>
+      <HintPath>$(ManagedDir)AstarPathfindingProject.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Drawing">
-      <HintPath>$(ManagedDir)$(ManagedDir)Drawing.dll</HintPath>
+      <HintPath>$(ManagedDir)Drawing.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="PackageTools">
-      <HintPath>$(ManagedDir)$(ManagedDir)PackageTools.dll</HintPath>
+      <HintPath>$(ManagedDir)PackageTools.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.JSONSerializeModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>$(ManagedDir)$(ManagedDir)UnityEngine.UIModule.dll</HintPath>
+      <HintPath>$(ManagedDir)UnityEngine.UIModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="PncControls">
