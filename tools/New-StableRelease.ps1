@@ -6,6 +6,19 @@ $allowed=@('PncModManager.dll','PncEdi.dll','PncControls.dll','PncCustomEnemies.
 if($ChangedFiles.Count -lt 1 -or @($ChangedFiles|Select-Object -Unique).Count -ne $ChangedFiles.Count){throw 'Invalid changed-file list'}
 foreach($name in $ChangedFiles){if($allowed -notcontains $name){throw 'Unapproved update file'}}
 $repo=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+# Public updates must always carry a manager that identifies the new installed
+# receipt. Otherwise the next golden-arrow check will fail on a valid receipt.
+if($ChangedFiles -notcontains 'PncModManager.dll'){throw 'Public updates must include the current-version PncModManager.dll'}
+$managerBuild=Join-Path $repo 'src/PncModManager/UpdateBuild.cs'
+$managerAssembly=Join-Path $repo 'src/PncModManager/AssemblyInfo.cs'
+$managerPath=Join-Path $PayloadDirectory 'PncModManager.dll'
+if(!(Test-Path $managerBuild) -or !(Test-Path $managerAssembly) -or !(Test-Path $managerPath)){throw 'Cannot verify release manager identity'}
+$embeddedId=[regex]::Match([IO.File]::ReadAllText($managerBuild),'internal\s+const\s+string\s+ReleaseId\s*=\s*"([^"]+)"')
+if(!$embeddedId.Success -or $embeddedId.Groups[1].Value -ne $Version.ToString()){throw 'Manager ReleaseId must exactly equal the signed release version'}
+$assemblyText=[IO.File]::ReadAllText($managerAssembly)
+$declared=[regex]::Match($assemblyText,'AssemblyVersion\("([^"]+)"\)')
+$compiled=[Reflection.AssemblyName]::GetAssemblyName($managerPath).Version.ToString()
+if(!$declared.Success -or $declared.Groups[1].Value -ne $compiled){throw 'Compiled PncModManager version must match reviewed AssemblyInfo source'}
 if([IO.Path]::GetFullPath($KeyPath).StartsWith($repo.TrimEnd('\')+'\',[StringComparison]::OrdinalIgnoreCase)){throw 'Keep the private key outside the repository'}
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem

@@ -1,3 +1,6 @@
+## v0.1.6 - Golden Arrow Receipt Recognition Hotfix
+
+Corrects the public manager's embedded release ID so it matches the signed installed-release receipt. v0.1.5 installed properly, but its manager still identified itself as v0.1.4, causing false "Installed release receipt mismatch" errors after installation. v0.1.6 updates the manager to 1.8.16 and keeps the tested EDI 3.0.26 plugin. All gameplay, scripts, profiles and previously tested Wolf/D17, D16, Gravy and randomized Brothel compatibility are preserved. Players already on v0.1.5 may need a one-time trusted rollback recovery before the golden arrow can update normally; do not delete or edit the signed receipt manually.
 ## v0.1.5 — Vanilla Brothel EDI compatibility hotfix
 
 Corrects EDI playback in the Shop/Brothel random camera scenes by using the selected live animation instead of controller clip order. Vanilla QA passed for Blinded Beast, Nun-Imp, Pinky and the Gravy shopkeeper. Preserves the original random outcomes, native automatic ending, gameplay limits, the complete v0.1.4 EDI library, and the previously tested D17 Werewolf Cowgirl (Wolf) scene. Physical-device synchronization is not certified.
