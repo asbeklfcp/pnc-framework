@@ -67,6 +67,8 @@ public sealed class CustomEnemyPlugin : BaseUnityPlugin
 
 		// Before the packages load: a package registering rows can be asked about immediately.
 		CustomEnemyBridgeInstaller.Install();
+		// Authenticated content release: run before package/gallery discovery.
+		SignedCharacterContent.TryApply(Logger);
 		// Before anything reads a switch, and deliberately so: every installed package's funscripts
 		// and Definitions.csv rows, whatever kind of manifest declares them and whether or not the
 		// player has allowed its code to run (§175). Edi reads that file once at its own startup, so
