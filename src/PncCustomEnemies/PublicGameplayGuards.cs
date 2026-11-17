@@ -13,6 +13,10 @@ namespace PncCustomEnemies;
 // Contains ONLY the accepted Witch/Joker compatibility fixes from private QA.
 internal static class GameplayGuards
 {
+    // These are manifest IDs. On-disk folders use hyphens but IDs use underscores.
+    // v0.1.8 mistakenly used the directory names and skipped both gameplay guards.
+    internal const string WitchPackageId = "femboy_witch";
+    internal const string JokerPackageId = "joker_wall";
     private static Harmony _patches;
     internal static ManualLogSource Log;
     private static readonly FieldInfo WaitingForInput = AccessTools.Field(typeof(GameOverScreen), "isWaitingForInput");
@@ -26,14 +30,20 @@ internal static class GameplayGuards
         if (WaitingForInput == null || HasShownGameOver == null)
             log.LogWarning("[GAMEPLAY-GUARDS] Game-over status fields unavailable; Joker visual guard cannot operate on this game build.");
         _patches = new Harmony("com.edi.pnc.customenemies.gameplayguards");
-        if (PackageAssemblies.IsLoaded("femboy-witch") && PackageLifecycle.Active("femboy-witch"))
+        log.LogInfo("[GAMEPLAY-GUARDS] package ids: witch=" + WitchPackageId
+            + " loaded=" + PackageAssemblies.IsLoaded(WitchPackageId)
+            + " active=" + PackageLifecycle.Active(WitchPackageId)
+            + "; joker=" + JokerPackageId
+            + " loaded=" + PackageAssemblies.IsLoaded(JokerPackageId)
+            + " active=" + PackageLifecycle.Active(JokerPackageId));
+        if (PackageAssemblies.IsLoaded(WitchPackageId) && PackageLifecycle.Active(WitchPackageId))
         {
             try { _patches.PatchAll(typeof(SingleWitchSpawnGuard)); }
             catch (Exception e) { log.LogError("[GAMEPLAY-GUARDS] Witch spawn patch failed: " + e); }
             log.LogInfo("[GAMEPLAY-GUARDS] Witch naturally spawns with one live pursuer per floor");
         }
         else log.LogInfo("[GAMEPLAY-GUARDS] Witch disabled; no Witch gameplay patches installed");
-        if (PackageAssemblies.IsLoaded("joker-wall") && PackageLifecycle.Active("joker-wall"))
+        if (PackageAssemblies.IsLoaded(JokerPackageId) && PackageLifecycle.Active(JokerPackageId))
         {
             JokerWallSupportGuard.Install(_patches, log);
             JokerDetectionRangeGuard.Install(_patches, log);
@@ -45,7 +55,7 @@ internal static class GameplayGuards
 
     internal static void LateTick()
     {
-        if (!PackageLifecycle.Active("joker-wall")) return;
+        if (!PackageLifecycle.Active(JokerPackageId)) return;
         bool prompt = IsLegitimateGameOverPromptVisible();
         if (!prompt) { _loggedGameOverLayer = false; return; }
         GameObject overlay = GameObject.Find("WallPictureTrapGrabOverlay");
@@ -100,6 +110,12 @@ internal static class SingleWitchSpawnGuard
     private static float _nextLogTime;
     private static int _reservedSceneHandle = int.MinValue;
     private static float _reservedAt = float.NegativeInfinity;
+    // A Witch that was genuinely active must continue occupying the floor
+    // slot until it dies or is destroyed, even if it stops chasing or loses
+    // its target. Do NOT infer activity from a '(Clone)' prefab name:
+    // that previously miscounted 58 dormant pool objects.
+    private static int _trackedSceneHandle = int.MinValue;
+    private static readonly HashSet<int> ObservedLivingWitches = new HashSet<int>();
 
     [HarmonyPatch(typeof(EnemySpawner), "GetEnemyPrefab")]
     [HarmonyPostfix, HarmonyPriority(Priority.Last)]
@@ -191,7 +207,13 @@ internal static class SingleWitchSpawnGuard
 
     private static int CountLiveSpawnedWitches(int activeFloorSceneHandle)
     {
+        if (_trackedSceneHandle != activeFloorSceneHandle)
+        {
+            _trackedSceneHandle = activeFloorSceneHandle;
+            ObservedLivingWitches.Clear();
+        }
         int count = 0;
+        HashSet<int> stillAlive = new HashSet<int>();
         // Some grab/capture phases temporarily disable enemy renderers or the
         // base AI. Include inactive instances so another Witch cannot spawn
         // while the existing one is capturing the player.
@@ -205,19 +227,24 @@ internal static class SingleWitchSpawnGuard
                 || root.gameObject.scene.handle != activeFloorSceneHandle)
                 continue;
 
-            // IMPORTANT: PNC creates many dormant Witch prefab clones during
-            // floor generation. Their '(Clone)' names are NOT evidence of a
-            // living/chasing Witch; the old guard counted ~58 and blocked
-            // EVERY natural spawn. Require active AI with a live player target
-            // (or an already-running capture), not a Clone suffix.
-            if (!IsRuntimeWitchInstance(root, ai)) continue;
+            // IMPORTANT: PNC creates dozens of inactive Witch template clones.
+            // They must not be counted until one really starts pursuing or
+            // capturing. After that, remember its instance ID until DEATH, so
+            // losing sight/target cannot admit another Witch to this floor.
             if (CurrentHealth != null)
             {
                 object value = CurrentHealth.GetValue(ai);
                 if (value is int hp && hp <= 0) continue;
             }
+            int token = ai.GetInstanceID();
+            bool observed = ObservedLivingWitches.Contains(token);
+            if (!observed && !IsRuntimeWitchInstance(root, ai)) continue;
+            ObservedLivingWitches.Add(token);
+            stillAlive.Add(token);
             count++;
         }
+        // Destroyed/dead witches cannot reserve slots on later selections.
+        ObservedLivingWitches.IntersectWith(stillAlive);
         return count;
     }
 
