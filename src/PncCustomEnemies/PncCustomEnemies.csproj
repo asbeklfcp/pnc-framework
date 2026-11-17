@@ -18,6 +18,9 @@
     <Compile Include="CleanupVerificationPolicy.cs" />
     <Compile Include="CustomEnemies.cs" />
     <Compile Include="CustomEnemyPlugin.cs" />
+    <Compile Include="PublicGameplayGuards.cs" />
+    <Compile Include="JokerWallSupportGuard.cs" />
+    <Compile Include="JokerDetectionRangeGuard.cs" />
     <Compile Include="CustomEnemyRuntimeData.cs" />
     <Compile Include="CustomGallerySection.cs" />
     <Compile Include="FrameTimingDiagnostics.cs" />
@@ -41,8 +44,8 @@
     <Compile Include="RuntimeWav.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="resources/PNC-Public-Characters-0.1.7.zip"><LogicalName>PNC.Public.Characters.Bundle.Zip</LogicalName></EmbeddedResource>
-    <EmbeddedResource Include="resources/PNC-Public-Characters-0.1.7-SHA256SUMS.txt"><LogicalName>PNC.Public.Characters.SHA256SUMS</LogicalName></EmbeddedResource>
+    <EmbeddedResource Include="resources/PNC-Public-Characters-0.1.8.zip"><LogicalName>PNC.Public.Characters.Bundle.Zip</LogicalName></EmbeddedResource>
+    <EmbeddedResource Include="resources/PNC-Public-Characters-0.1.8-SHA256SUMS.txt"><LogicalName>PNC.Public.Characters.SHA256SUMS</LogicalName></EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PncEdi">
