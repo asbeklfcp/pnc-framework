@@ -70,7 +70,7 @@ for required in ("MaxWallValidationAttempts = 7", "MaxScanMilliseconds = 2.5",
 for required in ("OriginalForceCurveRadius = 7.5f", "PreserveOriginalForceCurve",
                  "WallPictureTraps.WallPictureTrap", "UpdatePull"):
     assert required in range_src,("Joker detection/force preservation regression",required)
-assert 'PluginVersion = "1.2.6"' in loader
+assert 'PluginVersion = "1.2.7"' in loader
 print("PASS: manifest IDs match both Witch and Joker runtime activation gates")
 print("PASS: Joker game-over tick uses correct live package ID")
 print("PASS: both Harmony hooks and visual tick remain installed for enabled packages")
