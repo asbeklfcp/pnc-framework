@@ -41,7 +41,7 @@ public sealed class CustomEnemyPlugin : BaseUnityPlugin
 	public const string PluginName = "PNC Custom Enemies";
 	// 1.1.0: packages may ship their own behaviour assemblies, and the framework carries none of
 	// its own (§165). The version a package cares about is `PackageApi.Version`, not this one.
-	public const string PluginVersion = "1.2.6";
+	public const string PluginVersion = "1.2.7";
 	private const string PncEdiPluginGuid = "com.edi.pnc";
 
 	internal static CustomEnemyPlugin Instance { get; private set; }

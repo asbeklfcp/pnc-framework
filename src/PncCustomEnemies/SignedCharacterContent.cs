@@ -20,7 +20,7 @@ namespace PncCustomEnemies
         const string ZipName = "PNC.Public.Characters.Bundle.Zip";
         const string ChecksName = "PNC.Public.Characters.SHA256SUMS";
         const string ZipHash = "23f18152bcc527d864b8e029d8f22fbc54dbb209c67eb33f5a63396f7e04b3f0";
-        const string ChecksHash = "90511ee1e14a2ed5d790dce072556561c4f6cfcbe238bca5c4882c9acd49a22c";
+        const string ChecksHash = "a06ae6d4484e40e508855c2f214d7c1d2f8375b7d9aeb1d1de42a13fa648c21d";
         static readonly string[] Packages = { "joker-wall", "femboy-witch" };
         // Only exact publisher-reviewed historical bytes may be replaced.
         // Includes the publicly signed v0.1.7 manifests, plus the older
