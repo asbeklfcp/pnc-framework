@@ -16,17 +16,30 @@ namespace PncCustomEnemies
     // signed four-component updater. Neither its trust key nor helper changes.
     internal static class SignedCharacterContent
     {
-        const string Version = "0.1.7";
+        const string Version = "0.1.8";
         const string ZipName = "PNC.Public.Characters.Bundle.Zip";
         const string ChecksName = "PNC.Public.Characters.SHA256SUMS";
-        const string ZipHash = "6c7797319798c9b64a9089873f97d6b4b418dbfb7e5d16151420f3e4727b73d8";
-        const string ChecksHash = "a436fa2bcbe1d9d59ffbb453731452854834702faab8575152dc96163f94be32";
+        const string ZipHash = "23f18152bcc527d864b8e029d8f22fbc54dbb209c67eb33f5a63396f7e04b3f0";
+        const string ChecksHash = "90511ee1e14a2ed5d790dce072556561c4f6cfcbe238bca5c4882c9acd49a22c";
         static readonly string[] Packages = { "joker-wall", "femboy-witch" };
-        static readonly Dictionary<string,string> KnownOld = new Dictionary<string,string>(StringComparer.OrdinalIgnoreCase) {
-            { "joker-wall/WallPictureTrap.dll", "8bd621d125723717b26a5b7c83c5f68403e080750b363147ba51a0094b465312" },
-            { "joker-wall/wall-trap.json", "c7c13ad08c584b3eacd41c4beae399deb1e01d3994d6c93784830cb963c6ad6f" },
-            { "femboy-witch/CharmWitch.dll", "0d72d3629f8029147cc1e6331f275ef855f5f6a95107d2f0c625eaa0a0facaf0" }
+        // Only exact publisher-reviewed historical bytes may be replaced.
+        // Includes the publicly signed v0.1.7 manifests, plus the older
+        // approved pre-v0.1.7 package hashes for skip-version upgrades.
+        // Unknown code and customized manifests remain untouched.
+        static readonly Dictionary<string, HashSet<string>> KnownOld = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase) {
+            { "joker-wall/WallPictureTrap.dll", new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "8bd621d125723717b26a5b7c83c5f68403e080750b363147ba51a0094b465312" } },
+            { "joker-wall/wall-trap.json", new HashSet<string>(StringComparer.OrdinalIgnoreCase) {
+                "c7c13ad08c584b3eacd41c4beae399deb1e01d3994d6c93784830cb963c6ad6f",
+                "c18d22e61b35967b09d9d32a9483670f44ea1f03aa90e37db0a1b54c3f81c902" } },
+            { "femboy-witch/CharmWitch.dll", new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "0d72d3629f8029147cc1e6331f275ef855f5f6a95107d2f0c625eaa0a0facaf0" } },
+            { "femboy-witch/enemy.json", new HashSet<string>(StringComparer.OrdinalIgnoreCase) {
+                "266ad34716c1e9aa77605b14b972702a53b393d8af47c6c3ef71ba0c7da7b78a" } }
         };
+        static bool WasApprovedPriorFile(string path, string hash)
+        {
+            HashSet<string> approved;
+            return KnownOld.TryGetValue(path, out approved) && approved.Contains(hash);
+        }
         sealed class FileData { internal string Name, Sha; internal byte[] Bytes; }
         sealed class Applied { internal string Path, Backup, Hash; internal bool New; }
         static string Sha(byte[] b) { using (var h=SHA256.Create()) return BitConverter.ToString(h.ComputeHash(b)).Replace("-","").ToLowerInvariant(); }
@@ -121,9 +134,9 @@ namespace PncCustomEnemies
                 string oldPath=Path.Combine(dest,manifest);
                 NoLinks(oldPath);
                 if(!File.Exists(oldPath)){log.LogWarning("[CHARACTER UPDATE] Partial/custom "+id+" untouched");return;}
-                string actual=FileSha(oldPath),old;
+                string actual=FileSha(oldPath);
                 if(actual!=files.Single(f=>f.Name==manifest).Sha &&
-                    (!KnownOld.TryGetValue(id+"/"+manifest,out old)||actual!=old))
+                    !WasApprovedPriorFile(id+"/"+manifest,actual))
                 {log.LogWarning("[CHARACTER UPDATE] Custom manifest in "+id+" untouched");return;}
             }
             var incoming=new List<FileData>();
@@ -133,9 +146,9 @@ namespace PncCustomEnemies
                 string path=Path.Combine(dest,f.Name.Replace('/',Path.DirectorySeparatorChar));
                 NoLinks(path);
                 if(!File.Exists(path)){incoming.Add(f);continue;}
-                string actual=FileSha(path),old;
+                string actual=FileSha(path);
                 if(actual==f.Sha)continue;
-                if(KnownOld.TryGetValue(id+"/"+f.Name,out old)&&actual==old)incoming.Add(f);
+                if(WasApprovedPriorFile(id+"/"+f.Name,actual))incoming.Add(f);
                 else if(IsCodeOrManifest(f.Name))
                 {log.LogWarning("[CHARACTER UPDATE] Unknown code/config in "+id+"; all files preserved");return;}
                 else preserved++;
@@ -175,8 +188,8 @@ namespace PncCustomEnemies
                     string staged=Path.Combine(txn,"stage",f.Name.Replace('/',Path.DirectorySeparatorChar));
                     if(File.Exists(target))
                     {
-                        string expectedOld,actual=FileSha(target);
-                        if(!KnownOld.TryGetValue(id+"/"+f.Name,out expectedOld)||actual!=expectedOld)
+                        string actual=FileSha(target);
+                        if(!WasApprovedPriorFile(id+"/"+f.Name,actual))
                             throw new InvalidDataException("Character content changed during preparation");
                         string backup=Path.Combine(txn,"backup",f.Name.Replace('/',Path.DirectorySeparatorChar));
                         Directory.CreateDirectory(Path.GetDirectoryName(backup));
