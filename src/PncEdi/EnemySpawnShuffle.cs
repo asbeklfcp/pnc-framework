@@ -426,6 +426,7 @@ internal static class EnemySpawnShuffle
 			Plugin.DBG("SPAWN", "shuffle skip unclassified prefab '" + NameRemap.StripCloneSuffix(prefab.name) + "'");
 			return;
 		}
+        if(!NormalCharacters.AllowsKey(key))return;
 		if (!PrefabsByKey.TryGetValue(key, out var prefabs))
 		{
 			prefabs = new List<GameObject>();

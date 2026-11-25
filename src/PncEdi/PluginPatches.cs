@@ -96,6 +96,7 @@ public partial class Plugin
 		Patch("com.edi.pnc.gameplay", typeof(NunGrabTuning));
 		Patch("com.edi.pnc.gameplay", typeof(EnemyCombatTuning));
 		Patch("com.edi.pnc.gameplay", typeof(EnemySpawnShuffle));
+        Patch("com.edi.pnc.normalcharacters", typeof(NormalCharacters));
 		Patch("com.edi.pnc.gameplay", typeof(ImpGrappleGate));
 		Patch("com.edi.pnc.mimicgate", typeof(MimicGrabGate));
 		Patch("com.edi.pnc.aiguard", typeof(AiStateGuard));

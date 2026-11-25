@@ -1,3 +1,7 @@
+## v0.1.12 - Community Update
+
+[Release and downloads](https://github.com/asbeklfcp/pnc-framework/releases/tag/v0.1.12). Windows: continue using the existing golden-arrow updater. Linux / Proton: see [experimental installation instructions](installer/LINUX-INSTALLATION.md); use the native installer once to reach v0.1.12.
+
 # Installation — PNC Framework v0.1
 
 1. Use a separate playable copy of **PNC 0.4.2, Windows x64 Unity Mono**. Keep a clean backup.

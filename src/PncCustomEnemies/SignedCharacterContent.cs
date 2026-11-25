@@ -16,11 +16,11 @@ namespace PncCustomEnemies
     // signed four-component updater. Neither its trust key nor helper changes.
     internal static class SignedCharacterContent
     {
-        const string Version = "0.1.8";
+        const string Version = "0.1.12";
         const string ZipName = "PNC.Public.Characters.Bundle.Zip";
         const string ChecksName = "PNC.Public.Characters.SHA256SUMS";
-        const string ZipHash = "23f18152bcc527d864b8e029d8f22fbc54dbb209c67eb33f5a63396f7e04b3f0";
-        const string ChecksHash = "a06ae6d4484e40e508855c2f214d7c1d2f8375b7d9aeb1d1de42a13fa648c21d";
+        const string ZipHash = "7bf271f90be11a8020db7b82f95c5925f6ba3870ad89168e91120c2ede5af337";
+        const string ChecksHash = "ff1892c22e7057e472f8f9a54648cd0a3fa8f0e6bb91896a93cee85b141f48ad";
         static readonly string[] Packages = { "joker-wall", "femboy-witch" };
         // Only exact publisher-reviewed historical bytes may be replaced.
         // Includes the publicly signed v0.1.7 manifests, plus the older
@@ -29,6 +29,7 @@ namespace PncCustomEnemies
         static readonly Dictionary<string, HashSet<string>> KnownOld = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase) {
             { "joker-wall/WallPictureTrap.dll", new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "8bd621d125723717b26a5b7c83c5f68403e080750b363147ba51a0094b465312" } },
             { "joker-wall/wall-trap.json", new HashSet<string>(StringComparer.OrdinalIgnoreCase) {
+                "3b89eed39ef899dca2c76bf351f359e60d1add6547fb28d4314232af0ab7f6bf",
                 "c7c13ad08c584b3eacd41c4beae399deb1e01d3994d6c93784830cb963c6ad6f",
                 "c18d22e61b35967b09d9d32a9483670f44ea1f03aa90e37db0a1b54c3f81c902" } },
             { "femboy-witch/CharmWitch.dll", new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "0d72d3629f8029147cc1e6331f275ef855f5f6a95107d2f0c625eaa0a0facaf0" } },

@@ -56,6 +56,7 @@ public sealed partial class Plugin {
     }
     void PrepareUpdate() {
         if(_updateOffer==null || _updatePreparation!=null || _updatePrepared)return;
+        if(ProtonUpdate.IsWine){PrepareProtonUpdate();return;}
         var release=_updateOffer;var envelope=_updateEnvelope;
         string root=Paths.GameRootPath;
         string currentHome=Path.Combine(root,"BepInEx","framework-updates");

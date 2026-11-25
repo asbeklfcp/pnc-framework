@@ -118,12 +118,12 @@ internal static class SingleWitchSpawnGuard
     private static readonly HashSet<int> ObservedLivingWitches = new HashSet<int>();
 
     [HarmonyPatch(typeof(EnemySpawner), "GetEnemyPrefab")]
-    [HarmonyPostfix, HarmonyPriority(Priority.Last)]
+    [HarmonyPostfix, HarmonyPriority(Priority.Last), HarmonyAfter("com.edi.pnc.normalcharacters")]
     private static void OrdinarySpawnerPostfix(EnemySpawner __instance, ref GameObject __result)
         => SuppressSecondWitch(__instance, ref __result);
 
     [HarmonyPatch(typeof(ArenaEnemySpawner), "GetEnemyPrefab")]
-    [HarmonyPostfix, HarmonyPriority(Priority.Last)]
+    [HarmonyPostfix, HarmonyPriority(Priority.Last), HarmonyAfter("com.edi.pnc.normalcharacters")]
     private static void ArenaSpawnerPostfix(ArenaEnemySpawner __instance, ref GameObject __result)
         => SuppressSecondWitch(__instance, ref __result);
 
@@ -188,14 +188,14 @@ internal static class SingleWitchSpawnGuard
                 if (entry == null || entry.prefabVariants == null || entry.prefabVariants.Length == 0) continue;
                 bool hasAllowed = false;
                 foreach (GameObject variant in entry.prefabVariants)
-                    if (variant != null && !IsWitch(variant)) { hasAllowed = true; break; }
+                    if (variant != null && !IsWitch(variant) && PncEdi.NormalCharacters.Allows(variant)) { hasAllowed = true; break; }
                 if (hasAllowed) original.Add(entry);
             }
             if (original.Count == 0) return null;
             EnemyData chosen = original[UnityEngine.Random.Range(0, original.Count)];
             List<GameObject> variants = new List<GameObject>();
             foreach (GameObject variant in chosen.prefabVariants)
-                if (variant != null && !IsWitch(variant)) variants.Add(variant);
+                if (variant != null && !IsWitch(variant) && PncEdi.NormalCharacters.Allows(variant)) variants.Add(variant);
             return variants.Count > 0 ? variants[UnityEngine.Random.Range(0, variants.Count)] : null;
         }
         catch (Exception ex)

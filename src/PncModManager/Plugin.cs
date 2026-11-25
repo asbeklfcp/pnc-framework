@@ -587,7 +587,7 @@ public sealed partial class Plugin : BaseUnityPlugin
 			alignment = TextAnchor.MiddleCenter,
 			fontSize = 18
 		};
-		_collapsibleHeaderStyle = new GUIStyle(_profileHeadingStyle);
+		_collapsibleHeaderStyle = new GUIStyle(_profileHeadingStyle){padding=new RectOffset(8,8,5,5),fixedHeight=0};
 		_collapsibleHeaderStyle.hover.textColor = new Color(.46f,.19f,.025f);
 		_collapsibleHeaderStyle.active.textColor = new Color(.33f,.10f,.01f);
 		_activeProfileButtonStyle = new GUIStyle(GUI.skin.button)
@@ -701,7 +701,6 @@ public sealed partial class Plugin : BaseUnityPlugin
 		{
 			DrawGalleryActions(plugin);
 		}
-		DrawCustomEnemiesPanel(plugin);
 		GUILayout.BeginHorizontal();
 		GUILayout.Label("Search", GUILayout.Width(55f));
 		_search = GUILayout.TextField(_search ?? string.Empty);
@@ -712,11 +711,17 @@ public sealed partial class Plugin : BaseUnityPlugin
 		GUILayout.EndHorizontal();
 
 		_settingsScroll = GUILayout.BeginScrollView(_settingsScroll, GUILayout.ExpandHeight(true));
+        DrawCustomEnemiesPanel(plugin);
+        if(plugin.Info.Metadata.GUID=="com.edi.pnc.customenemies")
+        {
+            var normalSource=_plugins.FirstOrDefault(v=>v.Info.Metadata.GUID==PncEditPluginGuid);
+            if(normalSource!=null)DrawNormalCharactersPanel(normalSource);
+        }
 		IEnumerable<ConfigEntryBase> visibleEntries = plugin.Config.Values
             .Where(entry => IsPlayerVisibleSetting(plugin.Info.Metadata.GUID, entry))
 			.Where(entry => entry.SettingType != typeof(KeyboardShortcut) && entry.Definition.Key != "DebugHotkeysIgnoreHeldKeys")
 			.Where(entry => !IsGameplayProfile(entry))
-			.Where(entry => !IsCustomEnemyToggle(entry))
+			.Where(entry => !IsCustomEnemyToggle(entry) && !IsNormalCharacterToggle(entry))
 			.Where(EntryMatchesSearch)
 			.Where(entry => _showSettingsWithoutDescriptions.Value || !string.IsNullOrWhiteSpace(entry.Description.Description))
 			.OrderBy(entry => entry.Definition.Section, StringComparer.OrdinalIgnoreCase)
@@ -755,6 +760,34 @@ public sealed partial class Plugin : BaseUnityPlugin
 			&& entry.Definition.Section.Equals("Gameplay", StringComparison.OrdinalIgnoreCase)
 			&& entry.Definition.Key.Equals("Profile", StringComparison.OrdinalIgnoreCase);
 	}
+
+    private static bool IsNormalCharacterToggle(ConfigEntryBase entry)
+        => entry.SettingType==typeof(bool) && entry.Definition.Section=="Normal Characters";
+
+    private void DrawNormalCharactersPanel(PluginView plugin)
+    {
+        var entries=plugin.Config.Values.Where(IsNormalCharacterToggle).OrderBy(e=>e.Definition.Key,StringComparer.OrdinalIgnoreCase).ToList();
+        if(entries.Count==0)return;
+        GUILayout.Space(8f);
+        GUILayout.BeginVertical(_profilePanelStyle);
+        if(DrawPanelHeader("NORMAL CHARACTERS",plugin.Info.Metadata.GUID+"|Panel|NormalCharacters",entries.Count(e=>(bool)e.BoxedValue)+" of "+entries.Count+" enabled"))
+        {
+            GUILayout.Label("Choose which normal characters can spawn. Changes apply automatically; required boss encounters are unaffected.",_descriptionStyle);
+            foreach(var entry in entries)
+            {
+                bool enabled=(bool)entry.BoxedValue;
+                string id=plugin.Info.Metadata.GUID+"|"+entry.Definition.Section+"|"+entry.Definition.Key;
+                GUILayout.BeginVertical(GUI.skin.box);
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(entry.Definition.Key,_titleStyle,GUILayout.ExpandWidth(true));
+                if(NavButton(enabled?"Enabled":"Disabled",enabled?_activeProfileButtonStyle:GUI.skin.button,GUILayout.Width(120f),GUILayout.MinHeight(44f)))
+                    ApplyValue(entry,!enabled,id);
+                GUILayout.EndHorizontal();
+                GUILayout.EndVertical();
+            }
+        }
+        GUILayout.EndVertical();
+    }
 
 	private static bool IsCustomEnemyToggle(ConfigEntryBase entry)
 	{
@@ -961,7 +994,7 @@ public sealed partial class Plugin : BaseUnityPlugin
 		{
 			label += "  \u2022  " + collapsedSummary;
 		}
-		if (NavButton(label, _collapsibleHeaderStyle, GUILayout.Height(28f)))
+		if (NavButton(label, _collapsibleHeaderStyle, GUILayout.Height(36f)))
 		{
 			if (collapsed)
 			{

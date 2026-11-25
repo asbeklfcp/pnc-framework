@@ -17,7 +17,7 @@ public sealed partial class Plugin {
     }
     void ClosePatchNotes(){_patchNotesOpen=false;_visible=true;SetVisible(false);}
     string[] NotesActions(){
-        if(_updatePrepared)return new[]{"Exit game and install","Cancel update","Back"};
+        if(_updatePrepared)return new[]{ProtonUpdate.IsWine?"Exit game to update":"Exit game and install","Cancel update","Back"};
         if(_updatePreparation!=null)return new[]{"Cancel download","Back"};
         return _updateOffer!=null?new[]{"Download update","Check again","Back"}:new[]{"Check again","Back"};
     }
@@ -26,8 +26,9 @@ public sealed partial class Plugin {
             case "Back":ClosePatchNotes();break;
             case "Check again":CheckUpdates();LoadNotesHistory();break;
             case "Download update":PrepareUpdate();break;
-            case "Cancel download":_downloadCancel?.Cancel();string home=Path.Combine(Paths.GameRootPath,"BepInEx","framework-updates");if(Directory.Exists(home))File.WriteAllText(Path.Combine(home,"cancel"),"cancel");_downloadStage="Cancelling...";break;
-            case "Cancel update":File.WriteAllText(Path.Combine(Paths.GameRootPath,"BepInEx","framework-updates","cancel"),"cancel");_updatePrepared=false;_downloadStage="";_updateMessage="Update cancelled. Your game has not been changed.";break;
+            case "Cancel download":_downloadCancel?.Cancel();if(ProtonUpdate.IsWine){ProtonUpdate.Cancel(Paths.GameRootPath);_downloadStage="Cancelling...";break;}string home=Path.Combine(Paths.GameRootPath,"BepInEx","framework-updates");if(Directory.Exists(home))File.WriteAllText(Path.Combine(home,"cancel"),"cancel");_downloadStage="Cancelling...";break;
+            case "Cancel update":if(ProtonUpdate.IsWine)ProtonUpdate.Cancel(Paths.GameRootPath);else File.WriteAllText(Path.Combine(Paths.GameRootPath,"BepInEx","framework-updates","cancel"),"cancel");_updatePrepared=false;_downloadStage="";_updateMessage="Update cancelled. Your game has not been changed.";break;
+            case "Exit game to update":
             case "Exit game and install":if(_updatePrepared)Application.Quit();break;
         }
     }
@@ -71,7 +72,7 @@ public sealed partial class Plugin {
             if(_updatePrepared){
                 GUILayout.BeginVertical(GUI.skin.box);
                 GUILayout.Label("UPDATE READY!",_notesCategory);
-                GUILayout.Label("Please close Post Nut Calamity to install the new version.",_notesEntry);
+                GUILayout.Label(ProtonUpdate.IsWine?"Exit and launch the game again to install the verified update.":"Please close Post Nut Calamity to install the new version.",_notesEntry);
                 GUILayout.Label("Your settings, controls and other mods will be preserved.",_notesBody);
                 GUILayout.EndVertical();
             } else {

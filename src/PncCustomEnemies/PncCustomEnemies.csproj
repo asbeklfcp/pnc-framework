@@ -44,12 +44,12 @@
     <Compile Include="RuntimeWav.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="resources/PNC-Public-Characters-0.1.8.zip"><LogicalName>PNC.Public.Characters.Bundle.Zip</LogicalName></EmbeddedResource>
-    <EmbeddedResource Include="resources/PNC-Public-Characters-0.1.8-SHA256SUMS.txt"><LogicalName>PNC.Public.Characters.SHA256SUMS</LogicalName></EmbeddedResource>
+    <EmbeddedResource Include="resources/PNC-Public-Characters-0.1.12.zip"><LogicalName>PNC.Public.Characters.Bundle.Zip</LogicalName></EmbeddedResource>
+    <EmbeddedResource Include="resources/PNC-Public-Characters-0.1.12-SHA256SUMS.txt"><LogicalName>PNC.Public.Characters.SHA256SUMS</LogicalName></EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PncEdi">
-      <HintPath>$(GameDir)BepInEx/plugins/PncEdi.dll</HintPath>
+      <HintPath Condition="'$(PncEdiAssembly)'==''">$(GameDir)BepInEx/plugins/PncEdi.dll</HintPath><HintPath Condition="'$(PncEdiAssembly)'!=''">$(PncEdiAssembly)</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="0Harmony">

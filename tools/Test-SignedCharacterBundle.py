@@ -29,8 +29,8 @@ def hash_bytes(value: bytes) -> str:
 
 
 def run() -> None:
-    zip_name = "PNC-Public-Characters-0.1.8.zip"
-    checks_name = "PNC-Public-Characters-0.1.8-SHA256SUMS.txt"
+    zip_name = "PNC-Public-Characters-0.1.12.zip"
+    checks_name = "PNC-Public-Characters-0.1.12-SHA256SUMS.txt"
     assert f'<EmbeddedResource Include="resources/{zip_name}"' in PROJECT
     assert f'<EmbeddedResource Include="resources/{checks_name}"' in PROJECT
 

@@ -1,3 +1,7 @@
+## v0.1.12 - Community Update
+
+[Release and downloads](https://github.com/asbeklfcp/pnc-framework/releases/tag/v0.1.12). Windows: continue using the existing golden-arrow updater. Linux / Proton: see [experimental installation instructions](installer/LINUX-INSTALLATION.md); use the native installer once to reach v0.1.12.
+
 ## v0.1.11 — Living Map
 
 The new Living Map is available in PNC Framework for PNC 0.4.2. Press M during gameplay to open the map, or change the shortcut in Mod Manager > Controls. Living Map settings expose only Enable Map; camera and minimap customization are available inside the map.

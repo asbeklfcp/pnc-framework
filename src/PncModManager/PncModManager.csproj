@@ -42,9 +42,14 @@
     <Compile Include="ScriptMergeCore.cs" />
     <Compile Include="PncScriptRelease.cs" />
     <Compile Include="UpdatesPage.cs" />
+    <Compile Include="ProtonUpdate.cs" />
+    <Compile Include="ProtonUpdatePolicy.cs" />
+    <Compile Include="ProtonUpdatesPage.cs" />
+    <ProjectReference Include="../PncProtonUpdate/PncProtonUpdate.csproj" ReferenceOutputAssembly="false" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="resources/PNC-EDI-0.4.2-Gallery-Full-678.zip"><LogicalName>PNC.Public.EDI.Bundle.Zip</LogicalName></EmbeddedResource>
+    <EmbeddedResource Include="../PncProtonUpdate/bin/$(Configuration)/netstandard2.1/PncProtonUpdate.dll"><LogicalName>PNC.Proton.Patcher</LogicalName></EmbeddedResource>
     <EmbeddedResource Include="resources/alias_additions.ini"><LogicalName>PNC.Public.EDI.AliasAdditions.ini</LogicalName></EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

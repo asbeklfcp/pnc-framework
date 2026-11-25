@@ -105,6 +105,7 @@ public partial class Plugin : BaseUnityPlugin
 		Log = base.Logger;
 		if (!FrameworkCompatibility.Verify(Log)) { enabled = false; return; }
 		BindConfig();
+        NormalCharacters.Initialize(Config);
 		OverkeksConfig.Initialize(Config);
         BossTestTools.Initialize(Config);
 		CommunityCombatRuntime.Initialize(Config);
@@ -139,6 +140,7 @@ public partial class Plugin : BaseUnityPlugin
 
 	private void Update()
 	{
+        TickGuarded("normal-character-cleanup",NormalCharacters.Tick);
         TickGuarded("capture-audio-pause",CaptureAudioPause.Tick);
         TickGuarded("enemy-audio-pause",EnemyGameplayAudioPause.Tick);
         TickGuarded("capture-boss-hud",CaptureBossHud.Tick);

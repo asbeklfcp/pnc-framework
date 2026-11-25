@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>netstandard2.1</TargetFramework><AssemblyName>PncProtonUpdate</AssemblyName><LangVersion>latest</LangVersion><NuGetAudit>false</NuGetAudit><DebugType>none</DebugType><DebugSymbols>false</DebugSymbols><BepInExDir>$(GameDir)\BepInEx\core\</BepInExDir></PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../PncModManager/ProtonUpdatePolicy.cs" Link="UpdatePolicy.cs"/>
+    <Compile Include="../PncModManager/UpdateBuild.cs" Link="UpdateBuild.cs"/>
+    <Reference Include="BepInEx.Core"><HintPath>$(BepInExDir)BepInEx.Core.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="BepInEx.Preloader.Core"><HintPath>$(BepInExDir)BepInEx.Preloader.Core.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>

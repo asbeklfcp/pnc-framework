@@ -1,3 +1,21 @@
+# PNC Framework v0.1.12 - Community Update
+
+For Post Nut Calamity 0.4.2.
+
+## Gameplay
+- Joker is less frequent: no guaranteed entrance spawn, roaming placement checks every 30 seconds instead of 8, and at most three active traps.
+- New Normal Characters section under Optional Characters, alongside Custom Enemies. Ten regular character families have individual switches, enabled by default. Disabled normal characters are excluded from supported room and arena spawn selections; disabling Mimic also prevents future mimic chest allocations. Required bosses and special scripted encounters are unchanged.
+- Settings are saved automatically. No manual configuration editing is required.
+
+## Experimental Linux / Proton support
+- A small native Linux installer is available as a separate download. It retrieves the existing base package and current approved signed update, preserving settings and the signed receipt. No new full installation ZIP is required.
+- Existing Proton installations should use the Linux installer once to reach this version. After that, the experimental in-game updater prepares signed updates for application on the next game launch, before framework plugins load. Windows retains its existing PowerShell updater.
+- Native Linux/Proton execution has not been tested; please report compatibility issues with logs. The Linux installer and Proton updater are experimental.
+
+The reported Joker animation freeze with EDI could not be reproduced in an isolated animation-clock test; no speculative animation change is included.
+
+---
+
 # PNC Framework v0.1.11 ? Living Map
 
 **For Post Nut Calamity 0.4.2.**
