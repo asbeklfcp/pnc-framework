@@ -14,6 +14,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="LivingMap/*.cs" />
     <Compile Include="ControlsPage.cs" />
     <Compile Include="CursorRestorePolicy.cs" />
     <Compile Include="DashboardTheme.cs" />
@@ -137,5 +138,18 @@
     <EmbeddedResource Include="NativePortraits.xml">
       <LogicalName>PncUI.NativePortraits.xml</LogicalName>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp-firstpass"><HintPath>$(ManagedDir)Assembly-CSharp-firstpass.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime"><HintPath>$(ManagedDir)Unity.RenderPipelines.Core.Runtime.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime"><HintPath>$(ManagedDir)Unity.RenderPipelines.Universal.Runtime.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule"><HintPath>$(ManagedDir)UnityEngine.ParticleSystemModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.AIModule"><HintPath>$(ManagedDir)UnityEngine.AIModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="DunGen"><HintPath>$(ManagedDir)DunGen.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.PhysicsModule"><HintPath>$(ManagedDir)UnityEngine.PhysicsModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="AstarPathfindingProject"><HintPath>$(ManagedDir)AstarPathfindingProject.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.Mathematics"><HintPath>$(ManagedDir)Unity.Mathematics.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="PackageTools"><HintPath>$(ManagedDir)PackageTools.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Drawing"><HintPath>$(ManagedDir)Drawing.dll</HintPath><Private>false</Private></Reference>
   </ItemGroup>
 </Project>

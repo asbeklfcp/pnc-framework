@@ -4,6 +4,7 @@ public sealed partial class Plugin {
         case "com.edi.pnc":return "Gameplay & integrations";
         case "com.edi.pnc.customenemies":return "Optional characters";
         case "com.pnc.modmanager":return "Mod manager";
+        case "com.pnc.private.living-map":return "Living Map";
         case "com.pnc.roomcontent":return "Experimental rooms";
         default:return NativeTypeface.Clean(fallback);
     }}
@@ -11,6 +12,7 @@ public sealed partial class Plugin {
         case "com.edi.pnc":return "Gameplay profiles, capture settings and optional integrations.";
         case "com.edi.pnc.customenemies":return "Optional character packages and gallery settings.";
         case "com.pnc.modmanager":return "Interface preferences and manager controls.";
+        case "com.pnc.private.living-map":return "Enable or disable the Living Map. Customize the map in-game; rebind its shortcut under Controls.";
         case "com.pnc.roomcontent":return "Experimental room content. Separate from the core release.";
         default:return "Settings provided by this module.";
     }}

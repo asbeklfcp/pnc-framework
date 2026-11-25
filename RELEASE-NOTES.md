@@ -1,3 +1,19 @@
+# PNC Framework v0.1.11 ? Living Map
+
+**For Post Nut Calamity 0.4.2.**
+
+## Living Map
+- New world map and configurable minimap, with actual dungeon geometry, multiple projections, room and character markers, floor selection, and navigation guidance.
+- Open or close the map with **M** by default. Rebind the shortcut in Mod Manager > Controls.
+- Move the minimap anywhere on the screen from the map's Minimap settings.
+- Explore with Map, Free Cam, and Player Cam. Map and Free Cam retain their positions within a dungeon; Player Cam starts at your current viewpoint. All reset appropriately when entering a new dungeon or shop.
+- Smooth camera movement, right-click orbit/look, WASD movement, zoom, speed adjustments, and manual recentering.
+- Optional full-dungeon viewing; exploration progress remains separate.
+- Simplified Mod Manager: only Enable Map is listed in the Living Map settings. Camera and display preferences are in the map itself.
+
+## Compatibility
+The signed golden-arrow update retains the existing framework components and player settings. No game files or private developer tools are included.
+
 ## v0.1.6 - Golden Arrow Receipt Recognition Hotfix
 
 Corrects the public manager's embedded release ID so it matches the signed installed-release receipt. v0.1.5 installed properly, but its manager still identified itself as v0.1.4, causing false "Installed release receipt mismatch" errors after installation. v0.1.6 updates the manager to 1.8.16 and keeps the tested EDI 3.0.26 plugin. All gameplay, scripts, profiles and previously tested Wolf/D17, D16, Gravy and randomized Brothel compatibility are preserved. Players already on v0.1.5 may need a one-time trusted rollback recovery before the golden arrow can update normally; do not delete or edit the signed receipt manually.

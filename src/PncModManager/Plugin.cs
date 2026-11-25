@@ -21,7 +21,7 @@ public sealed partial class Plugin : BaseUnityPlugin
 {
 	public const string PluginGuid = "com.pnc.modmanager";
 	public const string PluginName = "PNC Framework Dashboard";
-	public const string PluginVersion = "1.8.16";
+	public const string PluginVersion = "1.8.21";
 	private const string PncEditPluginGuid = "com.edi.pnc";
 
 	/// <summary>
@@ -713,6 +713,7 @@ public sealed partial class Plugin : BaseUnityPlugin
 
 		_settingsScroll = GUILayout.BeginScrollView(_settingsScroll, GUILayout.ExpandHeight(true));
 		IEnumerable<ConfigEntryBase> visibleEntries = plugin.Config.Values
+            .Where(entry => IsPlayerVisibleSetting(plugin.Info.Metadata.GUID, entry))
 			.Where(entry => entry.SettingType != typeof(KeyboardShortcut) && entry.Definition.Key != "DebugHotkeysIgnoreHeldKeys")
 			.Where(entry => !IsGameplayProfile(entry))
 			.Where(entry => !IsCustomEnemyToggle(entry))
@@ -743,6 +744,10 @@ public sealed partial class Plugin : BaseUnityPlugin
 		GUILayout.EndScrollView();
 		GUILayout.EndVertical();
 	}
+
+    private static bool IsPlayerVisibleSetting(string guid, ConfigEntryBase entry)
+        => !string.Equals(guid, PncPrivateLivingMap.Plugin.Id, StringComparison.OrdinalIgnoreCase)
+            || (entry.Definition.Section == "World Map" && entry.Definition.Key == "Enable Map");
 
 	private static bool IsGameplayProfile(ConfigEntryBase entry)
 	{
