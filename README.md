@@ -1,3 +1,7 @@
+## v0.1.13 - Living Map Performance Hotfix
+
+[Release and complete Windows starter download](https://github.com/asbeklfcp/pnc-framework/releases/tag/v0.1.13). Existing installations use the signed in-game updater. Fixes repeated missing optional-component lookups and map hitching.
+
 ## v0.1.12 - Community Update
 
 [Release and downloads](https://github.com/asbeklfcp/pnc-framework/releases/tag/v0.1.12). Windows: continue using the existing golden-arrow updater. Linux / Proton: see [experimental installation instructions](installer/LINUX-INSTALLATION.md); use the native installer once to reach v0.1.12.

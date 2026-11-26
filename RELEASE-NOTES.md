@@ -1,3 +1,14 @@
+# PNC Framework v0.1.13 - Living Map Performance Hotfix
+
+For PNC 0.4.2.
+
+- Fixed repeated optional-component lookups when optional characters are disabled or not installed.
+- The map now caches available and unavailable component types, and refreshes missing lookups when new assemblies load.
+- Reduces map stuttering and repeated HarmonyX missing-type warnings, without reducing map resolution, visual quality or animation settings.
+- Optional characters remain entirely optional. Existing map settings and gameplay are unchanged.
+
+Use the normal in-game updater. New Windows players can use the complete starter ZIP. Experimental Linux/Proton support remains unchanged.
+
 # PNC Framework v0.1.12 - Community Update
 
 For Post Nut Calamity 0.4.2.

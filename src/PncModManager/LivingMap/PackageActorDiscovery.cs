@@ -18,8 +18,8 @@ namespace PncPrivateLivingMap
         {
             if(Time.unscaledTime<nextPackageLookup)return;
             nextPackageLookup=Time.unscaledTime+5;
-            packageOwnerType=packageOwnerType??AccessTools.TypeByName("PncCustomEnemies.PackageOwnedObject");
-            runtimeVisualType=runtimeVisualType??AccessTools.TypeByName("PncEdi.RuntimeSpriteVisual");
+            packageOwnerType=packageOwnerType??OptionalActorTypes.Resolve("PncCustomEnemies.PackageOwnedObject");
+            runtimeVisualType=runtimeVisualType??OptionalActorTypes.Resolve("PncEdi.RuntimeSpriteVisual");
             if(packageOwnerType!=null)ownerIdProperty=packageOwnerType.GetProperty("OwnerId",BindingFlags.Instance|BindingFlags.Public|BindingFlags.NonPublic);
             if(runtimeVisualType!=null)MapPause.GuardCustom(runtimeVisualType);
         }

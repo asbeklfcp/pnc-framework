@@ -23,7 +23,7 @@ namespace PncPrivateLivingMap
         {
             if(resolved)return;
             resolved=true;
-            type=AccessTools.TypeByName("PncEdi.RuntimeSpriteVisual");
+            type=OptionalActorTypes.Resolve("PncEdi.RuntimeSpriteVisual");
             if(type==null)return;
             renderer=AccessTools.Field(type,"_renderer");animations=AccessTools.Field(type,"_animations");
             index=AccessTools.Field(type,"_currentIndex");frame=AccessTools.Field(type,"_frame");elapsed=AccessTools.Field(type,"_elapsed");

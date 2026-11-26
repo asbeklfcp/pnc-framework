@@ -17,7 +17,7 @@ using Object = UnityEngine.Object;
 namespace PncPrivateLivingMap
 {
     // Player-facing map; detailed preferences are edited in the map itself.
-    [BepInPlugin(Id, "PNC Living Map", "0.1.11")]
+    [BepInPlugin(Id, "PNC Living Map", "0.1.13")]
     [BepInDependency("com.pnc.modmanager", BepInDependency.DependencyFlags.HardDependency)]
     [BepInProcess("Post Nut Calamity.exe")]
     public sealed partial class Plugin : BaseUnityPlugin
@@ -410,7 +410,6 @@ namespace PncPrivateLivingMap
         private PlayerStats _playerStats;
         private Transform _player;
         private Type _wallTrapType;
-        private float nextOptionalTypeLookup;
         private Type _witchControllerType;
 
         private readonly Dictionary<Type,FieldInfo> _healthFields = new Dictionary<Type,FieldInfo>();
@@ -757,12 +756,9 @@ namespace PncPrivateLivingMap
         {
             _markers.Clear();
             if(!HasPlayer)return;
-            if(Time.unscaledTime>=nextOptionalTypeLookup && (_witchControllerType==null || _wallTrapType==null))
-            {
-                nextOptionalTypeLookup=Time.unscaledTime+10;
-                if(_witchControllerType==null)_witchControllerType=HarmonyLib.AccessTools.TypeByName("CharmWitch.CharmWitchController");
-                if(_wallTrapType==null)_wallTrapType=HarmonyLib.AccessTools.TypeByName("WallPictureTraps.WallPictureTrap");
-            }
+
+            _witchControllerType=OptionalActorTypes.Resolve("CharmWitch.CharmWitchController");
+            _wallTrapType=OptionalActorTypes.Resolve("WallPictureTraps.WallPictureTrap");
             int bucket=discoveryBucket++%(NativeActorComponents.Length+2);
             Type type=bucket<NativeActorComponents.Length?NativeActorComponents[bucket]:bucket==NativeActorComponents.Length?_wallTrapType:_witchControllerType;
             if(bucket==0 && pooled.Count>0){retired.Clear();foreach(var pair in pooled)if(pair.Value==null)retired.Add(pair.Key);foreach(var id in retired)pooled.Remove(id);}

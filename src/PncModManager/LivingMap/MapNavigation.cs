@@ -58,7 +58,7 @@ namespace PncPrivateLivingMap
             var types=new List<Type>(MapModel.NativeActorComponents){typeof(FirstPersonController),typeof(PlayerStats)};
             foreach(var name in new[]{"CMF.CameraController","CMF.SmoothPosition","PixelCrushers.GridController.PauseMenuManager","UnityEngine.EventSystems.EventSystem"})
             {
-                var type=AccessTools.TypeByName(name);if(type!=null)types.Add(type);
+                var type=OptionalActorTypes.Resolve(name);if(type!=null)types.Add(type);
             }
             var patched=new HashSet<System.Reflection.MethodBase>();
             foreach(var type in types)

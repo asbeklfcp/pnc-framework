@@ -28,7 +28,7 @@ namespace PncPrivateLivingMap
             nextScan=Time.unscaledTime+.15f;
             try
             {
-                controller=controller??AccessTools.TypeByName("CharmWitch.CharmWitchController");
+                controller=OptionalActorTypes.Resolve("CharmWitch.CharmWitchController");
                 if(controller==null)return;
                 MapPause.GuardCustom(controller);
                 if(fields==null)
